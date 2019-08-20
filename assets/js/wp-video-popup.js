@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 
 	var url = $('.wp-video-popup-video').attr('data-wp-video-popup-url');
 
@@ -9,7 +9,7 @@
 		$(window).trigger('resize');
 	}
 
-	$('.wp-video-popup').click(function(event) {
+	$('.wp-video-popup').click(function (event) {
 		event.preventDefault();
 		wp_video_popup_open();
 	});
@@ -17,29 +17,29 @@
 	// Close Function
 	function wp_video_popup_close() {
 		$('.wp-video-popup-wrapper, .wp-video-popup-video').fadeOut(200);
-		setTimeout(function(){
+		setTimeout(function () {
 			$('.wp-video-popup-video').attr('src', '');
 		}, 200);
 	}
 
 	// Close on click
-	$('.wp-video-popup-wrapper').click(function() {
+	$('.wp-video-popup-wrapper').click(function () {
 		wp_video_popup_close();
 	});
 
 	// Close on Escape
-	$(document).keyup(function(e) {
+	$(document).keyup(function (e) {
 		if (e.keyCode == 27) {
-			if ( $('.wp-video-popup-wrapper').is(':visible') ) {
+			if ($('.wp-video-popup-wrapper').is(':visible')) {
 				wp_video_popup_close();
 			}
 		}
 	});
 
 	// Resize
-	$(window).resize(function() {
+	$(window).resize(function () {
 		var videoWidth = $('.wp-video-popup-video').width();
-		$('.wp-video-popup-video').height(videoWidth*0.5625);
+		$('.wp-video-popup-video').height(videoWidth * 0.5625);
 	});
 
 	/* Backwards Compatibility */
@@ -53,7 +53,7 @@
 		$(window).trigger('resize');
 	}
 
-	$('.ryv-popup').click(function(event) {
+	$('.ryv-popup').click(function (event) {
 		event.preventDefault();
 		ryv_video_popup_open();
 	});
@@ -62,29 +62,29 @@
 	// Close Function
 	function close_ryv_popup() {
 		$('.ryv-popup-wrapper, .ryv-popup-video').fadeOut(200);
-		setTimeout(function(){
+		setTimeout(function () {
 			$('.ryv-popup-video').attr('src', '');
 		}, 200);
 	}
 
 	// Close on click
-	$('.ryv-popup-wrapper').click(function() {
+	$('.ryv-popup-wrapper').click(function () {
 		close_ryv_popup();
 	});
 
 	// Close on Escape
-	$(document).keyup(function(e) {
+	$(document).keyup(function (e) {
 		if (e.keyCode == 27) {
-			if ( $('.ryv-popup-wrapper').is(':visible') ) {
+			if ($('.ryv-popup-wrapper').is(':visible')) {
 				close_ryv_popup();
 			}
 		}
 	});
 
 	// Resize
-	$(window).resize(function() {
+	$(window).resize(function () {
 		var videoWidth = $('.ryv-popup-video').width();
-		$('.ryv-popup-video').height(videoWidth*0.5625);
+		$('.ryv-popup-video').height(videoWidth * 0.5625);
 	});
 
-})( jQuery );
+})(jQuery);
