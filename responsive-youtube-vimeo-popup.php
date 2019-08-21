@@ -32,8 +32,8 @@ if ( get_option( '_site_transient_disable-ryv-notice' ) ) {
 	delete_option( '_site_transient_disable-ryv-notice' );
 }
 
-// PAnD (Persist Admin notice Dismissals).
-require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'assets/pand/pand.php';
+// Persist Admin notice Dismissals.
+require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/persist-admin-notices-dismissal/persist-admin-notices-dismissal.php';
 
 /**
  * Pro ad
