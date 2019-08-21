@@ -16,6 +16,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 // Plugin constants.
 define( 'WP_VIDEO_POPUP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_VIDEO_POPUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.4' );
 
 /**
  * Load text domain
@@ -68,10 +69,10 @@ add_action( 'admin_init', array( 'PAnD', 'init' ) );
  * @return void
  */
 function wp_video_popup_styles() {
-	wp_register_style( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/wp-video-popup.css', [], null );
+	wp_register_style( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/wp-video-popup.css', [], WP_VIDEO_POPUP_PLUGIN_VERSION );
 	wp_enqueue_style( 'wp-video-popup' );
 
-	wp_register_script( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/js/wp-video-popup.js', array( 'jquery' ), '', true );
+	wp_register_script( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/js/wp-video-popup.js', array( 'jquery' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
 	wp_enqueue_script( 'wp-video-popup' );
 }
 add_action( 'wp_enqueue_scripts', 'wp_video_popup_styles' );
