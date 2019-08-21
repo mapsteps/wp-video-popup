@@ -159,4 +159,4 @@ add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
 require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/backwards-compatibility.php';
 
 // Helpers.
-require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/helpers.php';
+require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/class-wp-video-popup-parser.php';
