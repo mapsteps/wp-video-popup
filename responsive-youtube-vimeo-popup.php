@@ -140,24 +140,15 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		$video_url .= '&amp;start=' . $start;
 	}
 
-	/* Output */
-
-	// Initialize output.
-	$wp_video_popup_output = '';
-
-	// Popup Wrapper.
-	$wp_video_popup_output .= '<div class="wp-video-popup-wrapper">';
-
-	// Close Icon.
-	$wp_video_popup_output .= '<div class="wp-video-popup-close"></div>';
-
-	// Video.
-	$wp_video_popup_output .= '<iframe class="wp-video-popup-video" src="" data-wp-video-popup-url="' . $video_url . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay"></iframe>';
-
-	// Close Popup Wrapper.
-	$wp_video_popup_output .= '</div>';
-
-	return $wp_video_popup_output;
+	return '
+	<div class="wp-video-popup-wrapper">
+		<div class="wp-video-popup-wrapper">
+			<div class="wp-video-popup-close"></div>
+			<iframe class="wp-video-popup-video" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay">
+			</iframe>
+		</div>
+	</div>
+	';
 }
 
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
