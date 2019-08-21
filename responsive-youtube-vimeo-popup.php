@@ -108,7 +108,11 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	if ( $vimeo ) {
 		$video_url = 'https://player.vimeo.com/video/' . $video_id . '?autoplay=1';
 	} else {
-		$video_url = 'https://www.youtube.com/embed/' . $video_id . '?autoplay=1';
+		if ( false !== strpos( $video, 'youtube-nocookie.com' ) ) {
+			$video_url = 'https://www.youtube-nocookie.com/embed/' . $video_id . '?autoplay=1';
+		} else {
+			$video_url = 'https://www.youtube.com/embed/' . $video_id . '?autoplay=1';
+		}
 	}
 
 	/* URL Parameters */
