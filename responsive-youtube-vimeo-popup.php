@@ -154,7 +154,6 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	</div>
 	';
 }
-
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
 
 /* Required Files */
@@ -162,5 +161,5 @@ add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
 // Backwards Compatibility.
 require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/backwards-compatibility.php';
 
-// Helpers.
+// Parser.
 require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/class-wp-video-popup-parser.php';
