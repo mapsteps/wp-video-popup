@@ -2,7 +2,7 @@
 /**
  * Backwards Compatibility
  *
- * @package WP Video Popup
+ * @package WP_Video_Popup
  */
 
 defined( 'ABSPATH' ) || die( "Can't access directly" );
