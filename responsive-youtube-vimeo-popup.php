@@ -42,6 +42,7 @@ require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/persist-admin-notices-dismissal/pe
  * @return void
  */
 function wp_video_popup_pro_ad() {
+
 	if ( ! PAnD::is_admin_notice_active( 'wp-video-popup-pro-ad-forever' ) ) {
 		return;
 	}
@@ -69,11 +70,13 @@ add_action( 'admin_init', array( 'PAnD', 'init' ) );
  * @return void
  */
 function wp_video_popup_styles() {
+
 	wp_register_style( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/wp-video-popup.css', [], WP_VIDEO_POPUP_PLUGIN_VERSION );
 	wp_enqueue_style( 'wp-video-popup' );
 
 	wp_register_script( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/js/wp-video-popup.js', array( 'jquery' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
 	wp_enqueue_script( 'wp-video-popup' );
+
 }
 add_action( 'wp_enqueue_scripts', 'wp_video_popup_styles' );
 
@@ -84,6 +87,7 @@ add_action( 'wp_enqueue_scripts', 'wp_video_popup_styles' );
  * @return string wp_video_popup_output The popup markup.
  */
 function wp_video_popup_shortcode( $wp_video_popup_atts ) {
+
 	$wp_video_popup_atts = shortcode_atts(
 		array(
 			'video'        => 'https://www.youtube.com/embed/YlUKcNNmywk',
@@ -153,6 +157,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		</div>
 	</div>
 	';
+
 }
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
 
