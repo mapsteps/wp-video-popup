@@ -14,6 +14,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
  * @return string The popup markup.
  */
 function ryv_popup_shortcode( $ryv_popup_atts ) {
+
 	$ryv_popup_atts = shortcode_atts(
 		array(
 			'video' => 'https://www.youtube.com/embed/YlUKcNNmywk',
