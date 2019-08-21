@@ -23,6 +23,7 @@
 ## Usage
 
 Use the shortcode:
+
 `[wp-video-popup video="link-to-your-youtube-video"]`
 
 or
