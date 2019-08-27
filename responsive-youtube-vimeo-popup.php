@@ -91,61 +91,59 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	$wp_video_popup_atts = shortcode_atts(
 		array(
 			'video'        => 'https://www.youtube.com/embed/YlUKcNNmywk',
-			'vimeo'        => 0,
 			'mute'         => 0,
-			'hide-related' => 0,
 			'start'        => 0,
+			/**
+			 * This one is no longer in the docs as it's partially deprecated.
+			 * It allows you to hide videos that are not on the same YouTube channel instead of hiding all related videos.
+			 */
+			'hide-related' => 0,
 		),
 		$wp_video_popup_atts,
 		'wp-video-popup'
 	);
 
-	// vars.
+	// Shortcode attributes (the defaults are already defined above).
 	$video        = $wp_video_popup_atts['video'];
-	$vimeo        = $wp_video_popup_atts['vimeo'] ? 1 : 0;
 	$mute         = $wp_video_popup_atts['mute'] ? 1 : 0;
-	$hide_related = $wp_video_popup_atts['hide-related'] ? 1 : 0;
 	$start        = $wp_video_popup_atts['start'];
+	$hide_related = $wp_video_popup_atts['hide-related'] ? 1 : 0;
 
-	$video_id = WP_Video_Popup_Parser::get_url_id( $video );
+	$video_type = WP_Video_Popup_Parser::identify_service( $video );
+	$video_url  = WP_Video_Popup_Parser::get_embed_url( $video );
 
-	if ( $vimeo ) {
-		$video_url = 'https://player.vimeo.com/video/' . $video_id . '?autoplay=1';
+	/* Building URL */
+
+	if ( 'vimeo' === $video_type ) {
+		// mute Vimeo video.
+		if ( $mute ) {
+			$video_url .= '&amp;muted=1';
+		}
 	} else {
-		if ( false !== strpos( $video, 'youtube-nocookie.com' ) ) {
-			$video_url = 'https://www.youtube-nocookie.com/embed/' . $video_id . '?autoplay=1';
-		} else {
-			$video_url = 'https://www.youtube.com/embed/' . $video_id . '?autoplay=1';
+		// remove YouTube related videos.
+		if ( $hide_related ) {
+			$video_url .= '&amp;rel=0';
+		}
+
+		// mute YouTube video.
+		if ( $mute ) {
+			$video_url .= '&amp;mute=1';
 		}
 	}
 
-	/* URL Parameters */
-
-	// remove related videos.
-	if ( $hide_related && ! $vimeo ) {
-		$video_url .= '&amp;rel=0';
-	}
-
-	// mute Vimeo video.
-	if ( $mute && $vimeo ) {
-		$video_url .= '&amp;muted=1';
-	}
-
-	// mute YouTube video.
-	if ( $mute && ! $vimeo ) {
-		$video_url .= '&amp;mute=1';
-	}
-
+	// filter to let people add other URL parameters.
 	$video_url = apply_filters( 'wp_video_popup', $video_url );
 
-	// start Vimeo video at specific time.
-	if ( $start && $vimeo ) {
-		$video_url .= '#t=' . $start;
-	}
-
-	// start YouTube video at specific time.
-	if ( $start && ! $vimeo ) {
-		$video_url .= '&amp;start=' . $start;
+	if ( 'vimeo' === $video_type ) {
+		// start Vimeo video at specific time.
+		if ( $start ) {
+			$video_url .= '#t=' . $start;
+		}
+	} else {
+		// start YouTube video at specific time.
+		if ( $start ) {
+			$video_url .= '&amp;start=' . $start;
+		}
 	}
 
 	return '
