@@ -141,7 +141,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 
 }
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
-add_shortcode( 'ryv-popup', 'wp_video_popup_pro_shortcode' ); // Backwards Compatibility.
+add_shortcode( 'ryv-popup', 'wp_video_popup_shortcode' ); // Backwards Compatibility.
 
 /* Required Files */
 
