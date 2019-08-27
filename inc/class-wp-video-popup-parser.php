@@ -16,16 +16,20 @@ class WP_Video_Popup_Parser {
 	 *
 	 * @param string $url The url.
 	 *
-	 * @return null|string Null on failure to match, the service's name on success
+	 * @return string The service's name.
 	 */
 	public static function identify_service( $url ) {
-		if ( preg_match( '%youtube|youtu\.be%i', $url ) ) {
+
+		if ( preg_match( '%youtube\.|youtu\.%i', $url ) ) {
 			return 'youtube';
-		} elseif ( preg_match( '%vimeo%i', $url ) ) {
+		} elseif ( preg_match( '%youtube-nocookie\.%i', $url ) ) {
+			return 'youtube-nocookie';
+		} elseif ( preg_match( '%vimeo\.%i', $url ) ) {
 			return 'vimeo';
 		}
 
-		return null;
+		return 'self-hosted';
+
 	}
 
 	/**
@@ -34,18 +38,20 @@ class WP_Video_Popup_Parser {
 	 *
 	 * @param string $url The url.
 	 *
-	 * @return null|string Null on failure, the video's id on success
+	 * @return string The video's id.
 	 */
 	public static function get_url_id( $url ) {
+
 		$service = self::identify_service( $url );
 
-		if ( 'youtube' === $service ) {
+		if ( 'youtube' === $service || 'youtube-nocookie' === $service ) {
 			return self::get_youtube_id( $url );
 		} elseif ( 'vimeo' === $service ) {
 			return self::get_vimeo_id( $url );
 		}
 
-		return null;
+		return '';
+
 	}
 
 	/**
@@ -54,20 +60,23 @@ class WP_Video_Popup_Parser {
 	 *
 	 * @param string $url The url.
 	 *
-	 * @return null|string Null on failure, the video's embed url on success
+	 * @return string The video's embed url on success.
 	 */
-	public static function get_url_embed( $url ) {
-		$service = self::identify_service( $url );
+	public static function get_embed_url( $url ) {
 
-		$id = self::get_url_id( $url );
+		$service = self::identify_service( $url );
+		$id      = self::get_url_id( $url );
 
 		if ( 'youtube' === $service ) {
-			return self::get_youtube_embed( $id );
+			return self::get_youtube_embed_url( $id );
+		} elseif ( 'youtube-nocookie' === $service ) {
+			return self::get_youtube_embed_url( $id, 1, true );
 		} elseif ( 'vimeo' === $service ) {
-			return self::get_vimeo_embed( $id );
+			return self::get_vimeo_embed_url( $id );
 		}
 
-		return null;
+		return $url;
+
 	}
 
 	/**
@@ -78,16 +87,19 @@ class WP_Video_Popup_Parser {
 	 * @return string The url's id.
 	 */
 	public static function get_youtube_id( $url ) {
+
 		$youtube_url_keys = array( 'v', 'vi' );
 
 		// Try to get ID from url parameters.
 		$key_from_params = self::parse_url_for_params( $url, $youtube_url_keys );
+
 		if ( $key_from_params ) {
 			return $key_from_params;
 		}
 
 		// Try to get ID from last portion of url.
 		return self::parse_url_for_last_element( $url );
+
 	}
 
 	/**
@@ -95,11 +107,15 @@ class WP_Video_Popup_Parser {
 	 *
 	 * @param string $youtube_video_id The video's id.
 	 * @param int    $autoplay The autoplay argument value.
+	 * @param bool   $nocookie Whether to use regular YouTube or youtube-nookie.
 	 *
 	 * @return string The embed url.
 	 */
-	public static function get_youtube_embed( $youtube_video_id, $autoplay = 1 ) {
-		return "http://youtube.com/embed/$youtube_video_id?autoplay=$autoplay";
+	public static function get_youtube_embed_url( $youtube_video_id, $autoplay = 1, $nocookie = false ) {
+		$video_url  = ! $nocookie ? 'https://youtube.com' : 'https://www.youtube-nocookie.com';
+		$video_url .= "/embed/$youtube_video_id?autoplay=$autoplay";
+
+		return $video_url;
 	}
 
 	/**
@@ -122,8 +138,8 @@ class WP_Video_Popup_Parser {
 	 *
 	 * @return string The embed url.
 	 */
-	public static function get_vimeo_embed( $vimeo_video_id, $autoplay = 1 ) {
-		return "http://player.vimeo.com/video/$vimeo_video_id?byline=0&amp;portrait=0&amp;autoplay=$autoplay";
+	public static function get_vimeo_embed_url( $vimeo_video_id, $autoplay = 1 ) {
+		return "https://player.vimeo.com/video/$vimeo_video_id?byline=0&amp;portrait=0&amp;autoplay=$autoplay";
 	}
 
 	/**
