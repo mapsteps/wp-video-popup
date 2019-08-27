@@ -3,7 +3,7 @@ Contributors: davidvongries
 Tags: YouTube, Vimeo, Lightbox, Popup, YouTube Lightbox, Vimeo Lightbox, Video Lightbox, Video Popup, GDPR, DSGVO, WP Video Lightbox, WP Video Popup, Responsive Lightbox, Responsive Popup
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 2.4
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,11 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Use the shortcode 
 
-`[wp-video-popup video="link-to-your-youtube-video"]`
-
-or
-
-`[wp-video-popup vimeo="1" video="link-to-your-vimeo-video"]`
+`[wp-video-popup video="link-to-your-youtube-or-vimeo-video"]`
 
 in your post, page or template file to embed your responsive YouTube or Vimeo lightbox popup.
 
@@ -26,7 +22,7 @@ To open the popup, add the CSS-class **`wp-video-popup`** to the element you wis
 WP Video Popup is 100% GDPR compliant. No connection to YouTube or Vimeo is established before the trigger element has been clicked.
 
 = Page Speed =
-Embedding videos can slow down your website. With WP Video Popup, the lightbox & video are only being loaded by the click on the trigger element.
+Embedding YouTube or Vimeo videos can slow down your website. With WP Video Popup, the lightbox & video are only being loaded by the click on the trigger element.
 
 = Usage =
 Example Shortcode to display a **YouTube** video:
@@ -35,7 +31,7 @@ Example Shortcode to display a **YouTube** video:
 
 Example Shortcode to display a **Vimeo** video:
 
-`[wp-video-popup vimeo="1" video="https://vimeo.com/136696258"]`
+`[wp-video-popup video="https://vimeo.com/136696258"]`
 
 CSS class that needs to be added to the element you want to open the lightbox:
 
@@ -47,14 +43,14 @@ Trigger Element Example (Link):
 
 = Shortcode Attributes =
 
-There are attributes available to add parameters to the embed-URL that’s dynamically created from the video link provided in the shortcode.
+There are attributes available to add parameters to the embed-URL that’s dynamically generated from the video link provided in the shortcode.
 
 Mute video by default:
 
 `mute="1"`
 
 Hide related YouTube videos:
-(Since September 2018, hiding related videos is no longer possible. Instead videos from your channel will be shown)
+Since September 2018, hiding related videos is no longer possible. Instead videos from your channel will be shown.
 
 `hide-related="1"`
 
@@ -68,27 +64,27 @@ Example Shortcode:
 
 = Advanced =
 
-In addition to the Shortcode Attributes, there is a filter available to add more parameters to the embed-URL. By default, we only add the `autoplay` attribute to the embed-URL.
+In addition to the Shortcode Attributes, there is a filter available to add more parameters to the embed-URL. By default, we add the `autoplay` attribute to the embed-URL.
 
 In the example below, we use the filter to remove the YouTube branding from the video by adding the `modestbranding` parameter:
 
 `function prefix_your_custom_embed_url_attributes( $video_url ) {
-	$video_url .= '&modestbranding=1';
+	$video_url .= '&amp;modestbranding=1';
 	return $video_url;
 }
-
 add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );`
 
 = WP Video Popup PRO =
 
-For multiple popups on a single page, autoplay on page load functionality, size & background-color options check out **WP Video Popup PRO**!
+For multiple popups on a single page, autoplay on page load functionality, self-hosted videos & more check out **[WP Video Popup PRO](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
 
 **Features:**
 
-* multiple popups on a single page
-* autoplay on page-load
-* adjustable popup size
-* background-color setting
+* Multiple Popups on a single Page/Post
+* Self-Hosted Videos (New!)
+* Autoplay on Page-Load
+* Adjustable Popup Size
+* Overlay Background-Color Setting
 
 Get [WP Video Popup PRO](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup) today!
 
@@ -113,6 +109,11 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 2. Mobile Example
 
 == Changelog ==
+= 2.5 August 27, 2019 =
+* New: youtube-nocookie.com support
+* Deprecated: vimeo="1" parameter to declare a Vimeo video. No longer required. We now check that for you in the background.
+* Tweak: Improved backwards compatibility
+* Overall code improvements
 = 2.4 April 8, 2019 =
 * Tweak: Added allow="autoplay" parameter to iframe to allow autoplay in Chrome (Thanks @owenmack)
 * Fixed: A bug where URL Parameters weren't added properly using Shortcode Attributes
