@@ -148,11 +148,9 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 
 	return '
 	<div class="wp-video-popup-wrapper">
-		<div class="wp-video-popup-wrapper">
-			<div class="wp-video-popup-close"></div>
-			<iframe class="wp-video-popup-video" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay">
-			</iframe>
-		</div>
+		<div class="wp-video-popup-close"></div>
+		<iframe class="wp-video-popup-video" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay">
+		</iframe>
 	</div>
 	';
 

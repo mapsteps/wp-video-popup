@@ -20,15 +20,13 @@ class WP_Video_Popup_Parser {
 	 */
 	public static function identify_service( $url ) {
 
-		if ( preg_match( '%youtube\.|youtu\.%i', $url ) ) {
-			return 'youtube';
-		} elseif ( preg_match( '%youtube-nocookie\.%i', $url ) ) {
+		if ( preg_match( '%youtube-nocookie\.%i', $url ) ) {
 			return 'youtube-nocookie';
 		} elseif ( preg_match( '%vimeo\.%i', $url ) ) {
 			return 'vimeo';
 		}
 
-		return 'self-hosted';
+		return 'youtube';
 
 	}
 
