@@ -6,7 +6,6 @@
  * Version: 2.4
  * Author: David Vongries
  * Author URI: https://mapsteps.com
- * Text Domain: wp-video-popup
  *
  * @package WP_Video_Popup
  */
@@ -17,16 +16,6 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 define( 'WP_VIDEO_POPUP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_VIDEO_POPUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.4' );
-
-/**
- * Load text domain
- *
- * @return void
- */
-function wp_video_popup_textdomain() {
-	load_plugin_textdomain( 'wp-video-popup', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
-}
-add_action( 'plugins_loaded', 'wp_video_popup_textdomain' );
 
 // Clean up behind us.
 if ( get_option( '_site_transient_disable-ryv-notice' ) ) {
@@ -50,12 +39,8 @@ function wp_video_popup_pro_ad() {
 	?>
 
 	<div data-dismissible="wp-video-popup-pro-ad-forever" class="notice notice-info is-dismissible">
-		<p>
-			<?php
-			// phpcs:ignore -- is ok.
-			_e( 'WP Video Popup PRO is now available! <strong>Save 30%</strong> and download <a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank"><strong>WP Video Popup PRO</strong></a> today.', 'wp-video-popup' ); 
-			?>
-		</p>
+		<p>Get <a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank"><strong>WP Video Popup PRO</strong></a> today for <strong>30% off</strong>.</p>
+		<p><a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary">Yes, I want to save 30%</a></p>
 	</div>
 
 	<?php
