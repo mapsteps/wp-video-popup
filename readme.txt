@@ -8,7 +8,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-**WP Video Popup** lets you add a responsive YouTube or Vimeo video lightbox popup to any page or post of your website.
+**[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube or Vimeo video lightbox popup to any page or post of your website.
 
 Use the shortcode 
 
@@ -16,15 +16,19 @@ Use the shortcode
 
 in your post, page or template file to embed your responsive YouTube or Vimeo lightbox popup.
 
-To open the popup, add the CSS-class **`wp-video-popup`** to the element you wish to trigger the lightbox.
+To open the popup, add the **CSS-class**
 
-= GDPR Compliance =
+`wp-video-popup`
+
+to the element you wish to trigger the lightbox.
+
+== GDPR Compliance ==
 WP Video Popup is 100% GDPR compliant. No connection to YouTube or Vimeo is established before the trigger element has been clicked.
 
-= Page Speed =
+== Page Speed ==
 Embedding YouTube or Vimeo videos can slow down your website. With WP Video Popup, the lightbox & video are only being loaded by the click on the trigger element.
 
-= Usage =
+== Usage ==
 Example Shortcode to display a **YouTube** video:
 
 `[wp-video-popup video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
@@ -41,11 +45,13 @@ Trigger Element Example (Link):
 
 `<a href="#" class="wp-video-popup">Play Video</a>`
 
+--------------
+
 = Shortcode Attributes =
 
 There are attributes available to add parameters to the embed-URL that’s dynamically generated from the video link provided in the shortcode.
 
-Mute video by default:
+Mute video:
 
 `mute="1"`
 
@@ -62,9 +68,11 @@ Example Shortcode:
 
 `[wp-video-popup mute="1" start="24" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
-= Advanced =
+--------------
 
-In addition to the Shortcode Attributes, there is a filter available to add more parameters to the embed-URL. By default, we add the `autoplay` attribute to the embed-URL.
+== Advanced ==
+
+In addition to the Shortcode Attributes, there is a filter available to add more parameters to the embed-URL. By default, only the `autoplay` attribute is added to the embed-URL.
 
 In the example below, we use the filter to remove the YouTube branding from the video by adding the `modestbranding` parameter:
 
@@ -74,9 +82,11 @@ In the example below, we use the filter to remove the YouTube branding from the 
 }
 add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );`
 
-= WP Video Popup PRO =
+--------------
 
-For multiple popups on a single page, autoplay on page load functionality, self-hosted videos & more check out **[WP Video Popup PRO](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
+== WP Video Popup PRO ==
+
+For multiple popups on a single page, autoplay on page load functionality, self-hosted videos & more check out **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
 
 **Features:**
 
@@ -86,7 +96,7 @@ For multiple popups on a single page, autoplay on page load functionality, self-
 * Adjustable Popup Size
 * Overlay Background-Color Setting
 
-Get [WP Video Popup PRO](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup) today!
+Get **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** today!
 
 == Installation ==
 1. Download the responsive-youtube-vimeo-popup.zip file to your computer.
@@ -96,7 +106,7 @@ Get [WP Video Popup PRO](https://wp-video-popup.com/?utm_source=repository&utm_m
 
 == Frequently Asked Questions ==
 = How do i use this plugin? =
-WP Video Popup doesn’t create an admin settings page. To trigger and display the lightbox popup, please follow the steps under the **Description** tab.
+WP Video Popup doesn’t create an admin settings page. To trigger and display the lightbox popup, please follow the steps under **Description**.
 = The video doesn't play automatically =
 We add the autoplay attribute to the embed-URL by default. That being said, the video should play automatically after the trigger element has been clicked. Some browsers have changed their autoplay policy and videos only start playing if they're muted.
 
