@@ -160,11 +160,9 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 
 }
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
+add_shortcode( 'ryv-popup', 'wp_video_popup_pro_shortcode' ); // Backwards Compatibility.
 
 /* Required Files */
-
-// Backwards Compatibility.
-require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/backwards-compatibility.php';
 
 // Parser.
 require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/class-wp-video-popup-parser.php';
