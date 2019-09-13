@@ -4,17 +4,3 @@
 @mixin transition($transition) {
   transition: $transition;
 }
-
-@mixin center-align($position: absolute) {
-  position: $position;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin remove-center-align($position: absolute) {
-  position: $position;
-  left: auto;
-  top: auto;
-  transform: none;
-}
