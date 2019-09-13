@@ -1,5 +1,6 @@
 (function ($) {
 	var $popups = $('.wp-video-popup-wrapper');
+	var speed = 200;
 
 	function init() {
 		if (!$popups.length) return;
@@ -47,8 +48,12 @@
 		var $video = $popup.find('.wp-video-popup-video');
 
 		$popup.prependTo('body');
-		$popup.stop().fadeIn(200);
-		$video.stop().fadeIn(200);
+
+		$popup.css({ display: 'flex' }).stop().animate({
+			opacity: 1
+		}, speed);
+
+		$video.stop().fadeIn(speed);
 		$video.attr("src", $video.attr('data-wp-video-popup-url'));
 
 		$(window).trigger('resize');
@@ -57,8 +62,13 @@
 	function closePopup($popup) {
 		var $video = $popup.find('.wp-video-popup-video');
 
-		$popup.stop().fadeOut(200);
-		$video.stop().fadeOut(200, function () {
+		$popup.stop().animate({
+			opacity: 0
+		}, speed, function () {
+			$popup.css({ display: 'none' });
+		});
+
+		$video.stop().fadeOut(speed, function () {
 			$video.attr('src', '');
 		});
 	}

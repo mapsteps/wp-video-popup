@@ -1,11 +1,13 @@
 /* Youtube Popup */
 .wp-video-popup-wrapper {
-  position: fixed;
-  width: 100%;
-  height: 100%;
   display: none;
+  position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   background: rgba(0, 0, 0, 0.88);
   z-index: 8888888;
 }
@@ -17,7 +19,6 @@
   max-width: 1200px !important;
   height: auto;
   max-height: 90%;
-  @include center-align();
 }
 
 .wp-video-popup-close {
