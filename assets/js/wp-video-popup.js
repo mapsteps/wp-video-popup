@@ -43,7 +43,7 @@
 		});
 	}
 
-	function openPopup($popup, via_autoplay) {
+	function openPopup($popup) {
 		var $video = $popup.find('.wp-video-popup-video');
 
 		$popup.prependTo('body');
