@@ -1,6 +1,6 @@
 <?php
 /**
- * Video Popup Parser Helpers
+ * Parser
  *
  * @package WP_Video_Popup
  */
@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 /**
- * Helper class to handle video popup parser
+ * Helper class to handle video popup parser.
  */
 class WP_Video_Popup_Parser {
 	/**
@@ -110,10 +110,12 @@ class WP_Video_Popup_Parser {
 	 * @return string The embed url.
 	 */
 	public static function get_youtube_embed_url( $youtube_video_id, $autoplay = 1, $nocookie = false ) {
+
 		$video_url  = ! $nocookie ? 'https://youtube.com' : 'https://www.youtube-nocookie.com';
 		$video_url .= "/embed/$youtube_video_id?autoplay=$autoplay";
 
 		return $video_url;
+
 	}
 
 	/**
@@ -151,6 +153,7 @@ class WP_Video_Popup_Parser {
 	 * @return null|string Null on failure to match a target param, the url's id on success.
 	 */
 	private static function parse_url_for_params( $url, $target_params ) {
+
 		parse_str( wp_parse_url( $url, PHP_URL_QUERY ), $my_array_of_params );
 
 		foreach ( $target_params as $target ) {
@@ -160,10 +163,11 @@ class WP_Video_Popup_Parser {
 		}
 
 		return null;
+
 	}
 
 	/**
-	 * Find the last element in a url, without any trailing parameters
+	 * Find the last element in a url, without any trailing parameters.
 	 *
 	 * @access private
 	 *
@@ -172,6 +176,7 @@ class WP_Video_Popup_Parser {
 	 * @return string The last element of the url.
 	 */
 	private static function parse_url_for_last_element( $url ) {
+
 		$url_parts           = explode( '/', $url );
 		$prospect            = end( $url_parts );
 		$prospect_and_params = preg_split( '/(\?|\=|\&)/', $prospect );
@@ -183,5 +188,6 @@ class WP_Video_Popup_Parser {
 		}
 
 		return $url;
+
 	}
 }

@@ -26,9 +26,7 @@ if ( get_option( '_site_transient_disable-ryv-notice' ) ) {
 require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/persist-admin-notices-dismissal/persist-admin-notices-dismissal.php';
 
 /**
- * Pro ad
- *
- * @return void
+ * PRO admin notice.
  */
 function wp_video_popup_pro_ad() {
 
@@ -40,7 +38,7 @@ function wp_video_popup_pro_ad() {
 
 	<div data-dismissible="wp-video-popup-pro-ad-forever" class="notice notice-info is-dismissible">
 		<p>Get <a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank"><strong>WP Video Popup PRO</strong></a> today for <strong>30% off</strong>.</p>
-		<p><a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary">Yes, I want to save 30%</a></p>
+		<p><a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary">Learn more</a></p>
 	</div>
 
 	<?php
@@ -50,9 +48,7 @@ add_action( 'admin_notices', 'wp_video_popup_pro_ad' );
 add_action( 'admin_init', array( 'PAnD', 'init' ) );
 
 /**
- * Enqueue styles & scripts
- *
- * @return void
+ * Enqueue scripts & styles.
  */
 function wp_video_popup_styles() {
 
@@ -66,7 +62,7 @@ function wp_video_popup_styles() {
 add_action( 'wp_enqueue_scripts', 'wp_video_popup_styles' );
 
 /**
- * Popup shortcode
+ * Popup shortcode.
  *
  * @param array $wp_video_popup_atts The shortcode attributes.
  * @return string wp_video_popup_output The popup markup.
@@ -78,17 +74,13 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 			'video'        => 'https://www.youtube.com/embed/YlUKcNNmywk',
 			'mute'         => 0,
 			'start'        => 0,
-			/**
-			 * This one is no longer in the docs as it's partially deprecated.
-			 * It allows you to hide videos that are not on the same YouTube channel instead of hiding all related videos.
-			 */
 			'hide-related' => 0,
 		),
 		$wp_video_popup_atts,
 		'wp-video-popup'
 	);
 
-	// Shortcode attributes (the defaults are already defined above).
+	// Shortcode attributes.
 	$video        = $wp_video_popup_atts['video'];
 	$mute         = $wp_video_popup_atts['mute'] ? 1 : 0;
 	$start        = $wp_video_popup_atts['start'];
@@ -100,35 +92,43 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	/* Building URL */
 
 	if ( 'vimeo' === $video_type ) {
-		// mute Vimeo video.
+
+		// Mute Vimeo video.
 		if ( $mute ) {
 			$video_url .= '&amp;muted=1';
 		}
+
 	} else {
-		// remove YouTube related videos.
+
+		// Remove YouTube related videos.
 		if ( $hide_related ) {
 			$video_url .= '&amp;rel=0';
 		}
 
-		// mute YouTube video.
+		// Mute YouTube video.
 		if ( $mute ) {
 			$video_url .= '&amp;mute=1';
 		}
+
 	}
 
-	// filter to let people add other URL parameters.
+	// Filter to let people add other URL parameters.
 	$video_url = apply_filters( 'wp_video_popup', $video_url );
 
 	if ( 'vimeo' === $video_type ) {
-		// start Vimeo video at specific time.
+
+		// Start Vimeo video at specific time.
 		if ( $start ) {
 			$video_url .= '#t=' . $start;
 		}
+
 	} else {
-		// start YouTube video at specific time.
+
+		// Start YouTube video at specific time.
 		if ( $start ) {
 			$video_url .= '&amp;start=' . $start;
 		}
+
 	}
 
 	return '
@@ -141,9 +141,9 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 
 }
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
-add_shortcode( 'ryv-popup', 'wp_video_popup_shortcode' ); // Backwards Compatibility.
+add_shortcode( 'ryv-popup', 'wp_video_popup_shortcode' ); // Backwards compatibility.
 
-/* Required Files */
+/* Required files */
 
 // Parser.
 require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/class-wp-video-popup-parser.php';
