@@ -1,6 +1,6 @@
 <?php
 /**
- * Parser
+ * Parser.
  *
  * @package WP_Video_Popup
  */
