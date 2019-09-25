@@ -11,6 +11,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
  * Helper class to handle video popup parser.
  */
 class WP_Video_Popup_Parser {
+
 	/**
 	 * Determines which cloud video provider is being used based on the passed url.
 	 *
@@ -190,4 +191,5 @@ class WP_Video_Popup_Parser {
 		return $url;
 
 	}
+
 }
