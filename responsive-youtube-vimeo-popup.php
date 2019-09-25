@@ -65,6 +65,7 @@ add_action( 'wp_enqueue_scripts', 'wp_video_popup_styles' );
  * Popup shortcode.
  *
  * @param array $wp_video_popup_atts The shortcode attributes.
+ *
  * @return string wp_video_popup_output The popup markup.
  */
 function wp_video_popup_shortcode( $wp_video_popup_atts ) {
