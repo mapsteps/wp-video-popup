@@ -82,7 +82,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	);
 
 	// Shortcode attributes.
-	$video        = $wp_video_popup_atts['video'];
+	$video        = esc_url( $wp_video_popup_atts['video'] );
 	$mute         = $wp_video_popup_atts['mute'] ? 1 : 0;
 	$start        = $wp_video_popup_atts['start'];
 	$hide_related = $wp_video_popup_atts['hide-related'] ? 1 : 0;
