@@ -1,3 +1,11 @@
+<p align="center">
+<a href="https://ultimatedashboard.io/" target="_blank" rel="noopener noreferrer">
+
+![alt text](https://ps.w.org/responsive-youtube-vimeo-popup/assets/banner-772x250.jpg "Ultimate Dashboard")
+
+</a>
+</p>
+
 ## Summary
 
 - [Description](#description)
@@ -6,6 +14,7 @@
 - [Examples](#examples)
 - [Shortcode Attributes](#shortcode-attributes)
 - [Advanced](#advanced)
+- [WP Video Popup Pro](#wp-video-popup-pro)
 
 ## Description
 
@@ -75,3 +84,17 @@ function prefix_your_custom_embed_url_attributes( $video_url ) {
 
 add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );
 ```
+
+## WP Video Popup Pro
+
+For multiple popups on a single page, autoplay on page load functionality, self-hosted videos & more check out [WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)!
+
+#### Features:
+
+- Multiple Popups on a single Page/Post
+- Self-Hosted Videos (New!)
+- Autoplay on Page-Load
+- Adjustable Popup Size
+- Overlay Background-Color Setting
+
+Get [WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup) today!
