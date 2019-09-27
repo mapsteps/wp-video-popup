@@ -25,9 +25,18 @@
 
 ## Installation
 
+#### Through The WordPress Administrative Area
+
 - From WordPress administrative area, go to _Plugins_ -> _Add New_
-- Search for _wp video popup_
+- Search for "_WP Video Popup_" (By David Vongries)
 - Install and then activate it
+
+#### Download Manually
+
+- Download [the zip file here](https://wordpress.org/plugins/responsive-youtube-vimeo-popup/) to your computer.
+- Unzip the file.
+- Upload the extracted folder to your `/wp-content/plugins/` directory.
+- Activate the plugin through the Plugins menu in WordPress.
 
 ## Usage
 
