@@ -18,7 +18,7 @@
 
 ## Description
 
-**WP Video Popup** lets you add a responsive YouTube or Vimeo video lightbox popup to any page or post of your website.
+[**WP Video Popup**](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup) lets you add a responsive YouTube or Vimeo video lightbox popup to any page or post of your website.
 
 - This plugin is 100% GDPR compliant. No connection to YouTube or Vimeo is established before the trigger element has been clicked.
 - Embedding videos can slow down your website. With **WP Video Popup**, the lightbox & video are only being loaded by the click on the trigger element.
