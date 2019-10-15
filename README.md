@@ -1,3 +1,11 @@
+<p align="center">
+<a href="https://wp-video-popup.com/" target="_blank" rel="noopener noreferrer">
+
+![alt text](https://ps.w.org/responsive-youtube-vimeo-popup/assets/banner-772x250.jpg "WP Video Popup")
+
+</a>
+</p>
+
 ## Summary
 
 - [Description](#description)
@@ -6,19 +14,29 @@
 - [Examples](#examples)
 - [Shortcode Attributes](#shortcode-attributes)
 - [Advanced](#advanced)
+- [WP Video Popup Pro](#wp-video-popup-pro)
 
 ## Description
 
-**WP Video Popup** lets you add a responsive YouTube or Vimeo video lightbox popup to any page or post of your website.
+[**WP Video Popup**](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup) lets you add a responsive YouTube or Vimeo video lightbox popup to any page or post of your website.
 
 - This plugin is 100% GDPR compliant. No connection to YouTube or Vimeo is established before the trigger element has been clicked.
 - Embedding videos can slow down your website. With **WP Video Popup**, the lightbox & video are only being loaded by the click on the trigger element.
 
 ## Installation
 
+#### Through The WordPress Administrative Area
+
 - From WordPress administrative area, go to _Plugins_ -> _Add New_
-- Search for _wp video popup_
+- Search for "_WP Video Popup_" (By David Vongries)
 - Install and then activate it
+
+#### Download Manually
+
+- Download [the zip file here](https://wordpress.org/plugins/responsive-youtube-vimeo-popup/) to your computer.
+- Unzip the file.
+- Upload the extracted folder to your `/wp-content/plugins/` directory.
+- Activate the plugin through the Plugins menu in WordPress.
 
 ## Usage
 
@@ -75,3 +93,17 @@ function prefix_your_custom_embed_url_attributes( $video_url ) {
 
 add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );
 ```
+
+## WP Video Popup Pro
+
+For multiple popups on a single page, autoplay on page load functionality, self-hosted videos & more check out [WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)!
+
+#### Features:
+
+- Multiple Popups on a single Page/Post
+- Self-Hosted Videos (New!)
+- Autoplay on Page-Load
+- Adjustable Popup Size
+- Overlay Background-Color Setting
+
+Get [WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup) today!
