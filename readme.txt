@@ -125,6 +125,8 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 
 == Changelog ==
 
+= 2.7 October 15, 2019 =
+* New: Added support for portrait videos (Vimeo). To declare a vertical video, simply add the `portrait="1"` parameter to your shortcode.
 = 2.6 September 26, 2019 =
 * Code Improvements
 = 2.5.1 September 16, 2019 =
