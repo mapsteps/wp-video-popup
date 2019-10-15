@@ -76,6 +76,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 			'mute'         => 0,
 			'start'        => 0,
 			'hide-related' => 0,
+			'portrait'     => 0,
 		),
 		$wp_video_popup_atts,
 		'wp-video-popup'
@@ -86,11 +87,18 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	$mute         = $wp_video_popup_atts['mute'] ? 1 : 0;
 	$start        = $wp_video_popup_atts['start'];
 	$hide_related = $wp_video_popup_atts['hide-related'] ? 1 : 0;
+	$viewport     = $wp_video_popup_atts['portrait'] ? 'is-portrait' : 'is-landscape';
 
+	// Parser data.
 	$video_type = WP_Video_Popup_Parser::identify_service( $video );
 	$video_url  = WP_Video_Popup_Parser::get_embed_url( $video );
 
-	/* Building URL */
+	/* Construct Output */
+
+	// Add class to landscape YouTube & Vimeos to dynamically resize them.
+	if ( 'is-landscape' === $viewport ) {
+		$viewport .= ' is-resizable';
+	}
 
 	if ( 'vimeo' === $video_type ) {
 
@@ -135,7 +143,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	return '
 	<div class="wp-video-popup-wrapper">
 		<div class="wp-video-popup-close"></div>
-		<iframe class="wp-video-popup-video" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay">
+		<iframe class="wp-video-popup-video is-hosted ' . $viewport . '" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay">
 		</iframe>
 	</div>
 	';

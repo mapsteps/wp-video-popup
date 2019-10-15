@@ -38,7 +38,7 @@
 
 	function setupVideoHeight() {
 		$(window).on('resize', function () {
-			var $video = $('.wp-video-popup-video');
+			var $video = $('.wp-video-popup-video.is-resizable');
 
 			$video.height($video.width() * 0.5625);
 		});

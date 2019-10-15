@@ -1,4 +1,4 @@
-/* Youtube Popup */
+// Popup wrapper.
 .wp-video-popup-wrapper {
 	display: none;
 	position: fixed;
@@ -12,15 +12,28 @@
 	z-index: 8888888;
 }
 
+// Video.
 .wp-video-popup-video {
 	display: none;
 	z-index: 8888889;
-	width: 90% !important;
-	max-width: 1200px !important;
-	height: auto;
+}
+
+// Hosted landscape.
+.wp-video-popup-video.is-landscape {
+	width: 90%;
+	height: auto; // Reset default iframe height if set.
+	max-width: 1200px;
 	max-height: 90%;
 }
 
+// Hosted portrait (Vimeo).
+.wp-video-popup-video.is-hosted.is-portrait {
+	width: auto; // Reset default iframe width if set.
+	height: 90%;
+	max-width: 90%;
+}
+
+// Close icon.
 .wp-video-popup-close {
 	background-image: url(../img/wp-video-popup-close.png);
 	background-size: 15px auto;
@@ -41,7 +54,7 @@
 	opacity: 0.7;
 }
 
-// Button
+// Click indicator.
 .wp-video-popup {
 	cursor: pointer;
 }
