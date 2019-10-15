@@ -64,7 +64,12 @@ Start video at a specific time (value in seconds):
 
 `start="24"`
 
-Example Shortcode:
+Portrait mode:
+Vimeo for instance allows you to upload videos in portrait mode.
+
+`portrait="1"`
+
+Example Shortcode with shortcode attributes:
 
 `[wp-video-popup mute="1" start="24" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 

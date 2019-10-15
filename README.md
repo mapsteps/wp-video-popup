@@ -76,6 +76,7 @@ After that, CSS class needs to be added to the element you want to open the ligh
 
 - `mute="1"` : Mute video by default
 - `start="24"` : Start video at a specific time (value in seconds)
+- `portrait="1"` : Vimeo for instance allows you to upload videos in portrait mode
 
 Example: `[wp-video-popup mute="1" start="24" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
