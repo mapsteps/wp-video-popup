@@ -1,9 +1,37 @@
+/**
+ * NodeList.forEach polyfill for IE
+ * 
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach
+ */
+if (window.NodeList && !NodeList.prototype.forEach) {
+	NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
+/**
+ * Custom Event polyfill for >= IE9
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
+ */
+(function () {
+	if (typeof window.CustomEvent === "function") return false;
+
+	function CustomEvent(event, params) {
+		params = params || { bubbles: false, cancelable: false, detail: null };
+		var evt = document.createEvent('CustomEvent');
+		evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+		return evt;
+	}
+
+	window.CustomEvent = CustomEvent;
+})();
+
 (function ($) {
-	var $popups = $('.wp-video-popup-wrapper');
+	// Free version only support 1 video per page/ post.
+	var popup = document.querySelector('.wp-video-popup-wrapper');
 	var speed = 200;
 
 	function init() {
-		if (!$popups.length) return;
+		if (!popup) return;
 		setupOpenActions();
 		setupVideoHeight();
 		setupCloseActions();
@@ -11,65 +39,70 @@
 
 	function setupOpenActions() {
 		// Setup trigger for single popup.
-		$('.wp-video-popup').on('click', function (e) {
-			e.preventDefault();
-			openPopup($popups);
-		});
+		setupOpenTriggers('.wp-video-popup');
 
 		// Setup trigger for single popup (backward compatibility support).
-		$('.ryv-popup').on('click', function (e) {
-			e.preventDefault();
-			openPopup($popups);
+		setupOpenTriggers('.ryv-popup');
+	}
+
+	function setupOpenTriggers(triggerSelector) {
+		var triggers = document.querySelectorAll(triggerSelector);
+		if (!triggers) return;
+
+		triggers.forEach(function (trigger) {
+			trigger.addEventListener('click', function (e) {
+				e.preventDefault();
+				openPopup();
+			});
 		});
 	}
 
 	function setupCloseActions() {
 		// Close on click.
-		$popups.click(function (e) {
-			if (e.target == this || e.target.classList.contains('wp-video-popup-close')) closePopup($(this));
+		popup.addEventListener('click', function (e) {
+			if (e.target == this || e.target.classList.contains('wp-video-popup-close')) closePopup();
 		});
 
 		// Close on escape.
-		$(document).keyup(function (e) {
-			if (e.which != 27) return;
-			if ($popups.is(':visible')) closePopup($popups);
+		document.addEventListener('keyup', function (e) {
+			if (e.key !== 'Escape' && e.key !== 'Esc' && e.keyCode !== 27) return;
+			if ($(popup).is(':visible')) closePopup();
 		});
 	}
 
 	function setupVideoHeight() {
-		$(window).on('resize', function () {
-			var $video = $('.wp-video-popup-video.is-resizable');
-
-			$video.height($video.width() * 0.5625);
+		window.addEventListener('resize', function () {
+			var video = document.querySelector('.wp-video-popup-video.is-resizable');
+			if (video) $(video).height($(video).width() * 0.5625);
 		});
 	}
 
-	function openPopup($popup) {
-		var $video = $popup.find('.wp-video-popup-video');
+	function openPopup() {
+		var video = popup.querySelector('.wp-video-popup-video');
 
-		$popup.prependTo('body');
+		document.body.insertBefore(popup, document.body.firstChild);
 
-		$popup.css({ display: 'flex' }).stop().animate({
+		$(popup).css({ display: 'flex' }).stop().animate({
 			opacity: 1
 		}, speed);
 
-		$video.stop().fadeIn(speed);
-		$video.attr("src", $video.attr('data-wp-video-popup-url'));
+		$(video).stop().fadeIn(speed);
+		video.src = video.dataset.wpVideoPopupUrl;
 
-		$(window).trigger('resize');
+		window.dispatchEvent(new Event('resize'));
 	}
 
-	function closePopup($popup) {
-		var $video = $popup.find('.wp-video-popup-video');
+	function closePopup() {
+		var video = popup.querySelector('.wp-video-popup-video');
 
-		$popup.stop().animate({
+		$(popup).stop().animate({
 			opacity: 0
 		}, speed, function () {
-			$popup.css({ display: 'none' });
+			$(popup).css({ display: 'none' });
 		});
 
-		$video.stop().fadeOut(speed, function () {
-			$video.attr('src', '');
+		$(video).stop().fadeOut(speed, function () {
+			video.src = '';
 		});
 	}
 
