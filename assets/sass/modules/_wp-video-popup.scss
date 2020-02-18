@@ -18,10 +18,6 @@
 	z-index: 8888889;
 }
 
-.wp-video-popup-wrapper .wp-video-popup-video {
-	position: relative;
-}
-
 // Hosted landscape.
 .wp-video-popup-video.is-landscape {
 	width: 90%;
@@ -34,19 +30,6 @@
 .wp-video-popup-video.is-hosted.is-portrait {
 	width: auto; // Reset default iframe width if set.
 	height: 90%;
-	max-width: 90%;
-}
-
-// Self hosted landscape.
-.wp-video-popup-video.is-self-hosted.is-landscape {
-	width: 90%;
-	max-width: 1200px;
-	max-height: 90%;
-}
-
-// Self hosted portrait.
-.wp-video-popup-video.is-self-hosted.is-portrait {
-	max-height: 90%;
 	max-width: 90%;
 }
 
