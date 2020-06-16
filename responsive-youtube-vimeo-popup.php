@@ -48,11 +48,30 @@ add_action( 'admin_notices', 'wp_video_popup_pro_ad' );
 add_action( 'admin_init', array( 'PAnD', 'init' ) );
 
 /**
+ * Admin scripts & styles.
+ */
+function wp_video_popup_admin_scripts_styles( $hook ) {
+
+	// Stop here if we're not on the settings page.
+	if ( 'settings_page_wp-video-popup' !== $hook ) {
+		return;
+	}
+
+	wp_enqueue_style( 'settings-page', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/settings-page.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
+	wp_enqueue_style( 'setting-fields', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/setting-fields.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
+
+	// Color picker.
+	wp_enqueue_style( 'wp-color-picker' );
+
+}
+add_action( 'admin_enqueue_scripts', 'wp_video_popup_admin_scripts_styles' );
+
+/**
  * Enqueue scripts & styles.
  */
 function wp_video_popup_styles() {
 
-	wp_register_style( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/wp-video-popup.css', [], WP_VIDEO_POPUP_PLUGIN_VERSION );
+	wp_register_style( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/wp-video-popup.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
 	wp_enqueue_style( 'wp-video-popup' );
 
 	wp_register_script( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/js/wp-video-popup.js', array( 'jquery' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
@@ -106,7 +125,6 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		if ( $mute ) {
 			$video_url .= '&amp;muted=1';
 		}
-
 	} else {
 
 		// Remove YouTube related videos.
@@ -118,7 +136,6 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		if ( $mute ) {
 			$video_url .= '&amp;mute=1';
 		}
-
 	}
 
 	// Filter to let people add other URL parameters.
@@ -130,14 +147,12 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		if ( $start ) {
 			$video_url .= '#t=' . $start;
 		}
-
 	} else {
 
 		// Start YouTube video at specific time.
 		if ( $start ) {
 			$video_url .= '&amp;start=' . $start;
 		}
-
 	}
 
 	return '
@@ -152,7 +167,6 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
 add_shortcode( 'ryv-popup', 'wp_video_popup_shortcode' ); // Backwards compatibility.
 
-/* Required files */
-
-// Parser.
+// Required files.
 require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/class-wp-video-popup-parser.php';
+require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/init.php';
