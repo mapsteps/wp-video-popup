@@ -16,6 +16,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 define( 'WP_VIDEO_POPUP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_VIDEO_POPUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.7' );
+define( 'WP_VIDEO_POPUP_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 // Clean up behind us.
 if ( get_option( '_site_transient_disable-ryv-notice' ) ) {
