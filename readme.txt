@@ -10,6 +10,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 **[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube or Vimeo video lightbox popup to any page or post of your website.
 
+[youtube https://www.youtube.com/watch?v=QBEppQ7mslo]
+
 Use the shortcode 
 
 `[wp-video-popup video="link-to-your-youtube-or-vimeo-video"]`
@@ -91,15 +93,20 @@ add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );`
 
 == WP Video Popup PRO ==
 
-For multiple popups on a single page, autoplay on page load functionality, self-hosted videos & more check out **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
+For multiple popups on a single page, video galleries, autoplay on page load, self-hosted videos & more check out **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
 
 **Features:**
 
 * Multiple Popups on a single Page/Post
 * Self-Hosted Videos (New!)
+* Video Galleries (New!)
 * Autoplay on Page-Load
 * Adjustable Popup Size
 * Overlay Background-Color Setting
+
+NEW! Create Lightbox Video Galleries with **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**:
+
+[youtube https://youtu.be/7HK2CxGvaDM]
 
 Get **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** today!
 
