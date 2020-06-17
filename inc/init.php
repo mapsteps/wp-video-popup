@@ -19,7 +19,7 @@ add_action( 'admin_menu', 'wp_video_popup_options_page' );
  * Settings page callback.
  */
 function wp_video_popup_settings_page_template() {
-	require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'inc/settings-template.php';
+	require_once WP_VIDEO_POPUP_PLUGIN_DIR . 'templates/settings.php';
 }
 
 // Settings.

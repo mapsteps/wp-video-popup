@@ -30,7 +30,7 @@ add_action( 'admin_init', 'wp_video_popup_settings' );
  */
 function wp_video_popup_background_color_callback() {
 
-	echo '<input type="text" name="ryv-popup[ryv_popup_background_color]" value="" class="color-picker" data-alpha="true" data-default-color="rgba(0,0,0,0.88)" disabled />';
+	echo '<input type="text" name="ryv-popup[ryv_popup_background_color]" value="" class="color-picker wp-video-popup-color-picker" data-alpha="true" data-default-color="rgba(0,0,0,0.88)" disabled />';
 
 }
 
@@ -44,7 +44,7 @@ function wp_video_popup_size_callback() {
 	_e( 'Default: 1200px', 'wp-video-popup' );
 	echo '</p>';
 
-	echo "<hr>";
+	echo '<hr>';
 
 	_e( 'This is a test', 'wp-video-popup' );
 
