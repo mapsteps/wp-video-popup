@@ -38,7 +38,7 @@ function wp_video_popup_pro_ad() {
 	?>
 
 	<div data-dismissible="wp-video-popup-pro-ad-forever" class="notice notice-info is-dismissible">
-		<p>Get <a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank"><strong>WP Video Popup PRO</strong></a> today for <strong>30% OFF</strong>.</p>
+		<p>As a valued <strong>WP Video Popup</strong> user we would like to offer you a <strong style="color: green;">30% discount</strong> on <a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank"><strong>WP Video Popup PRO</strong></a>.</p>
 		<p><a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary">Get WP Video Popup PRO</a></p>
 	</div>
 

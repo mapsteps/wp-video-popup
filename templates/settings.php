@@ -19,11 +19,10 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 		<div class="wpvp-admin-page">
 			<div class="left-section">
 
-				<div class="neatbox has-medium-gap has-bigger-heading is-smooth disable-color-picker">
+				<div class="neatbox has-subboxes has-medium-gap has-bigger-heading is-smooth disable-color-picker">
 					<?php do_settings_sections( 'wp-video-popup-settings' ); ?>
+					<?php do_settings_sections( 'wp-video-popup-pro-settings' ); ?>
 				</div>
-
-				<?php submit_button(); ?>
 
 			</div>
 			<div class="right-section">
