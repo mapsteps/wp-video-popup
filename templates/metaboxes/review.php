@@ -1,6 +1,6 @@
 <?php
 /**
- * Metabox template for displaying community link.
+ * Review metabox.
  *
  * @package WP_Video_Popup
  */
@@ -8,16 +8,16 @@
 defined( 'ABSPATH' ) || die( "Can't access directly" );
 ?>
 
-<div class="neatbox is-smooth has-medium-gap has-bigger-heading community-box">
+<div class="neatbox is-smooth has-medium-gap has-bigger-heading review-box">
 	<h2>
-		Join the Community
+		<?php _e( 'Leave a Review', 'wp-video-popup' ); ?>
 	</h2>
 	<div class="neatbox-content">
 		<p class="description">
-			Join the community and meet 20+ WP Video Popup users in our Facebook group.
+			<?php _e( 'Do you enjoy WP Video Popup PRO? Help us out with a review in the official WordPress repository.', 'wp-video-popup' ); ?>
 		</p>
-		<a href="https://www.facebook.com/groups/wpvideopopup/" target="_blank" class="button button-primary">
-			Join the Community
+		<a href="https://wordpress.org/support/plugin/responsive-youtube-vimeo-popup/reviews/#new-post" target="_blank" class="button button-primary">
+			<?php _e( 'Sure, you deserve it!', 'wp-video-popup' ); ?>
 		</a>
 	</div>
-</div><!-- .community-box -->
+</div><!-- .review-box -->
