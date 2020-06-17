@@ -2,8 +2,8 @@
 Contributors: davidvongries
 Tags: YouTube, Vimeo, Lightbox, Popup, YouTube Lightbox, Vimeo Lightbox, Video Lightbox, Video Popup, GDPR, DSGVO, WP Video Lightbox, WP Video Popup, Responsive Lightbox, Responsive Popup
 Requires at least: 4.0
-Tested up to: 5.3
-Stable tag: 2.7
+Tested up to: 5.4
+Stable tag: 2.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,8 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 
 == Changelog ==
 
+= 2.8 June 17, 2020 =
+* Maintenance release
 = 2.7 October 15, 2019 =
 * New: Added support for portrait videos (Vimeo). To declare a vertical video, simply add the `portrait="1"` parameter to your shortcode.
 = 2.6 September 26, 2019 =
