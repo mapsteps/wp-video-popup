@@ -44,4 +44,8 @@ function wp_video_popup_size_callback() {
 	_e( 'Default: 1200px', 'wp-video-popup' );
 	echo '</p>';
 
+	echo "<hr>";
+
+	_e( 'This is a test', 'wp-video-popup' );
+
 }
