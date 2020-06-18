@@ -49,7 +49,7 @@ Trigger Element Example (Link):
 
 --------------
 
-= Shortcode Attributes =
+== Shortcode Attributes ==
 
 There are attributes available to add parameters to the embed-URL that’s dynamically generated from the video link provided in the shortcode.
 
@@ -109,6 +109,21 @@ NEW! Create Lightbox Video Galleries with **[WP Video Popup PRO](https://wp-vide
 [youtube https://youtu.be/7HK2CxGvaDM]
 
 Get **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** today!
+
+--------------
+
+== What's next? ==
+
+If you like WP Video Popup, make sure to check out our other products:
+
+=== Page Builder Framework ===
+**[Page Builder Framework](https://wp-pagebuilderframework.com/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=wpbf)** is a fast & minimalistic WordPress theme designed for the new WordPress era.
+
+=== Ultimate Dashboard ===
+**[Ultimate Dashboard](https://ultimatedashboard.io/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=udb)** is the #1 WordPress plugin to customize your WordPress dashboard and admin area.
+
+=== WP Swift Control ===
+**[WP Swift Control](https://wpswiftcontrol.com/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=swiftcontrol)** is the plugin to make your clients enjoy WordPress. It replaces the default admin bar to provide the best possible user experience when editing & navigating a website.
 
 == Installation ==
 1. Download the responsive-youtube-vimeo-popup.zip file to your computer.
