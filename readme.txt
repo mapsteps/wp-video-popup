@@ -24,13 +24,15 @@ To open the popup, add the **CSS-class**
 
 to the element you wish to trigger the lightbox.
 
-== GDPR Compliance ==
+= GDPR Compliance =
 WP Video Popup is 100% GDPR compliant. No connection to YouTube or Vimeo is established before the trigger element has been clicked.
 
-== Page Speed ==
+= Page Speed =
 Embedding YouTube or Vimeo videos can slow down your website. With WP Video Popup, the lightbox & video are only being loaded by the click on the trigger element.
 
-== Usage ==
+---------
+
+=== Usage ===
 Example Shortcode to display a **YouTube** video:
 
 `[wp-video-popup video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
@@ -47,9 +49,9 @@ Trigger Element Example (Link):
 
 `<a href="#" class="wp-video-popup">Play Video</a>`
 
---------------
+---------
 
-== Shortcode Attributes ==
+=== Shortcode Attributes ===
 
 There are attributes available to add parameters to the embed-URL that’s dynamically generated from the video link provided in the shortcode.
 
@@ -75,9 +77,9 @@ Example Shortcode with shortcode attributes:
 
 `[wp-video-popup mute="1" start="24" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
---------------
+---------
 
-== Advanced ==
+=== Advanced ===
 
 In addition to the Shortcode Attributes, there is a filter available to add more parameters to the embed-URL. By default, only the `autoplay` attribute is added to the embed-URL.
 
@@ -89,9 +91,9 @@ In the example below, we use the filter to remove the YouTube branding from the 
 }
 add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );`
 
---------------
+---------
 
-== WP Video Popup PRO ==
+=== WP Video Popup PRO ===
 
 For multiple popups on a single page, video galleries, autoplay on page load, self-hosted videos & more check out **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
 
@@ -110,26 +112,21 @@ NEW! Create Lightbox Video Galleries with **[WP Video Popup PRO](https://wp-vide
 
 Get **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** today!
 
---------------
+---------
 
-== What's next? ==
+=== What's next? ===
 
 If you like WP Video Popup, make sure to check out our other products:
 
-=== Page Builder Framework ===
-**[Page Builder Framework](https://wp-pagebuilderframework.com/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=wpbf)** is a fast & minimalistic WordPress theme designed for the new WordPress era.
-
-=== Ultimate Dashboard ===
-**[Ultimate Dashboard](https://ultimatedashboard.io/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=udb)** is the #1 WordPress plugin to customize your WordPress dashboard and admin area.
-
-=== WP Swift Control ===
-**[WP Swift Control](https://wpswiftcontrol.com/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=swiftcontrol)** is the plugin to make your clients enjoy WordPress. It replaces the default admin bar to provide the best possible user experience when editing & navigating a website.
+* **[Page Builder Framework](https://wp-pagebuilderframework.com/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=wpbf)** - A fast & minimalistic WordPress theme designed for the new WordPress era.
+* **[Ultimate Dashboard](https://ultimatedashboard.io/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=udb)** - The #1 WordPress plugin to customize your WordPress dashboard and admin area.
+* **[WP Swift Control](https://wpswiftcontrol.com/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=swiftcontrol)** - The plugin to make your clients enjoy WordPress. It replaces the default admin bar to provide the best possible user experience when editing & navigating a website.
 
 == Installation ==
 1. Download the responsive-youtube-vimeo-popup.zip file to your computer.
-1. Unzip the file.
-1. Upload the `responsive-youtube-vimeo-popup` folder to your `/wp-content/plugins/` directory.
-1. Activate the plugin through the *Plugins* menu in WordPress.
+2. Unzip the file.
+3. Upload the `responsive-youtube-vimeo-popup` folder to your `/wp-content/plugins/` directory.
+4. Activate the plugin through the *Plugins* menu in WordPress.
 
 == Frequently Asked Questions ==
 = How do i use this plugin? =
@@ -142,8 +139,9 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 `[wp-video-popup mute="1" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
 == Screenshots ==
-1. Desktop Example
-2. Mobile Example
+1. Live Example
+2. Desktop Example
+3. Mobile Example
 
 == Changelog ==
 
