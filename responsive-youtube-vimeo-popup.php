@@ -64,7 +64,6 @@ function wp_video_popup_admin_scripts_styles( $hook ) {
 
 	// Color picker.
 	wp_enqueue_style( 'wp-color-picker' );
-
 	wp_enqueue_script( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/js/admin-page.js', array( 'wp-color-picker' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
 
 }
