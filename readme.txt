@@ -1,4 +1,4 @@
-=== WP Video Popup – Responsive WordPress Video Lightbox Plugin for YouTube & Vimeo ===
+=== WP Video Popup – WordPress Video Lightbox for YouTube & Vimeo ===
 Contributors: davidvongries
 Tags: YouTube, Vimeo, Lightbox, Popup, YouTube Lightbox, Vimeo Lightbox, Video Lightbox, Video Popup, GDPR, DSGVO, WP Video Lightbox, WP Video Popup, Responsive Lightbox, Responsive Popup
 Requires at least: 4.0
@@ -8,7 +8,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-=== The most popular WordPress Video Lightbox Plugin! ===
+=== The best WordPress Video Lightbox Plugin! ===
 
 **[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube or Vimeo video lightbox to any page, post or custom post type of your website.
 
@@ -20,13 +20,13 @@ Use the shortcode
 
 `[wp-video-popup video="link-to-your-youtube-or-vimeo-video"]`
 
-in your post, page, custom post type or template file to embed your responsive YouTube or Vimeo video lightbox popup.
+in your post, page, custom post type or template file to add a responsive YouTube or Vimeo video lightbox to your WordPress website.
 
 To open the lightbox, simply add the **CSS-class**
 
 `wp-video-popup`
 
-to the element you wish to open/trigger the popup.
+to the element you wish to open/trigger the lightbox.
 
 = GDPR Compliance =
 WP Video Popup is 100% GDPR compliant. No connection to YouTube or Vimeo is established before the trigger element has been clicked.
