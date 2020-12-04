@@ -151,7 +151,7 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 
 == Changelog ==
 
-= 2.8.1 November 5, 2020 =
+= 2.8.1 November 4, 2020 =
 * WordPress 5.6 support
 = 2.8 June 17, 2020 =
 * Maintenance release
