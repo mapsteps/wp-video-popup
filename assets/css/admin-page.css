@@ -1,12 +1,4 @@
-/**
- * --------------------
- * General
- * --------------------
- */
-.neatbox.has-max-width {
-  max-width: 800px;
-}
-
+/* Color picker */
 .disable-color-picker .wp-picker-container {
   position: relative;
 }
@@ -21,39 +13,20 @@
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-/**
- * --------------------
- * Admin Page
- * --------------------
- */
+/* Admin page */
 .wpvp-admin-page {
-	display: -webkit-box;
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 1300px;
+	max-width: 1200px;
 }
 
-.wpvp-admin-page > .left-section {
-	width: 65%;
+/* PRO metabox */
+.wpvp-pro-metabox th {
+	display: none;
 }
 
-.wpvp-admin-page > .right-section {
-	padding-left: 40px;
-	width: 35%;
+.wpvp-pro-metabox h3 {
+	margin: 20px 0;
 }
 
-/**
- * --------------------
- * Responsiveness
- * --------------------
- */
-@media screen and (max-width: 991.32px) {
-	.wpvp-admin-page > .left-section {
-		width: 100%;
-	}
-
-	.wpvp-admin-page > .right-section {
-		padding-left: 0;
-		width: 100%;
-	}
+.wpvp-pro-metabox .button {
+	margin-top: 10px;
 }

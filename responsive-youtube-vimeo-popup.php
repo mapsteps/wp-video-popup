@@ -58,8 +58,7 @@ function wp_video_popup_admin_scripts_styles( $hook ) {
 		return;
 	}
 
-	wp_enqueue_style( 'settings-page', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/settings-page.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
-	wp_enqueue_style( 'setting-fields', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/setting-fields.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
+	wp_enqueue_style( 'heatbox', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/heatbox.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
 	wp_enqueue_style( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/admin-page.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
 
 	// Color picker.

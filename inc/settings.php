@@ -17,7 +17,7 @@ function wp_video_popup_settings() {
 
 	// Settings sections.
 	add_settings_section( 'wp-video-popup-settings-section', __( 'Settings', 'wp-video-popup' ), '', 'wp-video-popup-settings' );
-	add_settings_section( 'wp-video-popup-pro-section', __( 'WP Video Popup PRO', 'wp-video-popup' ), '', 'wp-video-popup-pro-settings' );
+	add_settings_section( 'wp-video-popup-pro-section', __( 'WP Video Popup PRO - 30% OFF!', 'wp-video-popup' ), '', 'wp-video-popup-pro-settings' );
 
 	// Settings fields.
 	add_settings_field( 'wp-video-popup-background-color', __( 'Overlay Background Color', 'wp-video-popup' ), 'wp_video_popup_background_color_callback', 'wp-video-popup-settings', 'wp-video-popup-settings-section' );
@@ -42,22 +42,23 @@ function wp_video_popup_background_color_callback() {
  */
 function wp_video_popup_size_callback() {
 
-	echo '<input type="text" name="ryv-popup[ryv_popup_size]" size="12" placeholder="75%" value="" disabled />';
-	echo '<p class="description">';
-	_e( 'Default: 1200px', 'wp-video-popup' );
-	echo '</p>';
+	?>
 
-	echo '<hr>';
+	<input type="text" name="ryv-popup[ryv_popup_size]" size="12" placeholder="75%" value="" disabled />
 
-	echo '<p>';
-	echo sprintf( __( 'This feature is available in %1$s.', 'wp-video-popup' ), '<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" target="_blank">WP Video Popup PRO</a>' );
-	echo '</p>';
+	<br>
 
-	echo '<br>';
+	<p style="margin-top: 20px; margin-bottom: 5px; border-top: 1px solid #ddd; display: inline-block; padding-top: 10px;">
+		<?php echo sprintf( __( 'This feature is available in %1$s.', 'wp-video-popup' ), '<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" target="_blank">WP Video Popup PRO</a>' ); ?>
+	</p>
 
-	echo '<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary" target="_blank">';
-	_e( 'Get WP Video Popup PRO', 'wp-video-popup' );
-	echo '</a>';
+	<br>
+
+	<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary" target="_blank">
+	<?php _e( 'Get WP Video Popup PRO', 'wp-video-popup' ); ?>
+	</a>
+
+	<?php
 
 }
 
@@ -82,8 +83,6 @@ function wp_video_popup_pro_callback() {
 		<li><span style="color: green;">✔</span> <?php _e( 'Trigger Video Lightbox Based on URL', 'wp-video-popup' ); ?></li>
 		<li><span style="color: green;">✔</span> <?php _e( 'Video Lightbox Galleries', 'wp-video-popup' ); ?></li>
 	</ul>
-
-	<br>
 
 	<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary" target="_blank">	
 		<?php _e( 'Get WP Video Popup PRO', 'wp-video-popup' ); ?>
