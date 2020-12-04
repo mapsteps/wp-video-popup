@@ -75,13 +75,13 @@ function wp_video_popup_pro_callback() {
 	</h3>
 
 	<ul>
-		<li><span style="color: green;">✔</span> <?php _e( 'Multiple Videos per Page/Post', 'wp-video-popup' ); ?></li>
-		<li><span style="color: green;">✔</span> <?php _e( 'Self-Hosted Videos', 'wp-video-popup' ); ?></li>
-		<li><span style="color: green;">✔</span> <?php _e( 'Overlay Color Settings', 'wp-video-popup' ); ?></li>
-		<li><span style="color: green;">✔</span> <?php _e( 'Video Size Settings', 'wp-video-popup' ); ?></li>
-		<li><span style="color: green;">✔</span> <?php _e( 'Autoplay on Page Load', 'wp-video-popup' ); ?></li>
-		<li><span style="color: green;">✔</span> <?php _e( 'Trigger Video Lightbox Based on URL', 'wp-video-popup' ); ?></li>
-		<li><span style="color: green;">✔</span> <?php _e( 'Video Lightbox Galleries', 'wp-video-popup' ); ?></li>
+		<li>✅ <?php _e( 'Multiple Videos per Page/Post', 'wp-video-popup' ); ?></li>
+		<li>✅ <?php _e( 'Self-Hosted Videos', 'wp-video-popup' ); ?></li>
+		<li>✅ <?php _e( 'Overlay Color Settings', 'wp-video-popup' ); ?></li>
+		<li>✅ <?php _e( 'Video Size Settings', 'wp-video-popup' ); ?></li>
+		<li>✅ <?php _e( 'Autoplay on Page Load', 'wp-video-popup' ); ?></li>
+		<li>✅ <?php _e( 'Trigger Video Lightbox Based on URL', 'wp-video-popup' ); ?></li>
+		<li>✅ <?php _e( 'Video Lightbox Galleries', 'wp-video-popup' ); ?></li>
 	</ul>
 
 	<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary" target="_blank">	
