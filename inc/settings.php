@@ -48,7 +48,7 @@ function wp_video_popup_size_callback() {
 
 	<br>
 
-	<p style="margin-top: 20px; margin-bottom: 5px; border-top: 1px solid #ddd; display: inline-block; padding-top: 10px;">
+	<p style="margin-top: 20px; margin-bottom: 10px; border-top: 1px solid #ddd; display: inline-block; padding-top: 15px;">
 		<?php echo sprintf( __( 'This feature is available in %1$s.', 'wp-video-popup' ), '<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" target="_blank">WP Video Popup PRO</a>' ); ?>
 	</p>
 
