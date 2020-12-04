@@ -3,7 +3,7 @@
  * Plugin Name: WP Video Popup
  * Plugin URI: https://wp-video-popup.com
  * Description: Add beautiful responsive YouTube & Vimeo Video lightbox popups to your WordPress website.
- * Version: 2.8
+ * Version: 2.8.1
  * Author: David Vongries
  * Author URI: https://mapsteps.com
  *
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 // Plugin constants.
 define( 'WP_VIDEO_POPUP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_VIDEO_POPUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.8' );
+define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.8.1' );
 define( 'WP_VIDEO_POPUP_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 // Clean up behind us.
@@ -74,11 +74,8 @@ add_action( 'admin_enqueue_scripts', 'wp_video_popup_admin_scripts_styles' );
  */
 function wp_video_popup_styles() {
 
-	wp_register_style( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/wp-video-popup.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
-	wp_enqueue_style( 'wp-video-popup' );
-
-	wp_register_script( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/js/wp-video-popup.js', array( 'jquery' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
-	wp_enqueue_script( 'wp-video-popup' );
+	wp_enqueue_style( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/wp-video-popup.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
+	wp_enqueue_script( 'wp-video-popup', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/js/wp-video-popup.js', array( 'jquery' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
 
 }
 add_action( 'wp_enqueue_scripts', 'wp_video_popup_styles' );
@@ -128,6 +125,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		if ( $mute ) {
 			$video_url .= '&amp;muted=1';
 		}
+
 	} else {
 
 		// Remove YouTube related videos.
@@ -139,6 +137,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		if ( $mute ) {
 			$video_url .= '&amp;mute=1';
 		}
+
 	}
 
 	// Filter to let people add other URL parameters.
@@ -150,12 +149,14 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		if ( $start ) {
 			$video_url .= '#t=' . $start;
 		}
+
 	} else {
 
 		// Start YouTube video at specific time.
 		if ( $start ) {
 			$video_url .= '&amp;start=' . $start;
 		}
+
 	}
 
 	return '
