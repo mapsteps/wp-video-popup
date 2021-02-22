@@ -44,7 +44,45 @@ function wp_video_popup_size_callback() {
 
 	?>
 
-	<input type="text" name="ryv-popup[ryv_popup_size]" size="12" placeholder="75%" value="" disabled />
+	<div class="wpvp-size-settings">
+		<ul class="wpvp-responsive-controls">
+			<li class="wpvp-responsive-control is-active" data-device="desktop">
+				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Desktop', 'wp-video-popup' ); ?>">
+					<i class="dashicons dashicons-desktop"></i>
+				</button>
+			</li>
+			<li class="wpvp-responsive-control" data-device="tablet">
+				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Tablet', 'wp-video-popup' ); ?>">
+					<i class="dashicons dashicons-tablet"></i>
+				</button>
+			</li>
+			<li class="wpvp-responsive-control" data-device="mobile">
+				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Mobile', 'wp-video-popup' ); ?>">
+					<i class="dashicons dashicons-smartphone"></i>
+				</button>
+			</li>
+		</ul>
+
+		<ul class="wpvp-responsive-sizes">
+			<li class="wpvp-responsive-size wpvp-responsive-size-desktop is-active" data-size-device="desktop">
+				<input type="text" name="wpvp_popup[sizes][desktop]" class="wpvp-size-field" placeholder="75%" value="" disabled />
+
+				<p class="description">
+					<?php _e( 'Default: 1200px', 'wp-video-popup' ); ?>
+				</p>
+			</li>
+			<li class="wpvp-responsive-size wpvp-responsive-size-tablet" data-size-device="tablet">
+				<input type="text" name="wpvp_popup[sizes][tablet]" class="wpvp-size-field" placeholder="50%" value="" disabled />
+
+				<p class="description">&nbsp;</p>
+			</li>
+			<li class="wpvp-responsive-size wpvp-responsive-size-mobile" data-size-device="mobile">
+				<input type="text" name="wpvp_popup[sizes][mobile]" class="wpvp-size-field" placeholder="90%" value="" disabled />
+
+				<p class="description">&nbsp;</p>
+			</li>
+		</ul>
+	</div>
 
 	<br>
 

@@ -31,3 +31,100 @@
 .wpvp-pro-metabox .button {
 	margin-top: 10px;
 }
+
+/* Size field */
+.wpvp-size-field {
+	width: 100px;
+}
+
+/* Responsive control */
+.wpvp-responsive-controls {
+	position: relative;
+	margin: 0 0 5px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.wpvp-responsive-control {
+	margin-right: 8px;
+}
+
+.wpvp-responsive-control .wpvp-device-button {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	width: 28px;
+	height: 28px;
+	color: #777;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.wpvp-responsive-control:hover .wpvp-device-button {
+	border-color: #000;
+}
+
+.wpvp-responsive-control.is-active .wpvp-device-button {
+	background-color: #eee;
+	color: #000;
+	border-color: #000;
+}
+
+.wpvp-responsive-control .wpvp-device-button i {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.wpvp-responsive-control .wpvp-device-button::before,
+.wpvp-responsive-control .wpvp-device-button::after {
+	display: none;
+}
+
+.wpvp-responsive-control .wpvp-device-button::before {
+  position: absolute;
+	content: '';
+	margin-left: 2px;
+	height: 0;
+  width: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent; 
+  border-top: 5px solid rgba(0,0,0, 0.5);
+  left: 5px;
+  bottom: 30px;
+}
+
+.wpvp-responsive-control .wpvp-device-button::after {
+	content: attr(data-hint);
+	position: absolute;
+	bottom: 35px;
+	padding: 3px 10px;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+}
+
+.wpvp-responsive-control .wpvp-device-button:hover::before,
+.wpvp-responsive-control .wpvp-device-button:hover::after {
+	display: block;
+}
+
+/* Responsive sizes */
+.wpvp-responsive-sizes {
+	margin: 0;
+	padding: 0;
+}
+
+.wpvp-responsive-size {
+	display: none;
+}
+
+.wpvp-responsive-size.is-active {
+	display: block;
+}
