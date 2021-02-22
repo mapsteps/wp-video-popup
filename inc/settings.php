@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 function wp_video_popup_settings() {
 
 	// Register settings.
-	register_setting( 'wp-video-popup-settings-group', 'ryv-popup' );
+	register_setting( 'wp-video-popup-settings-group', 'wpvp_popup' );
 
 	// Settings sections.
 	add_settings_section( 'wp-video-popup-settings-section', __( 'Settings', 'wp-video-popup' ), '', 'wp-video-popup-settings' );
@@ -33,7 +33,7 @@ add_action( 'admin_init', 'wp_video_popup_settings' );
  */
 function wp_video_popup_background_color_callback() {
 
-	echo '<input type="text" name="ryv-popup[ryv_popup_background_color]" value="" class="color-picker wp-video-popup-color-picker" data-alpha="true" data-default-color="rgba(0,0,0,0.88)" disabled />';
+	echo '<input type="text" name="wpvp_popup[bg_color]" value="" class="color-picker wp-video-popup-color-picker" data-alpha="true" data-default-color="rgba(0,0,0,0.88)" disabled />';
 
 }
 
