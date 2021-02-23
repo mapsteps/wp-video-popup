@@ -143,3 +143,28 @@
 	font-size: 16px;
 	margin-bottom: 8px;
 }
+
+/* Featured */
+.featured-products > h2 {
+	text-align: center;
+	margin-bottom: 60px;
+	font-size: 24px;
+}
+
+.featured-products .products {
+	display: flex;
+	justify-content: space-between;
+}
+
+.featured-products .products li {
+	width: 32%;
+}
+
+.featured-products .products .subheadline {
+	font-weight: 600;
+	margin-top: -6px;
+}
+
+.featured-products .products img {
+	max-width: 100%;
+}
