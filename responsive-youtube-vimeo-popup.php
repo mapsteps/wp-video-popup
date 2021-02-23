@@ -3,7 +3,7 @@
  * Plugin Name: WP Video Popup
  * Plugin URI: https://wp-video-popup.com
  * Description: Add beautiful responsive YouTube & Vimeo Video lightbox popups to your WordPress website.
- * Version: 2.8.1
+ * Version: 2.9
  * Author: David Vongries
  * Author URI: https://mapsteps.com
  *
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 // Plugin constants.
 define( 'WP_VIDEO_POPUP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_VIDEO_POPUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.8.1' );
+define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.9' );
 define( 'WP_VIDEO_POPUP_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 // Clean up behind us.
