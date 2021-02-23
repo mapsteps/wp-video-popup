@@ -97,7 +97,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				<div class="heatbox-content">
 					<h3><?php _e( 'Ultimate Dashboard', 'wp-video-popup' ); ?></h3>
 					<p class="subheadline"><?php _e( 'Fully customize your WordPress Dashboard.', 'wp-video-popup' ); ?></p>
-					<p><?php _e( 'Ultimate Dashboard is the #1 Plugin to create a Custom WordPress Dashboard for you and your clients. It also comes with Multisite Support which makes it the perfect plugin for your WaaS network.', 'wp-video-popup' ); ?></p>
+					<p><?php _e( 'Ultimate Dashboard is the #1 plugin to create a Custom WordPress Dashboard for you and your clients. It also comes with Multisite Support which makes it the perfect plugin for your WaaS network.', 'wp-video-popup' ); ?></p>
 					<a href="https://wordpress.org/plugins/ultimate-dashboard/" target="_blank" class="button"><?php _e( 'View Features', 'wp-video-popup' ); ?></a>
 				</div>
 			</li>
@@ -119,7 +119,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				<div class="heatbox-content">
 					<h3><?php _e( 'WP Swift Control', 'wp-video-popup' ); ?></h3>
 					<p class="subheadline"><?php _e( 'Replace the boring WordPress Admin Bar with this!', 'wp-video-popup' ); ?></p>
-					<p><?php _e( 'Swift Control PRO is the plugin that make your clients love WordPress. It drastically improves the user experience when working with WordPress and allows you to replace the boring WordPress admin bar with your own navigation panel.', 'wp-video-popup' ); ?></p>
+					<p><?php _e( 'Swift Control is the plugin that make your clients love WordPress. It drastically improves the user experience when working with WordPress and allows you to replace the boring WordPress admin bar with your own navigation panel.', 'wp-video-popup' ); ?></p>
 					<a href="https://wordpress.org/plugins/swift-control/" target="_blank" class="button"><?php _e( 'View Features', 'wp-video-popup' ); ?></a>
 				</div>
 			</li>
