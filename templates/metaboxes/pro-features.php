@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 <div class="heatbox-content">
 
 	<p class="intro">
-		<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong>30% off WP Video Popup PRO</strong> for a limited time, automatically applied on checkout. Grab it while it lasts.', 'wp-video-popup' ); ?>
+		<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong>30% off WP Video Popup PRO</strong> for a limited time, automatically applied at checkout. Grab it while it lasts.', 'wp-video-popup' ); ?>
 	</p>
 
 	<p class="description">

@@ -48,9 +48,10 @@ function wp_video_popup_pro_ad() {
 					<?php _e( 'Welcome to WP Video Popup!', 'wp-video-popup' ); ?>
 				</h2>
 				<p>
-					<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong>30% off WP Video Popup PRO</strong> for a limited time, automatically applied on checkout. Grab it while it lasts.', 'wp-video-popup' ); ?>
+					<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong>30% off WP Video Popup PRO</strong> for a limited time, automatically applied at checkout. Grab it while it lasts.', 'wp-video-popup' ); ?>
 				</p>
 				<p>
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php _e( 'Learn more', 'wp-video-popup' ); ?></a>
 					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php _e( 'Learn more', 'wp-video-popup' ); ?></a>
 					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO', 'wp-video-popup' ); ?> - 30% OFF</a>
 				</p>
