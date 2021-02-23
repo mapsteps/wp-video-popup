@@ -87,7 +87,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 	<div class="heatbox-container heatbox-container-wide heatbox-container-center featured-products">
 
-		<h2><?php _e( 'Check out our other, free WordPress products!', 'wp-video-popup' ); ?></h2>
+		<h2><?php _e( 'Check out our other free WordPress products!', 'wp-video-popup' ); ?></h2>
 
 		<ul class="products">
 			<li class="heatbox">
@@ -124,6 +124,8 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				</div>
 			</li>
 		</ul>
+
+		<p class="credit"><?php _e( 'Made with ❤ in Aschaffenburg, Germany', 'wp-video-popup' ); ?></p>
 
 	</div>
 
