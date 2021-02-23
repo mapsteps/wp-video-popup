@@ -3,7 +3,7 @@ Contributors: davidvongries
 Tags: YouTube, Vimeo, Lightbox, Popup, YouTube Lightbox, Vimeo Lightbox, Video Lightbox, Video Popup, GDPR, DSGVO, WP Video Lightbox, WP Video Popup, Responsive Lightbox, Responsive Popup
 Requires at least: 4.0
 Tested up to: 5.6
-Stable tag: 2.8.1
+Stable tag: 2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,8 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 
 == Changelog ==
 
+= 2.9 February 23, 2021 =
+* Refactored settings page design
 = 2.8.1 December 04, 2020 =
 * WordPress 5.6 compatibility
 * Minor tweaks & improvements
