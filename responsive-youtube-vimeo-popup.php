@@ -37,9 +37,26 @@ function wp_video_popup_pro_ad() {
 
 	?>
 
-	<div data-dismissible="wp-video-popup-pro-ad-forever" class="notice notice-info is-dismissible">
-		<p>As a valued <strong>WP Video Popup</strong> user we would like to offer you a <strong style="color: green;">30% discount</strong> on <a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank"><strong>WP Video Popup PRO</strong></a>.</p>
-		<p><a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary">Get WP Video Popup PRO</a></p>
+	<div class="notice notice-info wpvp-activation-notice is-dismissible" data-dismissible="wp-video-popup-pro-ad-forever">
+
+		<div class="notice-body">
+			<div class="notice-icon">
+				<img src="<?php echo esc_url( WP_VIDEO_POPUP_PLUGIN_URL ); ?>assets/img/wp-video-popup-logo-1.png">
+			</div>
+			<div class="notice-content">
+				<h2>
+					<?php _e( 'Welcome to WP Video Popup!', 'wp-video-popup' ); ?>
+				</h2>
+				<p>
+					<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong>30% off WP Video Popup PRO</strong> for a limited time, automatically applied on checkout. Grab it while it lasts.', 'wp-video-popup' ); ?>
+				</p>
+				<p>
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php _e( 'Learn more', 'wp-video-popup' ); ?></a>
+					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO', 'wp-video-popup' ); ?> - 30% OFF</a>
+				</p>
+			</div>
+		</div>
+
 	</div>
 
 	<?php
@@ -52,6 +69,8 @@ add_action( 'admin_init', array( 'PAnD', 'init' ) );
  * Admin scripts & styles.
  */
 function wp_video_popup_admin_scripts_styles( $hook ) {
+
+	wp_enqueue_style( 'wpvp-activation-notice', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/css/activation-notice.css', array(), WP_VIDEO_POPUP_PLUGIN_VERSION );
 
 	// Stop here if we're not on the settings page.
 	if ( 'settings_page_wp-video-popup' !== $hook ) {
@@ -67,6 +86,24 @@ function wp_video_popup_admin_scripts_styles( $hook ) {
 
 }
 add_action( 'admin_enqueue_scripts', 'wp_video_popup_admin_scripts_styles' );
+
+/**
+ * Admin body class.
+ */
+function wp_video_popup_admin_body_class( $classes ) {
+
+	$screen = get_current_screen();
+
+	if ( $screen->id !== 'settings_page_wp-video-popup' ) {
+		return $classes;
+	}
+
+	$classes .= ' heatbox-admin has-header';
+
+	return $classes;
+
+}
+add_filter( 'admin_body_class', 'wp_video_popup_admin_body_class' );
 
 /**
  * Enqueue scripts & styles.

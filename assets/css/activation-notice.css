@@ -1,0 +1,35 @@
+/* Activation notice */
+.wpvp-activation-notice  {
+	padding: 25px 20px;
+}
+
+.wpvp-activation-notice .notice-body {
+	display: flex;
+}
+
+.wpvp-activation-notice .notice-icon {
+	padding-right: 25px;
+}
+
+.wpvp-activation-notice .notice-icon img {
+	max-width: 55px;
+}
+
+.wpvp-activation-notice .notice-content {
+	width: 100%;
+}
+
+.wpvp-activation-notice .notice-content h2 {
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-weight: 700;
+}
+
+.wpvp-activation-notice .notice-content > p {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.wpvp-activation-notice .notice-content > p:last-child {
+	margin-bottom: 0;
+}
