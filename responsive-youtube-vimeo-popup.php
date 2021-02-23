@@ -52,7 +52,7 @@ function wp_video_popup_pro_ad() {
 				</p>
 				<p>
 					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php _e( 'Learn more', 'wp-video-popup' ); ?></a>
-					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO', 'wp-video-popup' ); ?> - 30% off</a>
+					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO - 30% off!', 'wp-video-popup' ); ?></a>
 				</p>
 			</div>
 		</div>
