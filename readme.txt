@@ -143,6 +143,10 @@ We add the autoplay attribute to the embed-URL by default. That being said, the 
 To mute the video, add the `mute="1"` attribute to the shortcode like this:
 
 `[wp-video-popup mute="1" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
+= What about private Vimeo videos =
+Private vimeo videos add an extra string to the URL like this: `https://vimeo.com/xxxx/yyyy`.
+
+When adding the URL to the shortcode, simply remove the last string so that your shortcode would look something like this: `[wp-video-popup video="https://vimeo.com/xxxx"]`.
 
 == Screenshots ==
 1. Live Example
