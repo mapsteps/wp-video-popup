@@ -57,7 +57,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 					<?php do_settings_sections( 'wp-video-popup-settings' ); ?>
 				</div>
 
-				<div class="heatbox-cta primary">
+				<div class="heatbox-cta primary heatbox-margin-bottom">
 					<p><?php _e( 'This feature is available in WP Video Popup PRO.', 'wp-video-popup' ); ?></p>
 					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-large button-primary" target="_blank">
 						<?php _e( 'Get WP Video Popup PRO - 30% off!', 'wp-video-popup' ); ?>
