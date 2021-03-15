@@ -31,12 +31,12 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 			</div>
 
-			<nav>
+ 			<!-- <nav>
 				<ul class="tab-navigation">
-					<li class="tab-nav-menu-item settings"><a href="#settings"><?php _e( 'General', 'wp-video-popup' ); ?></a></li>
-					<li class="tab-nav-menu-item recommended"><a href="#recommended"><?php _e( 'PRO Features', 'wp-video-popup' ); ?></a></li>
+					<li class="tab-nav-menu-item settings"><a href="#settings"><?php // _e( 'General', 'wp-video-popup' ); ?></a></li>
+					<li class="tab-nav-menu-item recommended"><a href="#recommended"><?php // _e( 'PRO Features', 'wp-video-popup' ); ?></a></li>
 				</ul>
-			</nav>
+			</nav> -->
 
 		</div>
 
@@ -48,7 +48,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 		<div class="heatbox-main">
 
-			<div class="heatbox-admin-panel settings-panel">
+			<!-- <div class="heatbox-admin-panel settings-panel"> -->
 
 				<!-- Faking H1 tag to place admin notices -->
 				<h1 style="display: none;"></h1>
@@ -57,18 +57,92 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 					<?php do_settings_sections( 'wp-video-popup-settings' ); ?>
 				</div>
 
-				<div class="heatbox-cta primary heatbox-margin-bottom">
-					<p><?php _e( 'This feature is available in WP Video Popup PRO.', 'wp-video-popup' ); ?></p>
-					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-large button-primary" target="_blank">
-						<?php _e( 'Get WP Video Popup PRO - 30% off!', 'wp-video-popup' ); ?>
+				<div class="heatbox-cta-container is-attached">
+					<div class="heatbox-cta primary">
+						<p><?php _e( 'This feature is available in WP Video Popup PRO.', 'wp-video-popup' ); ?></p>
+						<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-large button-primary" target="_blank">
+							<?php _e( 'Get WP Video Popup PRO - 30% off!', 'wp-video-popup' ); ?>
+						</a>
+					</div>
+				</div>
+
+			<!-- </div> -->
+
+			<!-- <div class="heatbox-admin-panel recommended-panel"> -->
+
+				<div class="heatbox wpvp-pro-metabox">
+
+					<h2>
+						<?php _e( 'WP Video Popup PRO', 'wp-video-popup' ); ?> <span class="badge">PRO</span>
+					</h2>
+
+					<div class="heatbox-content">
+
+						<ul class="wpvp-pro-benefits">
+							<li>
+								<span class="dashicons dashicons-yes"></span>
+								<div>
+									<h3><?php _e( 'Multiple Videos per Page/Post', 'wp-video-popup' ); ?></h3>
+									<p class="description"><?php _e( 'Add multiple video lightbox popups to a single page, post or custom post type.', 'wp-video-popup' ); ?></p>
+								</div>
+							</li>
+							<li>
+								<span class="dashicons dashicons-yes"></span>
+								<div>
+									<h3><?php _e( 'Self-Hosted Videos', 'wp-video-popup' ); ?></h3>
+									<p class="description"><?php _e( 'Display your self-hosted videos in a responsive lightbox popup with WP Video Poup PRO.', 'wp-video-popup' ); ?></p>
+								</div>
+							</li>
+							<li>
+								<span class="dashicons dashicons-yes"></span>
+								<div>
+									<h3><?php _e( 'Overlay Color Settings', 'wp-video-popup' ); ?></h3>
+									<p class="description"><?php _e( 'Change the overlay background color of your lightbox.', 'wp-video-popup' ); ?></p>
+								</div>
+							</li>
+							<li>
+								<span class="dashicons dashicons-yes"></span>
+								<div>
+									<h3><?php _e( 'Video Size Settings', 'wp-video-popup' ); ?></h3>
+									<p class="description"><?php _e( 'Easily change the size of the video displayed in the responsive lightbox popup.', 'wp-video-popup' ); ?></p>
+								</div>
+							</li>
+							<li>
+								<span class="dashicons dashicons-yes"></span>
+								<div>
+									<h3><?php _e( 'Autoplay on Page Load', 'wp-video-popup' ); ?></h3>
+									<p class="description"><?php _e( 'You\'d like the lightbox to open right after page load? We\'ve got you covered!', 'wp-video-popup' ); ?></p>
+								</div>
+							</li>
+							<li>
+								<span class="dashicons dashicons-yes"></span>
+								<div>
+									<h3><?php _e( 'Trigger Video Lightbox Based on URL', 'wp-video-popup' ); ?></h3>
+									<p class="description"><?php _e( 'With multiple videos on a single page/post, this feature will allow you to load a specific video on page load by adding a URL parameter.', 'wp-video-popup' ); ?></p>
+								</div>
+							</li>
+							<li>
+								<span class="dashicons dashicons-yes"></span>
+								<div>
+									<h3><?php _e( 'Video Lightbox Galleries', 'wp-video-popup' ); ?></h3>
+									<p class="description"><?php _e( 'Group videos into galleries and allow viewers to cycle through your videos without having to close the lightbox.', 'wp-video-popup' ); ?></p>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+				<div class="heatbox-cta-container is-attached">
+					<?php _e( 'Get <strong>30% off WP Video Popup PRO</strong> today, automatically applied at checkout.', 'wp-video-popup' ); ?>
+					<br><br>
+					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary button-larger" target="_blank">	
+						<strong style ="font-weight: 700;"><?php _e( 'Upgrade to PRO - Save 30%', 'wp-video-popup' ); ?></strong>
 					</a>
 				</div>
 
-			</div>
-
-			<div class="heatbox-admin-panel recommended-panel">
-				<?php require __DIR__ . '/metaboxes/pro-features.php'; ?>
-			</div>
+			<!-- </div> -->
 
 		</div>
 
