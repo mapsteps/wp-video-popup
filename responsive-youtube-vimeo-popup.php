@@ -89,6 +89,8 @@ add_action( 'admin_enqueue_scripts', 'wp_video_popup_admin_scripts_styles' );
 
 /**
  * Admin body class.
+ *
+ * @param string $classes The class names.
  */
 function wp_video_popup_admin_body_class( $classes ) {
 
