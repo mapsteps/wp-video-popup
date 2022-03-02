@@ -2,7 +2,6 @@
 Contributors: davidvongries
 Tags: YouTube, Vimeo, Lightbox, Popup, YouTube Lightbox, Vimeo Lightbox, Video Lightbox, Video Popup, GDPR, DSGVO, WP Video Lightbox, WP Video Popup, Responsive Lightbox, Responsive Popup
 Requires at least: 4.0
-<<<<<<< HEAD
 Tested up to: 5.9
 Stable tag: 2.9.2
 License: GPLv2 or later
