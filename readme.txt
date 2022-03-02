@@ -155,6 +155,9 @@ When adding the URL to the shortcode, simply remove the last string so that your
 
 == Changelog ==
 
+= 2.9.2 March 02, 2022 =
+* Tested up to 5.9
+* Updated plugin description
 = 2.9.1 March 15, 2021 =
 * Slight improvements to the settings page design
 * Tested up to 5.7
