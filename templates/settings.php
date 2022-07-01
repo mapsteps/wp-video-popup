@@ -61,7 +61,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 					<div class="heatbox-cta primary">
 						<p><?php _e( 'This feature is available in WP Video Popup PRO.', 'wp-video-popup' ); ?></p>
 						<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-large button-primary" target="_blank">
-							<?php _e( 'Get WP Video Popup PRO - 30% off!', 'wp-video-popup' ); ?>
+							<?php _e( 'Get WP Video Popup PRO - 60% off!', 'wp-video-popup' ); ?>
 						</a>
 					</div>
 				</div>
@@ -135,10 +135,10 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				</div>
 
 				<div class="heatbox-cta-container is-attached">
-					<?php _e( 'Get <strong>30% off WP Video Popup PRO</strong> today, automatically applied at checkout.', 'wp-video-popup' ); ?>
+					<?php _e( 'Get <strong>60% off WP Video Popup PRO</strong> today, automatically applied at checkout.', 'wp-video-popup' ); ?>
 					<br><br>
 					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary button-larger" target="_blank">	
-						<strong style ="font-weight: 700;"><?php _e( 'Upgrade to PRO - Save 30%', 'wp-video-popup' ); ?></strong>
+						<strong style ="font-weight: 700;"><?php _e( 'Upgrade to PRO - Save 60%', 'wp-video-popup' ); ?></strong>
 					</a>
 				</div>
 

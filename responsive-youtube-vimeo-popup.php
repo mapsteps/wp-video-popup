@@ -3,7 +3,7 @@
  * Plugin Name: WP Video Popup
  * Plugin URI: https://wp-video-popup.com
  * Description: Add beautiful responsive YouTube & Vimeo Video lightbox popups to your WordPress website.
- * Version: 2.9.2
+ * Version: 2.9.3
  * Author: David Vongries
  * Author URI: https://mapsteps.com
  *
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 // Plugin constants.
 define( 'WP_VIDEO_POPUP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_VIDEO_POPUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.9.2' );
+define( 'WP_VIDEO_POPUP_PLUGIN_VERSION', '2.9.3' );
 define( 'WP_VIDEO_POPUP_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 // Clean up behind us.
@@ -48,11 +48,11 @@ function wp_video_popup_pro_ad() {
 					<?php _e( 'Welcome to WP Video Popup!', 'wp-video-popup' ); ?>
 				</h2>
 				<p>
-					<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong>30% off WP Video Popup PRO</strong> for a limited time, automatically applied at checkout. Grab it while it lasts.', 'wp-video-popup' ); ?>
+					<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong style="color: tomato">60% off WP Video Popup PRO</strong> for a limited time, automatically applied at checkout. Grab it while it lasts.', 'wp-video-popup' ); ?>
 				</p>
 				<p>
 					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php _e( 'Learn more', 'wp-video-popup' ); ?></a>
-					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO - 30% off!', 'wp-video-popup' ); ?></a>
+					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO - 60% off!', 'wp-video-popup' ); ?></a>
 				</p>
 			</div>
 		</div>
