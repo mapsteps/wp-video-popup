@@ -200,7 +200,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	return '
 	<div class="wp-video-popup-wrapper">
 		<div class="wp-video-popup-close"></div>
-		<iframe class="wp-video-popup-video is-hosted ' . $viewport . '" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay">
+		<iframe class="wp-video-popup-video is-hosted ' . $viewport . '" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" allowfullscreen allow="autoplay">
 		</iframe>
 	</div>
 	';
