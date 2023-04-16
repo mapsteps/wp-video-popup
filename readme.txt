@@ -8,7 +8,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-=== The best WordPress Video Lightbox Plugin! ===
+=== The best WordPress video lightbox plugin! ===
 
 **[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube or Vimeo video lightbox to any page, post or custom post type of your website.
 
@@ -28,13 +28,13 @@ To open the lightbox, simply add the **CSS-class**
 
 to the element you wish to open/trigger the lightbox.
 
-= GDPR Compliance =
+= GDPR compliance =
 WP Video Popup is 100% GDPR compliant. No connection to YouTube or Vimeo is established before the trigger element has been clicked.
 
-= Page Speed & Performance =
+= Page speed & performance =
 Embedding YouTube or Vimeo videos can slow down your website. With WP Video Lightbox the video is only being loaded by the click on the trigger element for the maximum performance & fast loading speeds.
 
-= Fully Responsive =
+= Fully responsive =
 The WordPress video lightbox is fully responsive and adjusts to the device width & height the video is viewed on.
 
 ---------
@@ -58,7 +58,7 @@ Trigger Element Example (Link):
 
 ---------
 
-=== Shortcode Attributes ===
+=== Shortcode attributes ===
 
 There are attributes available to add parameters to the embed-URL that’s dynamically generated from the video link provided in the shortcode.
 
@@ -105,14 +105,14 @@ For multiple popups on a single page, video galleries, autoplay on page load, se
 
 **PRO Features:**
 
-* Multiple Popups on a single Page/Post/CPT
-* Self-Hosted Videos (New!)
-* Video Galleries (New!)
-* Autoplay on Page-Load
-* Adjustable Popup Size
-* Overlay Background-Color Setting
+* Multiple popups on a single page/post
+* Self-hosted videos
+* Video galleries
+* Autoplay on page load
+* Adjustable popup size
+* Overlay background color setting
 
-**NEW!** - Create video lightbox galleries with **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**:
+**NEW!** - Create galleries with **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**:
 
 [youtube https://youtu.be/7HK2CxGvaDM]
 
@@ -149,13 +149,14 @@ Private vimeo videos add an extra string to the URL like this: `https://vimeo.co
 When adding the URL to the shortcode, simply remove the last string so that your shortcode would look something like this: `[wp-video-popup video="https://vimeo.com/xxxx"]`.
 
 == Screenshots ==
-1. Live Example
-2. Desktop Example
-3. Mobile Example
+1. Live example
+2. Desktop example
+3. Mobile example
 
 == Changelog ==
 = 2.9.5 April 17, 2023 =
 * Tested up to 6.2
+* Minor tweaks & improvements
 = 2.9.4 November 11, 2022 =
 * Tested up to 6.1
 * Removed deprecated webkitallowfullscreen & mozallowfullscreen
