@@ -40,19 +40,19 @@ The WordPress video lightbox is fully responsive and adjusts to the device width
 ---------
 
 === Usage ===
-Example Shortcode to display a **YouTube video lightbox**:
+Example shortcode to display a **YouTube video lightbox**:
 
 `[wp-video-popup video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
-Example Shortcode to display a **Vimeo video lightbox**:
+Example shortcode to display a **Vimeo video lightbox**:
 
 `[wp-video-popup video="https://vimeo.com/136696258"]`
 
-CSS class that needs to be added to the element you want to open/trigger the video lightbox:
+CSS-class that needs to be added to the element you want to open/trigger the video lightbox:
 
 `wp-video-popup`
 
-Trigger Element Example (Link):
+Trigger element example (link):
 
 `<a href="#" class="wp-video-popup">Play Video</a>`
 
@@ -79,7 +79,7 @@ Portrait mode (Vimeo only):
 
 `portrait="1"`
 
-Example Shortcode with shortcode attributes:
+Example shortcode with shortcode attributes:
 
 `[wp-video-popup mute="1" start="24" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
@@ -146,7 +146,7 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 = What about private Vimeo videos =
 Private vimeo videos add an extra string to the URL like this: `https://vimeo.com/xxxx/yyyy`.
 
-When adding the URL to the shortcode, simply remove the last string so that your shortcode would look something like this: `[wp-video-popup video="https://vimeo.com/xxxx"]`.
+When adding the URL to the shortcode, try to remove the last string so that your shortcode would look something like this: `[wp-video-popup video="https://vimeo.com/xxxx"]`.
 
 == Screenshots ==
 1. Live example
@@ -176,9 +176,9 @@ When adding the URL to the shortcode, simply remove the last string so that your
 = 2.8 June 17, 2020 =
 * Maintenance release
 = 2.7 October 15, 2019 =
-* New: Added support for portrait videos (Vimeo). To declare a vertical video, simply add the `portrait="1"` parameter to your shortcode.
+* New: Added support for portrait videos (Vimeo). To declare a vertical Vimeo video, simply add the `portrait="1"` parameter to your shortcode.
 = 2.6 September 26, 2019 =
-* Code Improvements
+* Code improvements
 = 2.5.1 September 16, 2019 =
 * Fixed: Safari full-screen mode doesn't work
 = 2.5 August 27, 2019 =
@@ -187,33 +187,33 @@ When adding the URL to the shortcode, simply remove the last string so that your
 * Tweak: Improved backwards compatibility
 * Overall code improvements
 = 2.4 April 8, 2019 =
-* Tweak: Added allow="autoplay" parameter to iframe to allow autoplay in Chrome (Thanks @owenmack)
-* Fixed: A bug where URL Parameters weren't added properly using Shortcode Attributes
+* Tweak: Added allow="autoplay" parameter to iframe to allow autoplay in Chrome (thanks @owenmack)
+* Fixed: A bug where URL parameters weren't added properly using shortcode attributes
 * Fixed: Vimeo video was not muted with mute="1"
-* Deprecated: hide-related Shortcode Attribute
+* Deprecated: hide-related shortcode attribute
 = 2.3 December 12, 2018 =
-* New: Shortcode Attributes to add URL Parameters (mute, hide-related, start)
+* New: Shortcode attributes to add URL parameters (mute, hide-related, start)
 * Tweak: Updated PAnD to the latest version
 * Tested up to WordPress 5.0
 = 2.2 September 23, 2018 =
-* New: filter to add attributes to the embed-URL
+* New: Filter to add attributes to the embed-URL
 = 2.1 September 4, 2018 =
-* New: minor tweaks & improvements
+* New: Minor tweaks & improvements
 = 2.0 August 25, 2018 =
-* New: shortcode has changed to [wp-video-popup video="link-to-your-video"] for YouTube videos and [wp-video-popup vimeo="1" video="link-to-your-video"] for vimeo videos
-* New: instead of the embed-URL, the direct YouTube/Vimeo video link can now be used in the shortcode
-* Fixed: nesting the shortcode causes other elements overlapping the lightbox.
+* New: Shortcode has changed to [wp-video-popup video="link-to-your-video"] for YouTube videos and [wp-video-popup vimeo="1" video="link-to-your-video"] for vimeo videos
+* New: Instead of the embed-URL, the direct YouTube/Vimeo video link can now be used in the shortcode
+* Fixed: Nesting the shortcode causes other elements overlapping the lightbox
 * 100% backwards compatibility
-* minor CSS tweaks and improvements
+* Minor CSS tweaks and improvements
 = 1.1.2 05/16/2017 =
-* removed admin notice
-* updated plugin description
+* Removed admin notice
+* Updated plugin description
 = 1.1.1 05/20/2017 =
-* Added: Elementor support – by adding !important to the video iframe width and max-width attributes to prevent Elementor (and others) from overwriting.
+* New: Elementor support – by adding !important to the video iframe width and max-width attributes to prevent Elementor (and others) from overriding.
 = 1.1 02-27-2017 =
-* stability & maintenance release
-* Added: use ESC-key on your keyboard to close the popup
+* Stability & maintenance release
+* New: Use ESC-key on your keyboard to close the popup
 = 1.0.1 =
 * Tweak: Increased z-index to make sure ryv-popup is on top
 = 1.0 =
-* Initial Release
+* Initial release
