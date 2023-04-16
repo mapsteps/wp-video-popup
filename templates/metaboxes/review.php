@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 <div class="heatbox">
 	<h2>
-		<?php _e( 'Leave a Review', 'wp-video-popup' ); ?>
+		<?php _e( 'Leave a review', 'wp-video-popup' ); ?>
 	</h2>
 	<div class="heatbox-content">
 		<p class="description">
