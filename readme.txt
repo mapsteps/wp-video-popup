@@ -2,8 +2,8 @@
 Contributors: davidvongries
 Tags: YouTube, Vimeo, Lightbox, Popup, YouTube Lightbox, Vimeo Lightbox, Video Lightbox, Video Popup, GDPR, DSGVO, WP Video Lightbox, WP Video Popup, Responsive Lightbox, Responsive Popup
 Requires at least: 4.0
-Tested up to: 6.1
-Stable tag: 2.9.4
+Tested up to: 6.2
+Stable tag: 2.9.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -154,6 +154,8 @@ When adding the URL to the shortcode, simply remove the last string so that your
 3. Mobile Example
 
 == Changelog ==
+= 2.9.5 April 17, 2023 =
+* Tested up to 6.2
 = 2.9.4 November 11, 2022 =
 * Tested up to 6.1
 * Removed deprecated webkitallowfullscreen & mozallowfullscreen
