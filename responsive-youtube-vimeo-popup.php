@@ -66,6 +66,132 @@ add_action( 'admin_notices', 'wp_video_popup_pro_ad' );
 add_action( 'admin_init', array( 'PAnD', 'init' ) );
 
 /**
+ * Plugin activation.
+ */
+function wp_video_popup_activation() {
+
+	if ( ! current_user_can( 'activate_plugins' ) || 'true' == get_option( 'wp_video_popup_plugin_activated' ) ) {
+		return;
+	}
+
+	add_option( 'wp_video_popup_install_date', current_time( 'mysql' ) );
+	add_option( 'wp_video_popup_plugin_activated', 'true' );
+
+}
+add_action( 'init', 'wp_video_popup_activation' );
+
+/**
+ * Plugin deactivation.
+ */
+function wp_video_popup_deactivation() {
+
+	delete_option( 'wp_video_popup_install_date' );
+	delete_option( 'wp_video_popup_plugin_activated' );
+	delete_option( 'wp_video_popup_review_notice' );
+
+}
+register_deactivation_hook( __FILE__, 'wp_video_popup_deactivation' );
+
+/**
+ * Review notice.
+ */
+function wp_video_popup_review_notice() {
+
+	// Stop here if notice has been dismissed.
+	if ( ! empty( get_option( 'wp_video_popup_review_notice', 0 ) ) ) {
+		return;
+	}
+
+	// Stop here if current user can't manage options.
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	// Review notice.
+	$install_date = get_option( 'wp_video_popup_install_date', '' );
+
+	// Stop if there's no install date.
+	if ( empty( $install_date ) ) {
+		return;
+	}
+
+	$diff = round( ( time() - strtotime( $install_date ) ) / 24 / 60 / 60 );
+
+	// Only go past this point if WP Video Popup is running for more than 5 days.
+	if ( $diff < 5 ) {
+		return;
+	}
+
+	$emoji      = '😍';
+	$review_url = 'https://wordpress.org/support/plugin/responsive-youtube-vimeo-popup/reviews/?rate=5#new-post';
+	$link_start = '<a href="' . $review_url . '" target="_blank">';
+	$link_end   = '</a>';
+	// translators: %1$s: Emoji, %2$s: Link start tag, %3$s: Link end tag.
+	$notice   = sprintf( __( '%1$s Love using WP Video Popup? - That\'s awesome! Help us spread the word and leave us a %2$s 5-star review %3$s in the WordPress repository.', 'wp-video-popup' ), $emoji, $link_start, $link_end );
+	$btn_text = __( 'Sure! You deserve it!', 'wp-video-popup' );
+	$notice  .= '<br/>';
+	$notice  .= "<a href=\"$review_url\" style=\"margin-top: 15px;\" target='_blank' class=\"button-primary\">$btn_text</a>";
+
+	echo '<div class="notice notice-info wp-video-popup-review-notice is-dismissible">';
+	echo '<p>' . $notice . '</p>';
+	echo '</div>';
+
+}
+add_action( 'admin_notices', 'wp_video_popup_review_notice' );
+
+/**
+ * Dismiss admin notice.
+ */
+function wp_video_popup_dismiss_review_notice() {
+
+	$nonce   = isset( $_POST['nonce'] ) ? $_POST['nonce'] : 0;
+	$dismiss = isset( $_POST['dismiss'] ) ? absint( $_POST['dismiss'] ) : 0;
+
+	if ( empty( $dismiss ) ) {
+		wp_send_json_error( __( 'Invalid Request', 'wp-video-popup' ) );
+	}
+
+	if ( ! wp_verify_nonce( $nonce, 'WP_Video_Popup_Dismiss_Review_Notice' ) ) {
+		wp_send_json_error( __( 'Invalid Token', 'wp-video-popup' ) );
+	}
+
+	update_option( 'wp_video_popup_review_notice', 1 );
+	wp_send_json_success( __( 'Discount notice has been dismissed', 'wp-video-popup' ) );
+
+}
+add_action( 'wp_ajax_wp_video_popup_review_notice_dismissal', 'wp_video_popup_dismiss_review_notice' );
+
+/**
+ * Script that handles discount notice dismissal.
+ */
+function wp_video_popup_review_notice_script() {
+
+	// Stop here if notice has been dismissed.
+	if ( ! empty( get_option( 'wp_video_popup_review_notice', 0 ) ) ) {
+		return;
+	}
+
+	// Stop here if current user can't manage options.
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	wp_enqueue_script( 'wp-video-popup-review', WP_VIDEO_POPUP_PLUGIN_URL . '/assets/js/review-notice.js', array( 'jquery' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
+
+	wp_localize_script(
+		'wp-video-popup-review',
+		'WPVideoPopupDismissal',
+		array(
+			'nonces' => array(
+				'dismissalNonce' => wp_create_nonce( 'WP_Video_Popup_Dismiss_Review_Notice' ),
+			),
+		)
+	);
+
+}
+add_action( 'admin_enqueue_scripts', 'wp_video_popup_review_notice_script' );
+
+/**
  * Admin scripts & styles.
  */
 function wp_video_popup_admin_scripts_styles( $hook ) {
