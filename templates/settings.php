@@ -184,7 +184,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 			</li>
 		</ul>
 
-		<p class="credit"><?php _e( 'Made with ❤ in Aschaffenburg, Germany', 'wp-video-popup' ); ?></p>
+		<p class="credit"><?php _e( 'Made with ❤ in Torsby, Sweden', 'wp-video-popup' ); ?></p>
 
 	</div>
 
