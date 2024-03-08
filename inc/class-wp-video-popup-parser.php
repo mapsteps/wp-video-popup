@@ -155,7 +155,18 @@ class WP_Video_Popup_Parser {
 	 */
 	private static function parse_url_for_params( $url, $target_params ) {
 
-		parse_str( wp_parse_url( $url, PHP_URL_QUERY ), $my_array_of_params );
+		if (!empty($url)) {
+			$query_string = wp_parse_url($url, PHP_URL_QUERY);
+			if (!empty($query_string)) { // Check for empty query string
+					parse_str($query_string, $my_array_of_params);
+			} else {
+					// Handle empty query string (e.g., return null)
+					return null;
+			}
+		} else {
+			// Handle the case where $url is null (e.g., log an error message)
+			log_message('error', "Invalid URL parameter");
+		}
 
 		foreach ( $target_params as $target ) {
 			if ( array_key_exists( $target, $my_array_of_params ) ) {
