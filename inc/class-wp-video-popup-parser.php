@@ -122,7 +122,6 @@ class WP_Video_Popup_Parser {
 		$video_url .= "/embed/$youtube_video_id?autoplay=$autoplay";
 
 		return $video_url;
-
 	}
 
 	/**
@@ -133,8 +132,10 @@ class WP_Video_Popup_Parser {
 	 * @return string The url's id.
 	 */
 	public static function get_vimeo_id( $url ) {
+
 		// Try to get ID from last portion of url.
 		return self::parse_url_for_last_element( $url );
+
 	}
 
 	/**
@@ -146,7 +147,9 @@ class WP_Video_Popup_Parser {
 	 * @return string The embed url.
 	 */
 	public static function get_vimeo_embed_url( $vimeo_video_id, $autoplay = 1 ) {
+
 		return "https://player.vimeo.com/video/$vimeo_video_id?byline=0&amp;portrait=0&amp;autoplay=$autoplay";
+
 	}
 
 	/**
@@ -157,8 +160,16 @@ class WP_Video_Popup_Parser {
 	 * @return string The url's id.
 	 */
 	public static function get_rumble_id( $url ) {
-		// Try to get ID from last portion of url.
+
+		if ( stripos( $url, '/?' ) !== false ) {
+			$splits = explode( '/?', $url );
+			$url    = $splits[0];
+		}
+
+		$url = untrailingslashit( $url );
+
 		return self::parse_url_for_last_element( $url );
+
 	}
 
 	/**
@@ -169,8 +180,10 @@ class WP_Video_Popup_Parser {
 	 *
 	 * @return string The embed url.
 	 */
-	public static function get_rumble_embed_url( $rumble_video_id, $autoplay = 1 ) {
+	public static function get_rumble_embed_url( $rumble_video_id, $autoplay = 2 ) {
+
 		return "https://rumble.com/embed/$rumble_video_id/?autoplay=$autoplay";
+
 	}
 
 	/**
@@ -221,5 +234,4 @@ class WP_Video_Popup_Parser {
 		return $url;
 
 	}
-
 }
