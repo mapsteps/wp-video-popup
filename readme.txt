@@ -1,6 +1,6 @@
 === WP Video Popup – WordPress Video Lightbox for YouTube & Vimeo ===
 Contributors: davidvongries
-Tags: YouTube, Vimeo, Lightbox, Popup, YouTube Lightbox, Vimeo Lightbox, Video Lightbox, Video Popup, GDPR, DSGVO, WP Video Lightbox, WP Video Popup, Responsive Lightbox, Responsive Popup
+Tags: YouTube Lightbox, Vimeo Lightbox, Rumble Lightbox, Video Lightbox, Video Popup
 Requires at least: 4.0
 Tested up to: 6.6
 Stable tag: 2.10
@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 === The best WordPress video lightbox plugin! ===
 
-**[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube or Vimeo video lightbox to any page, post or custom post type of your website.
+**[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube, Rumble or Vimeo video lightbox to any page, post or custom post type of your website.
 
 Add beautiful, minimalistic video lightbox popups to your WordPress website with just a few clicks & **without sacrificing performance**.
 
@@ -47,6 +47,10 @@ Example shortcode to display a **YouTube video lightbox**:
 Example shortcode to display a **Vimeo video lightbox**:
 
 `[wp-video-popup video="https://vimeo.com/136696258"]`
+
+Example shortcode to display a **Rumble video lightbox**:
+
+`[wp-video-popup video="https://rumble.com/embed/v4j2rri/?pub=4"]`
 
 CSS-class that needs to be added to the element you want to open/trigger the video lightbox:
 
