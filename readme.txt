@@ -1,4 +1,4 @@
-=== WP Video Popup – WordPress Video Lightbox for YouTube & Vimeo ===
+=== WP Video Popup – WordPress Video Lightbox for YouTube, Rumble & Vimeo ===
 Contributors: davidvongries
 Tags: YouTube Lightbox, Vimeo Lightbox, Rumble Lightbox, Video Lightbox, Video Popup
 Requires at least: 4.0
