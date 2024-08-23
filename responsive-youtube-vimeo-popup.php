@@ -275,6 +275,9 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	// Parser data.
 	$video_type = WP_Video_Popup_Parser::identify_service( $video );
 	$video_url  = WP_Video_Popup_Parser::get_embed_url( $video );
+	
+	 
+
 
 	/* Construct Output */
 
@@ -323,13 +326,50 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 
 	}
 
-	return '
+	$output = '
 	<div class="wp-video-popup-wrapper">
 		<div class="wp-video-popup-close"></div>
 		<iframe class="wp-video-popup-video is-hosted ' . $viewport . '" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" allowfullscreen allow="autoplay">
 		</iframe>
 	</div>
 	';
+
+	if ( 'rumble' === $video_type ) {
+
+		// For Rumble videos, use the Rumble embed script.
+		$video_id = WP_Video_Popup_Parser::get_rumble_id( $video );
+		$output = '
+		<div class="wp-video-popup-wrapper">
+			<div class="wp-video-popup-close"></div>
+			<div class="rumble-video" id="rumble_' . esc_attr($video_id) . '"></div>
+			<script>
+				!function(r,u,m,b,l,e){
+					r._Rumble=b;
+					r[b]||(r[b]=function(){
+						(r[b]._=r[b]._||[]).push(arguments);
+						if(r[b]._.length==1){
+							l=u.createElement(m);
+							e=u.getElementsByTagName(m)[0];
+							l.async=1;
+							l.src="https://rumble.com/embedJS/' . esc_js($video_id) . '" + (arguments[1].video ? "." + arguments[1].video : "") + "/?url=" + encodeURIComponent(location.href) + "&args=" + encodeURIComponent(JSON.stringify([].slice.apply(arguments)));
+							e.parentNode.insertBefore(l, e);
+						}
+					});
+				}(window, document, "script", "Rumble");
+				Rumble("play", {"video": "' . esc_js($video_id) . '", "div": "rumble_' . esc_attr($video_id) . '"}); 
+
+				document.querySelector(".wp-video-popup-close").addEventListener("click", function() {
+					Rumble("stop", {"video": "' . esc_js($video_id) . '"});
+				});
+				
+			</script>
+		</div>
+		';
+	}
+
+
+    return $output;
+
 
 }
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
