@@ -9,20 +9,20 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-**[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube, Rumble or Vimeo video lightbox to any page, post or custom post type of your website. Add beautiful, minimalist video lightbox popups to your WordPress site with just a few clicks - **without compromising performance**.
+**[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube, Rumble or Vimeo video lightbox to any page, post or custom post type of your website. Add beautiful, minimalist video lightbox popups to your WordPress site with just a few clicks - **without sacrificing performance**.
 
 == Why choose WP Video Popup? == 
 
-= Effortless integration =
+= ✨Effortless integration =
 Add a sleek, minimalist video lightbox to any page, post, or custom post type using a simple shortcode.
 
-= Performance optimized =
+= ⚡Performance optimized =
 Embedding YouTube or Vimeo videos can slow down your site. With WP Video Popup, videos are only loaded when users click to view them, ensuring fast page speeds and optimal performance.
 
-= Fully responsive =
+= 📱Fully responsive =
  Our lightbox plugin adapts to all screen sizes, offering a flawless viewing experience on any device.
 
-= GDPR compliant =
+= ✅GDPR compliant =
 WP Video Popup is GDPR compliant. No video connections are made until the lightbox is triggered.
 
 [youtube https://www.youtube.com/watch?v=QBEppQ7mslo]
@@ -98,7 +98,7 @@ add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );`
 
 ---------
 
-=== WP Video Popup PRO ===
+=== 🚀 WP Video Popup PRO ===
 
 Unlock advanced features like **video galleries**, **self-hosted videos**, **multiple videos per page** & more with **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
 
