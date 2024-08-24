@@ -1,4 +1,4 @@
-=== WP Video Popup – WordPress Video Lightbox for YouTube & Vimeo ===
+=== WP Video Popup – WordPress Video Lightbox for YouTube, Rumble & Vimeo ===
 Contributors: davidvongries
 Tags: YouTube Lightbox, Vimeo Lightbox, Rumble Lightbox, Video Lightbox, Video Popup
 Requires at least: 4.0
@@ -8,82 +8,79 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-=== The best WordPress video lightbox plugin! ===
 
-**[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube, Rumble or Vimeo video lightbox to any page, post or custom post type of your website.
+**[WP Video Popup](https://wp-video-popup.com/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** lets you add a responsive YouTube, Rumble or Vimeo video lightbox to any page, post or custom post type of your website. Add beautiful, minimalist video lightbox popups to your WordPress site with just a few clicks - **without sacrificing performance**.
 
-Add beautiful, minimalistic video lightbox popups to your WordPress website with just a few clicks & **without sacrificing performance**.
+== Why choose WP Video Popup? == 
+
+= ✨Effortless integration =
+Add a sleek, minimalist video lightbox to any page, post, or custom post type using a simple shortcode.
+
+= ⚡Performance optimized =
+Embedding YouTube or Vimeo videos can slow down your site. With WP Video Popup, videos are only loaded when users click to view them, ensuring fast page speeds and optimal performance.
+
+= 📱Fully responsive =
+ Our lightbox plugin adapts to all screen sizes, offering a flawless viewing experience on any device.
+
+= ✅GDPR compliant =
+WP Video Popup is GDPR compliant. No video connections are made until the lightbox is triggered.
 
 [youtube https://www.youtube.com/watch?v=QBEppQ7mslo]
 
-Use the shortcode 
+== How it works ==
+
+**Add the shortcode** 
 
 `[wp-video-popup video="link-to-your-youtube-or-vimeo-video"]`
 
-in your post, page, custom post type or template file to add a responsive YouTube or Vimeo video lightbox to your WordPress website.
+anywhere to your post, page, custom post type or template file to embed the responsive video lightbox to your WordPress website.
 
-To open the lightbox, simply add the **CSS-class**
+**Trigger the lightbox:** Add the CSS class `wp-video-popup` to the element that should open the lightbox. This can be any element.
 
-`wp-video-popup`
+**Example (Link):**
 
-to the element you wish to open/trigger the lightbox.
-
-= GDPR compliance =
-WP Video Popup is 100% GDPR compliant. No connection to YouTube or Vimeo is established before the trigger element has been clicked.
-
-= Page speed & performance =
-Embedding YouTube or Vimeo videos can slow down your website. With WP Video Lightbox the video is only being loaded by the click on the trigger element for the maximum performance & fast loading speeds.
-
-= Fully responsive =
-The WordPress video lightbox is fully responsive and adjusts to the device width & height the video is viewed on.
+`<a href="#" class="wp-video-popup">Watch Video</a>`
 
 ---------
 
-=== Usage ===
-Example shortcode to display a **YouTube video lightbox**:
+=== Example Shortcodes ===
+
+For **YouTube**:
 
 `[wp-video-popup video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
-Example shortcode to display a **Vimeo video lightbox**:
+For **Vimeo**:
 
 `[wp-video-popup video="https://vimeo.com/136696258"]`
 
-Example shortcode to display a **Rumble video lightbox**:
+For **Rumble**:
 
 `[wp-video-popup video="https://rumble.com/embed/v4j2rri/?pub=4"]`
-
-CSS-class that needs to be added to the element you want to open/trigger the video lightbox:
-
-`wp-video-popup`
-
-Trigger element example (link):
-
-`<a href="#" class="wp-video-popup">Play Video</a>`
 
 ---------
 
 === Shortcode attributes ===
 
-There are attributes available to add parameters to the embed-URL that’s dynamically generated from the video link provided in the shortcode.
+Here is a list of available shortcode attributes to further customize the viewing experience.
 
-Mute video:
+**Mute video:**
 
 `mute="1"`
 
-Hide related YouTube videos:
-Since September 2018, hiding related videos is no longer possible. Instead videos from your channel will be shown.
+**Hide related videos (YouTube):**
+Since September 2018, hiding related videos is no longer possible. Instead, videos from your channel will be shown.
 
 `hide-related="1"`
 
-Start video at a specific time (value in seconds):
+**Start video at a specific time (value in seconds):**
 
 `start="24"`
 
-Portrait mode (Vimeo only):
+**Portrait mode (Vimeo):**
 
 `portrait="1"`
 
-Example shortcode with shortcode attributes:
+**Example shortcode with shortcode attributes applied:**
 
 `[wp-video-popup mute="1" start="24" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
@@ -91,9 +88,7 @@ Example shortcode with shortcode attributes:
 
 === Advanced ===
 
-In addition to the shortcode attributes, there is a filter available that allows you to add more parameters to the embed-URL. By default, only the `autoplay` attribute is added to the embed-URL.
-
-In the example below, we use the filter to remove the YouTube branding from the video by adding the `modestbranding` parameter:
+To add additional parameters to the embed URL, use the filter below. For example, to remove the YouTube branding:
 
 `function prefix_your_custom_embed_url_attributes( $video_url ) {
 	$video_url .= '&amp;modestbranding=1';
@@ -103,22 +98,18 @@ add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );`
 
 ---------
 
-=== WP Video Popup PRO ===
+=== 🚀 WP Video Popup PRO ===
 
-For multiple popups on a single page, video galleries, autoplay on page load, self-hosted videos & more check out **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
+Unlock advanced features like **video galleries**, **self-hosted videos**, **multiple videos per page** & more with **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**!
 
 **PRO Features:**
 
-* Multiple popups on a single page/post
+* Multiple popups per page
 * Self-hosted videos
 * Video galleries
 * Autoplay on page load
 * Adjustable popup size
-* Overlay background color setting
-
-**NEW!** - Create galleries with **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)**:
-
-[youtube https://youtu.be/7HK2CxGvaDM]
+* Customizable Overlay background color
 
 Get **[WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup)** today!
 
