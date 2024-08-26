@@ -30,7 +30,6 @@ class WP_Video_Popup_Parser {
 		}
 
 		return 'youtube';
-
 	}
 
 	/**
@@ -54,7 +53,6 @@ class WP_Video_Popup_Parser {
 		}
 
 		return '';
-
 	}
 
 	/**
@@ -81,7 +79,6 @@ class WP_Video_Popup_Parser {
 		}
 
 		return $url;
-
 	}
 
 	/**
@@ -104,7 +101,6 @@ class WP_Video_Popup_Parser {
 
 		// Try to get ID from last portion of url.
 		return self::parse_url_for_last_element( $url );
-
 	}
 
 	/**
@@ -135,7 +131,6 @@ class WP_Video_Popup_Parser {
 
 		// Try to get ID from last portion of url.
 		return self::parse_url_for_last_element( $url );
-
 	}
 
 	/**
@@ -149,7 +144,6 @@ class WP_Video_Popup_Parser {
 	public static function get_vimeo_embed_url( $vimeo_video_id, $autoplay = 1 ) {
 
 		return "https://player.vimeo.com/video/$vimeo_video_id?byline=0&amp;portrait=0&amp;autoplay=$autoplay";
-
 	}
 
 	/**
@@ -175,30 +169,28 @@ class WP_Video_Popup_Parser {
 			// Extract the last part of the URL
 			return self::parse_url_for_last_element( $url );
 		}
-		
-		// If URL does not contain 'embed', use alternate logic 
-		// Iframely API endpoint
-		$api_url = 'https://iframely.com/api/try?url=' . urlencode($url);
+
+		// If URL does not contain 'embed', use alternate logic
+		$iframely_api_url = 'https://iframely.com/api/try?url=' . urlencode( $url );
 
 		// Fetch the data from Iframely API
-		$response = file_get_contents($api_url);
+		$response = file_get_contents( $iframely_api_url );
 
 		// Decode the JSON response
-		$data = json_decode($response, true);
+		$data = json_decode( $response, true );
 		$html = $data['html'];
 
 		// Regular expression to extract the ID between "embed/" and the next "/"
-		$pattern = '/embed\/(.*?)\//';
-
+		$pattern  = '/embed\/(.*?)\//';
 		$video_id = false;
+
 		// Apply the regex
-		if (preg_match($pattern, $html, $matches)) {
+		if ( preg_match( $pattern, $html, $matches ) ) {
 			// Extracted ID
-			$video_id = $matches[1]; 
-		} 
+			$video_id = $matches[1];
+		}
 
 		return $video_id;
-
 	}
 
 	/**
@@ -212,7 +204,6 @@ class WP_Video_Popup_Parser {
 	public static function get_rumble_embed_url( $rumble_video_id, $autoplay = 2 ) {
 
 		return "https://rumble.com/embed/$rumble_video_id/?autoplay=$autoplay";
-
 	}
 
 	/**
@@ -236,7 +227,6 @@ class WP_Video_Popup_Parser {
 		}
 
 		return null;
-
 	}
 
 	/**
@@ -261,6 +251,5 @@ class WP_Video_Popup_Parser {
 		}
 
 		return $url;
-
 	}
 }
