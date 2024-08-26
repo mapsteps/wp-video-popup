@@ -174,31 +174,30 @@ class WP_Video_Popup_Parser {
 
 			// Extract the last part of the URL
 			return self::parse_url_for_last_element( $url );
+		}
+		
+		// If URL does not contain 'embed', use alternate logic 
+		// Iframely API endpoint
+		$api_url = 'https://iframely.com/api/try?url=' . urlencode($url);
 
-		} else {
-			// If URL does not contain 'embed', use alternate logic 
-			// Iframely API endpoint
-			$api_url = 'https://iframely.com/api/try?url=' . urlencode($url);
+		// Fetch the data from Iframely API
+		$response = file_get_contents($api_url);
 
-			// Fetch the data from Iframely API
-			$response = file_get_contents($api_url);
+		// Decode the JSON response
+		$data = json_decode($response, true);
+		$html = $data['html'];
 
-			// Decode the JSON response
-			$data = json_decode($response, true);
-			$html = $data['html'];
+		// Regular expression to extract the ID between "embed/" and the next "/"
+		$pattern = '/embed\/(.*?)\//';
 
-			// Regular expression to extract the ID between "embed/" and the next "/"
-			$pattern = '/embed\/(.*?)\//';
-
-			$video_id = false;
-			// Apply the regex
-			if (preg_match($pattern, $html, $matches)) {
-				// Extracted ID
-				$video_id = $matches[1]; 
-			} 
-
-			return $video_id;
+		$video_id = false;
+		// Apply the regex
+		if (preg_match($pattern, $html, $matches)) {
+			// Extracted ID
+			$video_id = $matches[1]; 
 		} 
+
+		return $video_id;
 
 	}
 
