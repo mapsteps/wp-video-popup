@@ -337,8 +337,6 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	</div>
 	';
 
-    return $output;
-
 }
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );
 add_shortcode( 'ryv-popup', 'wp_video_popup_shortcode' ); // Backwards compatibility.
