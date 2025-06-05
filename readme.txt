@@ -2,8 +2,8 @@
 Contributors: davidvongries
 Tags: YouTube Lightbox, Vimeo Lightbox, Rumble Lightbox, Video Lightbox, Video Popup
 Requires at least: 4.0
-Tested up to: 6.6
-Stable tag: 2.10.1
+Tested up to: 6.8
+Stable tag: 2.10.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -149,6 +149,8 @@ When adding the URL to the shortcode, try to remove the last string so that your
 3. Mobile example
 
 == Changelog ==
+= 2.10.2 June 05, 2025 =
+* Tested up to WordPress 6.8
 = 2.10.1 August 27, 2024 =
 * Tweak: Added support for Rumble video URLs, allowing users to provide the video URL directly instead of the embed URL
 = 2.10 August 23, 2024 =
