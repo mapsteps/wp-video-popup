@@ -35,7 +35,7 @@ function wp_video_popup_settings_page_template() {
  */
 function wp_video_popup_add_settings_link( $actions, $plugin_file, $plugin_data, $context ) {
 	if ( WP_VIDEO_POPUP_PLUGIN_BASENAME === $plugin_file ) {
-		$settings_link = '<a href="' . esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ) . '">' . __( 'Settings', 'wp-video-popup' ) . '</a>';
+		$settings_link = '<a href="' . esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ) . '">' . __( 'Settings', 'responsive-youtube-vimeo-popup' ) . '</a>';
 
 		array_unshift( $actions, $settings_link );
 	}

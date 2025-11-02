@@ -6,6 +6,9 @@
  * Version: 2.10.2
  * Author: David Vongries
  * Author URI: https://mapsteps.com
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: responsive-youtube-vimeo-popup
  *
  * @package WP_Video_Popup
  */
@@ -45,14 +48,14 @@ function wp_video_popup_pro_ad() {
 			</div>
 			<div class="notice-content">
 				<h2>
-					<?php _e( 'Welcome to WP Video Popup!', 'wp-video-popup' ); ?>
+					<?php _e( 'Welcome to WP Video Popup!', 'responsive-youtube-vimeo-popup' ); ?>
 				</h2>
 				<p>
-					<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong style="color: tomato">70% off WP Video Popup PRO</strong> for a limited time, automatically applied at checkout. Grab it while it lasts.', 'wp-video-popup' ); ?>
+					<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong style="color: tomato">70% off WP Video Popup PRO</strong> for a limited time, automatically applied at checkout. Grab it while it lasts.', 'responsive-youtube-vimeo-popup' ); ?>
 				</p>
 				<p>
-					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php _e( 'Learn more', 'wp-video-popup' ); ?></a>
-					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO - 70% off!', 'wp-video-popup' ); ?></a>
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php _e( 'Learn more', 'responsive-youtube-vimeo-popup' ); ?></a>
+					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO - 70% off!', 'responsive-youtube-vimeo-popup' ); ?></a>
 				</p>
 			</div>
 		</div>
@@ -127,8 +130,8 @@ function wp_video_popup_review_notice() {
 	$link_start = '<a href="' . $review_url . '" target="_blank">';
 	$link_end   = '</a>';
 	// translators: %1$s: Emoji, %2$s: Link start tag, %3$s: Link end tag.
-	$notice   = sprintf( __( '%1$s Love using WP Video Popup? - That\'s awesome! Help us spread the word and leave us a %2$s 5-star review %3$s in the WordPress repository.', 'wp-video-popup' ), $emoji, $link_start, $link_end );
-	$btn_text = __( 'Sure! You deserve it!', 'wp-video-popup' );
+	$notice   = sprintf( __( '%1$s Love using WP Video Popup? - That\'s awesome! Help us spread the word and leave us a %2$s 5-star review %3$s in the WordPress repository.', 'responsive-youtube-vimeo-popup' ), $emoji, $link_start, $link_end );
+	$btn_text = __( 'Sure! You deserve it!', 'responsive-youtube-vimeo-popup' );
 	$notice  .= '<br/>';
 	$notice  .= "<a href=\"$review_url\" style=\"margin-top: 15px;\" target='_blank' class=\"button-primary\">$btn_text</a>";
 
@@ -148,15 +151,15 @@ function wp_video_popup_dismiss_review_notice() {
 	$dismiss = isset( $_POST['dismiss'] ) ? absint( $_POST['dismiss'] ) : 0;
 
 	if ( empty( $dismiss ) ) {
-		wp_send_json_error( __( 'Invalid Request', 'wp-video-popup' ) );
+		wp_send_json_error( __( 'Invalid Request', 'responsive-youtube-vimeo-popup' ) );
 	}
 
 	if ( ! wp_verify_nonce( $nonce, 'WP_Video_Popup_Dismiss_Review_Notice' ) ) {
-		wp_send_json_error( __( 'Invalid Token', 'wp-video-popup' ) );
+		wp_send_json_error( __( 'Invalid Token', 'responsive-youtube-vimeo-popup' ) );
 	}
 
 	update_option( 'wp_video_popup_review_notice', 1 );
-	wp_send_json_success( __( 'Discount notice has been dismissed', 'wp-video-popup' ) );
+	wp_send_json_success( __( 'Discount notice has been dismissed', 'responsive-youtube-vimeo-popup' ) );
 
 }
 add_action( 'wp_ajax_wp_video_popup_review_notice_dismissal', 'wp_video_popup_dismiss_review_notice' );

@@ -16,11 +16,11 @@ function wp_video_popup_settings() {
 	register_setting( 'wp-video-popup-settings-group', 'wpvp_popup' );
 
 	// Settings sections.
-	add_settings_section( 'wp-video-popup-settings-section', __( 'Settings', 'wp-video-popup' ), '', 'wp-video-popup-settings' );
+	add_settings_section( 'wp-video-popup-settings-section', __( 'Settings', 'responsive-youtube-vimeo-popup' ), '', 'wp-video-popup-settings' );
 
 	// Settings fields.
-	add_settings_field( 'wp-video-popup-background-color', __( 'Overlay background color', 'wp-video-popup' ), 'wp_video_popup_background_color_callback', 'wp-video-popup-settings', 'wp-video-popup-settings-section' );
-	add_settings_field( 'wp-video-popup-size', __( 'Popup size', 'wp-video-popup' ), 'wp_video_popup_size_callback', 'wp-video-popup-settings', 'wp-video-popup-settings-section' );
+	add_settings_field( 'wp-video-popup-background-color', __( 'Overlay background color', 'responsive-youtube-vimeo-popup' ), 'wp_video_popup_background_color_callback', 'wp-video-popup-settings', 'wp-video-popup-settings-section' );
+	add_settings_field( 'wp-video-popup-size', __( 'Popup size', 'responsive-youtube-vimeo-popup' ), 'wp_video_popup_size_callback', 'wp-video-popup-settings', 'wp-video-popup-settings-section' );
 
 }
 add_action( 'admin_init', 'wp_video_popup_settings' );
@@ -42,17 +42,17 @@ function wp_video_popup_size_callback() {
 	<div class="wpvp-size-settings">
 		<ul class="wpvp-responsive-controls">
 			<li class="wpvp-responsive-control is-active" data-device="desktop">
-				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Desktop', 'wp-video-popup' ); ?>">
+				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Desktop', 'responsive-youtube-vimeo-popup' ); ?>">
 					<i class="dashicons dashicons-desktop"></i>
 				</button>
 			</li>
 			<li class="wpvp-responsive-control" data-device="tablet">
-				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Tablet', 'wp-video-popup' ); ?>">
+				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Tablet', 'responsive-youtube-vimeo-popup' ); ?>">
 					<i class="dashicons dashicons-tablet"></i>
 				</button>
 			</li>
 			<li class="wpvp-responsive-control" data-device="mobile">
-				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Mobile', 'wp-video-popup' ); ?>">
+				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Mobile', 'responsive-youtube-vimeo-popup' ); ?>">
 					<i class="dashicons dashicons-smartphone"></i>
 				</button>
 			</li>
@@ -63,7 +63,7 @@ function wp_video_popup_size_callback() {
 				<input type="text" name="wpvp_popup[sizes][desktop]" class="wpvp-size-field" placeholder="75%" value="" />
 
 				<p class="description">
-					<?php _e( 'Default: 1200px', 'wp-video-popup' ); ?>
+					<?php _e( 'Default: 1200px', 'responsive-youtube-vimeo-popup' ); ?>
 				</p>
 			</li>
 			<li class="wpvp-responsive-size wpvp-responsive-size-tablet" data-size-device="tablet">
