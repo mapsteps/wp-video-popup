@@ -42,17 +42,17 @@ function wp_video_popup_size_callback() {
 	<div class="wpvp-size-settings">
 		<ul class="wpvp-responsive-controls">
 			<li class="wpvp-responsive-control is-active" data-device="desktop">
-				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Desktop', 'responsive-youtube-vimeo-popup' ); ?>">
+				<button type="button" class="wpvp-device-button" data-hint="<?php esc_attr_e( 'Desktop', 'responsive-youtube-vimeo-popup' ); ?>">
 					<i class="dashicons dashicons-desktop"></i>
 				</button>
 			</li>
 			<li class="wpvp-responsive-control" data-device="tablet">
-				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Tablet', 'responsive-youtube-vimeo-popup' ); ?>">
+				<button type="button" class="wpvp-device-button" data-hint="<?php esc_attr_e( 'Tablet', 'responsive-youtube-vimeo-popup' ); ?>">
 					<i class="dashicons dashicons-tablet"></i>
 				</button>
 			</li>
 			<li class="wpvp-responsive-control" data-device="mobile">
-				<button type="button" class="wpvp-device-button" data-hint="<?php _e( 'Mobile', 'responsive-youtube-vimeo-popup' ); ?>">
+				<button type="button" class="wpvp-device-button" data-hint="<?php esc_attr_e( 'Mobile', 'responsive-youtube-vimeo-popup' ); ?>">
 					<i class="dashicons dashicons-smartphone"></i>
 				</button>
 			</li>
@@ -63,7 +63,7 @@ function wp_video_popup_size_callback() {
 				<input type="text" name="wpvp_popup[sizes][desktop]" class="wpvp-size-field" placeholder="75%" value="" />
 
 				<p class="description">
-					<?php _e( 'Default: 1200px', 'responsive-youtube-vimeo-popup' ); ?>
+					<?php esc_html_e( 'Default: 1200px', 'responsive-youtube-vimeo-popup' ); ?>
 				</p>
 			</li>
 			<li class="wpvp-responsive-size wpvp-responsive-size-tablet" data-size-device="tablet">

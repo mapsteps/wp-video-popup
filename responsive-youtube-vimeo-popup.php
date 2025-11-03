@@ -48,14 +48,14 @@ function wp_video_popup_pro_ad() {
 			</div>
 			<div class="notice-content">
 				<h2>
-					<?php _e( 'Welcome to WP Video Popup!', 'responsive-youtube-vimeo-popup' ); ?>
+					<?php esc_html_e( 'Welcome to WP Video Popup!', 'responsive-youtube-vimeo-popup' ); ?>
 				</h2>
 				<p>
-					<?php _e( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong style="color: tomato">70% off WP Video Popup PRO</strong> for a limited time, automatically applied at checkout. Grab it while it lasts.', 'responsive-youtube-vimeo-popup' ); ?>
+					<?php echo wp_kses_post( __( 'Thank you for downloading WP Video Popup! As a valued customer you can get <strong style="color: tomato">70% off WP Video Popup PRO</strong> for a limited time, automatically applied at checkout. Grab it while it lasts.', 'responsive-youtube-vimeo-popup' ) ); ?>
 				</p>
 				<p>
-					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php _e( 'Learn more', 'responsive-youtube-vimeo-popup' ); ?></a>
-					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php _e( 'Get WP Video Popup PRO - 70% off!', 'responsive-youtube-vimeo-popup' ); ?></a>
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=wp-video-popup' ) ); ?>" class="button"><?php esc_html_e( 'Learn more', 'responsive-youtube-vimeo-popup' ); ?></a>
+					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=admin_notice&utm_campaign=wp_video_popup" target="_blank" class="button button-primary"><?php esc_html_e( 'Get WP Video Popup PRO - 70% off!', 'responsive-youtube-vimeo-popup' ); ?></a>
 				</p>
 			</div>
 		</div>
