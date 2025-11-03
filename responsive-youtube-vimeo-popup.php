@@ -136,7 +136,7 @@ function wp_video_popup_review_notice() {
 	$notice  .= "<a href=\"$review_url\" style=\"margin-top: 15px;\" target='_blank' class=\"button-primary\">$btn_text</a>";
 
 	echo '<div class="notice notice-info wp-video-popup-review-notice is-dismissible">';
-	echo '<p>' . $notice . '</p>';
+	echo '<p>' . wp_kses_post( $notice ) . '</p>';
 	echo '</div>';
 
 }

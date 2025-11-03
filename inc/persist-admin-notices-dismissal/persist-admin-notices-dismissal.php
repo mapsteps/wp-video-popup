@@ -56,7 +56,7 @@ if ( ! class_exists( 'PAnD' ) ) {
 			if ( apply_filters( 'pand_theme_loader', false ) ) {
 				add_filter(
 					'pand_dismiss_notice_js_url',
-					function( $js_url, $composer_path ) {
+					function ( $js_url, $composer_path ) {
 						return get_stylesheet_directory_uri() . $composer_path;
 					},
 					10,
@@ -86,11 +86,12 @@ if ( ! class_exists( 'PAnD' ) ) {
 			 * @param string $composer_path Relative path of Javascript file from composer install.
 			 */
 			$js_url = apply_filters( 'pand_dismiss_notice_js_url', $js_url, $composer_path );
+
 			wp_enqueue_script(
 				'dismissible-notices',
 				$js_url,
 				array( 'jquery', 'common' ),
-				false,
+				WP_VIDEO_POPUP_PLUGIN_VERSION,
 				true
 			);
 
@@ -111,9 +112,9 @@ if ( ! class_exists( 'PAnD' ) ) {
 			$option_name        = sanitize_text_field( $_POST['option_name'] );
 			$dismissible_length = sanitize_text_field( $_POST['dismissible_length'] );
 
-			if ( 'forever' != $dismissible_length ) {
-				// If $dismissible_length is not an integer default to 1
-				$dismissible_length = ( 0 == absint( $dismissible_length ) ) ? 1 : $dismissible_length;
+			if ( 'forever' !== $dismissible_length ) {
+				// If $dismissible_length is not an integer default to 1.
+				$dismissible_length = 0 === absint( $dismissible_length ) ? 1 : $dismissible_length;
 				$dismissible_length = strtotime( absint( $dismissible_length ) . ' days' );
 			}
 
