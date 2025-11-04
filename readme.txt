@@ -151,7 +151,7 @@ When adding the URL to the shortcode, try to remove the last string so that your
 == Changelog ==
 = 2.10.3 November 04, 2025 =
 * Fixed: Security improvements
-* Updated: Code quality and translation consistency
+* Tweak: Code quality and translation consistency
 = 2.10.2 June 05, 2025 =
 * Tested up to WordPress 6.8
 = 2.10.1 August 27, 2024 =
