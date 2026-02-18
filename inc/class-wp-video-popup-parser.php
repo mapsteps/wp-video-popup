@@ -306,7 +306,12 @@ class WP_Video_Popup_Parser {
 	 */
 	private static function parse_url_for_params( $url, $target_params ) {
 
-		parse_str( wp_parse_url( $url, PHP_URL_QUERY ), $my_array_of_params );
+		$query = wp_parse_url( $url, PHP_URL_QUERY );
+		if ( ! $query ) {
+			return null;
+		}
+
+		parse_str( $query, $my_array_of_params );
 
 		foreach ( $target_params as $target ) {
 			if ( array_key_exists( $target, $my_array_of_params ) ) {
