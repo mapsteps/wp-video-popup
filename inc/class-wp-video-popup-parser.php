@@ -75,7 +75,8 @@ class WP_Video_Popup_Parser {
 		} elseif ( 'youtube-nocookie' === $service ) {
 			return self::get_youtube_embed_url( $id, 1, true );
 		} elseif ( 'vimeo' === $service ) {
-			return self::get_vimeo_embed_url( $id );
+			$hash = self::get_vimeo_hash( $url );
+			return self::get_vimeo_embed_url( $id, 1, $hash );
 		} elseif ( 'rumble' === $service ) {
 			return self::get_rumble_embed_url( $id );
 		}
@@ -118,7 +119,7 @@ class WP_Video_Popup_Parser {
 	 */
 	public static function get_youtube_embed_url( $youtube_video_id, $autoplay = 1, $nocookie = false ) {
 
-		$video_url  = ! $nocookie ? 'https://youtube.com' : 'https://www.youtube-nocookie.com';
+		$video_url  = ! $nocookie ? 'https://www.youtube.com' : 'https://www.youtube-nocookie.com';
 		$video_url .= "/embed/$youtube_video_id?autoplay=$autoplay";
 
 		return $video_url;
@@ -134,8 +135,67 @@ class WP_Video_Popup_Parser {
 	 */
 	public static function get_vimeo_id( $url ) {
 
-		// Try to get ID from last portion of url.
-		return self::parse_url_for_last_element( $url );
+		$path = wp_parse_url( $url, PHP_URL_PATH );
+		if ( ! $path ) {
+			return '';
+		}
+
+		$path  = trim( $path, '/' );
+		$parts = explode( '/', $path );
+
+		// The first part that is purely numeric is likely the ID.
+		foreach ( $parts as $part ) {
+			if ( 'video' === $part ) {
+				continue;
+			}
+			if ( ctype_digit( $part ) ) {
+				return $part;
+			}
+		}
+
+		return '';
+
+	}
+
+	/**
+	 * Extracts the security hash from a Vimeo url.
+	 *
+	 * @param string $url The url.
+	 *
+	 * @return string The security hash.
+	 */
+	public static function get_vimeo_hash( $url ) {
+
+		// 1. Check path for pattern /ID/HASH.
+		$path = wp_parse_url( $url, PHP_URL_PATH );
+		if ( $path ) {
+			$path  = trim( $path, '/' );
+			$parts = explode( '/', $path );
+
+			// If we have at least 2 parts and the first one we find as numeric is followed by another part.
+			foreach ( $parts as $index => $part ) {
+				if ( 'video' === $part ) {
+					continue;
+				}
+				if ( ctype_digit( $part ) ) {
+					if ( ! empty( $parts[ $index + 1 ] ) ) {
+						return $parts[ $index + 1 ];
+					}
+					break;
+				}
+			}
+		}
+
+		// 2. Check query parameter 'h'.
+		$query = wp_parse_url( $url, PHP_URL_QUERY );
+		if ( $query ) {
+			parse_str( $query, $params );
+			if ( ! empty( $params['h'] ) ) {
+				return $params['h'];
+			}
+		}
+
+		return '';
 
 	}
 
@@ -144,12 +204,21 @@ class WP_Video_Popup_Parser {
 	 *
 	 * @param string $vimeo_video_id The video's id.
 	 * @param int    $autoplay The autoplay argument value.
+	 * @param string $hash The security hash for private videos.
 	 *
 	 * @return string The embed url.
 	 */
-	public static function get_vimeo_embed_url( $vimeo_video_id, $autoplay = 1 ) {
+	public static function get_vimeo_embed_url( $vimeo_video_id, $autoplay = 1, $hash = '' ) {
 
-		return "https://player.vimeo.com/video/$vimeo_video_id?byline=0&amp;portrait=0&amp;autoplay=$autoplay";
+		$video_url = "https://player.vimeo.com/video/$vimeo_video_id";
+
+		if ( $hash ) {
+			$video_url .= "?h=$hash&byline=0&portrait=0&autoplay=$autoplay";
+		} else {
+			$video_url .= "?byline=0&portrait=0&autoplay=$autoplay";
+		}
+
+		return $video_url;
 
 	}
 

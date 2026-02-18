@@ -290,25 +290,25 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 
 		// Mute Vimeo video.
 		if ( $mute ) {
-			$video_url .= '&amp;muted=1';
+			$video_url .= '&muted=1';
 		}
 
 	} elseif ( 'rumble' === $video_type ) {
 
 		if ( $hide_related ) {
-			$video_url .= '&amp;rel=0';
+			$video_url .= '&rel=0';
 		}
 
 	} else {
 
 		// Remove YouTube related videos.
 		if ( $hide_related ) {
-			$video_url .= '&amp;rel=0';
+			$video_url .= '&rel=0';
 		}
 
 		// Mute YouTube video.
 		if ( $mute ) {
-			$video_url .= '&amp;mute=1';
+			$video_url .= '&mute=1';
 		}
 
 	}
@@ -327,7 +327,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 
 		// Start YouTube video at specific time.
 		if ( $start ) {
-			$video_url .= '&amp;start=' . $start;
+			$video_url .= '&start=' . $start;
 		}
 
 	}

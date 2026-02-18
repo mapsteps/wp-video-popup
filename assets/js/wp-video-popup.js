@@ -27,10 +27,11 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 
 (function ($) {
 	// Free version only support 1 video per page/ post.
-	var popup = document.querySelector('.wp-video-popup-wrapper');
+	var popup;
 	var speed = 200;
 
 	function init() {
+		popup = document.querySelector('.wp-video-popup-wrapper');
 		if (!popup) return;
 		setupOpenActions();
 		setupVideoHeight();
@@ -87,7 +88,11 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 		}, speed);
 
 		$(video).stop().fadeIn(speed);
-		video.src = video.dataset.wpVideoPopupUrl;
+
+		var videoUrl = video.getAttribute('data-wp-video-popup-url');
+		if (videoUrl) {
+			video.setAttribute('src', videoUrl);
+		}
 
 		window.dispatchEvent(new Event('resize'));
 	}
@@ -102,9 +107,11 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 		});
 
 		$(video).stop().fadeOut(speed, function () {
-			video.src = '';
+			video.setAttribute('src', '');
 		});
 	}
 
-	init();
+	$(document).ready(function () {
+		init();
+	});
 })(jQuery);
