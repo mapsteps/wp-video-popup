@@ -2,8 +2,8 @@
 Contributors: davidvongries
 Tags: YouTube Lightbox, Vimeo Lightbox, Rumble Lightbox, Video Lightbox, Video Popup
 Requires at least: 4.0
-Tested up to: 6.8
-Stable tag: 2.10.3
+Tested up to: 6.9
+Stable tag: 2.10.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,10 +138,6 @@ We add the autoplay attribute to the embed-URL by default. That being said, the 
 To mute the video, add the `mute="1"` attribute to the shortcode like this:
 
 `[wp-video-popup mute="1" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
-= What about private Vimeo videos =
-Private vimeo videos add an extra string to the URL like this: `https://vimeo.com/xxxx/yyyy`.
-
-When adding the URL to the shortcode, try to remove the last string so that your shortcode would look something like this: `[wp-video-popup video="https://vimeo.com/xxxx"]`.
 
 == Screenshots ==
 1. Live example
@@ -149,6 +145,9 @@ When adding the URL to the shortcode, try to remove the last string so that your
 3. Mobile example
 
 == Changelog ==
+= 2.10.4 February 19, 2026 =
+* New: Added native support for private Vimeo videos
+* Tested up to WordPress 6.9
 = 2.10.3 November 04, 2025 =
 * Fixed: Security improvements
 * Tweak: Code quality and translation consistency
