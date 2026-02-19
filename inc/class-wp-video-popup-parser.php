@@ -231,48 +231,48 @@ class WP_Video_Popup_Parser {
 	 */
 	public static function get_rumble_id( $url ) {
 
-		// Check if the URL contains 'embed'
+		// Check if the URL contains 'embed'.
 		if ( stripos( $url, 'embed' ) !== false ) {
-			// If URL contains 'embed', use this logic
+			// If URL contains 'embed', use this logic.
 			if ( stripos( $url, '/?' ) !== false ) {
 				$splits = explode( '/?', $url );
 				$url    = $splits[0];
 			}
 
-			// Remove trailing slash
+			// Remove trailing slash.
 			$url = untrailingslashit( $url );
 
-			// Extract the last part of the URL
+			// Extract the last part of the URL.
 			return self::parse_url_for_last_element( $url );
 		}
 
-		// If URL does not contain 'embed', use alternate logic
-		$iframely_api_url = 'https://iframely.com/api/try?url=' . urlencode( $url );
+		// If URL does not contain 'embed', use alternate logic.
+		$iframely_api_url = 'https://iframely.com/api/try?url=' . rawurlencode( $url );
 
-		// Fetch the data from Iframely API using wp_remote_get()
+		// Fetch the data from Iframely API using wp_remote_get().
 		$remote_response = wp_remote_get( $iframely_api_url );
 
-		// Check if the request was successful
+		// Check if the request was successful.
 		if ( is_wp_error( $remote_response ) ) {
 			return '';
 		}
 
-		// Decode the JSON response using json_decode()
+		// Decode the JSON response using json_decode().
 		$data = json_decode( $remote_response['body'], true );
 
-		if ( ! $data ) {
+		if ( ! $data || empty( $data['code'] ) ) {
 			return '';
 		}
 
 		$markup = $data['code'];
 
-		// Regular expression to extract the ID between "embed/" and the next "/"
+		// Regular expression to extract the ID between "embed/" and the next "/".
 		$pattern  = '/embed\/(.*?)\//';
 		$video_id = false;
 
-		// Apply the regex
+		// Apply the regex.
 		if ( preg_match( $pattern, $markup, $matches ) ) {
-			// Extracted ID
+			// Extracted ID.
 			$video_id = $matches[1];
 		}
 
