@@ -3,7 +3,7 @@ Contributors: davidvongries
 Tags: YouTube Lightbox, Vimeo Lightbox, Rumble Lightbox, Video Lightbox, Video Popup
 Requires at least: 4.7
 Tested up to: 6.9
-Stable tag: 2.10.4
+Stable tag: 2.11.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,14 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 3. Mobile example
 
 == Changelog ==
+= 2.11.0 November 04, 2026 =
+* New: Redesigned settings page
+* New: Accessible popup (keyboard support, focus handling, screen reader labels)
+* Tweak: Rumble video URLs are now resolved via Rumble's own API and cached, instead of a third-party service
+* Tweak: Removed legacy Internet Explorer code
+* Tweak: Requires WordPress 4.7
+* Fixed: Sanitize the start attribute
+* Fixed: Don't output a broken popup if a video can't be identified
 = 2.10.4 February 19, 2026 =
 * New: Added native support for private Vimeo videos
 * Tested up to WordPress 6.9
