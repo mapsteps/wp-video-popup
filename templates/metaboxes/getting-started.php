@@ -87,14 +87,6 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 					);
 					?>
 				</p>
-
-				<h3 class="wpvp-tips-title"><?php esc_html_e( 'Where to find the CSS class field', 'responsive-youtube-vimeo-popup' ); ?></h3>
-				<ul class="wpvp-tips">
-					<li><strong><?php esc_html_e( 'Block editor', 'responsive-youtube-vimeo-popup' ); ?></strong> <span><?php esc_html_e( 'Advanced → Additional CSS class(es)', 'responsive-youtube-vimeo-popup' ); ?></span></li>
-					<li><strong>Elementor</strong> <span><?php esc_html_e( 'Advanced → CSS Classes', 'responsive-youtube-vimeo-popup' ); ?></span></li>
-					<li><strong>Divi</strong> <span><?php esc_html_e( 'Advanced → CSS ID & Classes', 'responsive-youtube-vimeo-popup' ); ?></span></li>
-					<li><strong>Bricks</strong> <span><?php esc_html_e( 'Style → CSS → CSS classes', 'responsive-youtube-vimeo-popup' ); ?></span></li>
-				</ul>
 			</li>
 		</ol>
 

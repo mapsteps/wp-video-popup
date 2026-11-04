@@ -91,45 +91,12 @@
 	flex-grow: 0;
 }
 
-/* Page builder tips: divider above, same heading size as the steps */
-.heatbox .heatbox-steps .wpvp-tips-title {
-	margin: var(--heatbox-gap) 0 12px;
-	padding-top: var(--heatbox-gap);
-	border-top: 1px solid var(--heatbox-divider);
-}
-
-.wpvp-tips {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 12px;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.wpvp-tips li {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	margin: 0;
-	padding: 12px 16px;
-	color: var(--heatbox-text-muted);
-	background: var(--heatbox-surface-hover);
-	border: 1px solid var(--heatbox-divider);
-	border-radius: var(--heatbox-radius);
-}
-
-.wpvp-tips li strong {
-	color: var(--heatbox-text);
-}
-
 @media screen and (max-width: 782px) {
 	.wpvp-builder {
 		padding: 16px;
 	}
 
-	.wpvp-builder-row,
-	.wpvp-tips {
+	.wpvp-builder-row {
 		grid-template-columns: 1fr;
 	}
 
