@@ -5,8 +5,9 @@
 
 	<!-- Exclude some directories. -->
 	<exclude-pattern>*/wp-admin/*</exclude-pattern>
-	<exclude-pattern>*/wp-incudes/*</exclude-pattern>
+	<exclude-pattern>*/wp-includes/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/inc/persist-admin-notices-dismissal/*</exclude-pattern>
 
 	<!-- Only check PHP files. -->
 	<arg name="extensions" value="php"/>

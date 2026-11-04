@@ -1,13 +1,11 @@
-/* Remove notification */
+/**
+ * WP Video Popup settings page.
+ * Builds on heatbox.css and uses its --heatbox-* tokens.
+ */
+
+/* Hide the PRO notice on the settings page itself */
 [data-dismissible="wp-video-popup-pro-ad-forever"] {
 	display: none;
-}
-
-/* Settings metabox */
-.wpvp-settings-metabox tbody {
-	opacity: .5;
-	pointer-events: none;
-	background: rgba(241, 241, 241, 0.5);
 }
 
 /* Size field */
@@ -15,18 +13,19 @@
 	width: 100px;
 }
 
-/* Responsive control */
+/* Device switcher */
 .wpvp-responsive-controls {
-	position: relative;
-	margin: 0 0 5px;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: flex-start;
+	gap: 6px;
+	margin: 0 0 8px;
+	padding: 0;
+	list-style: none;
 }
 
 .wpvp-responsive-control {
-	margin-right: 8px;
+	margin: 0;
 }
 
 .wpvp-responsive-control .wpvp-device-button {
@@ -34,24 +33,25 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0;
 	width: 28px;
 	height: 28px;
-	color: #777;
-	background-color: white;
-	border: 1px solid #ccc;
+	padding: 0;
+	color: var(--heatbox-text-muted);
+	background-color: var(--heatbox-surface);
+	border: 1px solid var(--heatbox-border);
 	border-radius: 50%;
 	cursor: pointer;
 }
 
 .wpvp-responsive-control:hover .wpvp-device-button {
-	border-color: #000;
+	color: var(--heatbox-text);
+	border-color: var(--heatbox-control-border);
 }
 
 .wpvp-responsive-control.is-active .wpvp-device-button {
-	background-color: #eee;
-	color: #000;
-	border-color: #000;
+	color: var(--heatbox-accent);
+	background-color: var(--heatbox-accent-soft);
+	border-color: var(--heatbox-accent);
 }
 
 .wpvp-responsive-control .wpvp-device-button i {
@@ -60,35 +60,23 @@
 	font-size: 16px;
 }
 
-.wpvp-responsive-control .wpvp-device-button::before,
-.wpvp-responsive-control .wpvp-device-button::after {
-	display: none;
-}
-
-.wpvp-responsive-control .wpvp-device-button::before {
-  position: absolute;
-	content: '';
-	margin-left: 2px;
-	height: 0;
-  width: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent; 
-  border-top: 5px solid #000;
-  left: 5px;
-  bottom: 30px;
-}
-
+/* Device button tooltip */
 .wpvp-responsive-control .wpvp-device-button::after {
 	content: attr(data-hint);
 	position: absolute;
-	bottom: 35px;
-	padding: 3px 10px;
-	color: #fff;
-	background-color: #000;
-	border-radius: 5px;
+	bottom: calc(100% + 6px);
+	left: 50%;
+	display: none;
+	padding: 4px 8px;
+	font-size: 12px;
+	line-height: 1.4;
+	white-space: nowrap;
+	color: var(--heatbox-text-on-accent);
+	background-color: var(--heatbox-text);
+	border-radius: var(--heatbox-radius-small);
+	transform: translateX(-50%);
 }
 
-.wpvp-responsive-control .wpvp-device-button:hover::before,
 .wpvp-responsive-control .wpvp-device-button:hover::after {
 	display: block;
 }
@@ -101,77 +89,56 @@
 
 .wpvp-responsive-size {
 	display: none;
+	margin: 0;
 }
 
 .wpvp-responsive-size.is-active {
 	display: block;
 }
 
-/* PRO metabox */
-.wpvp-pro-metabox span.badge {
-	font-size: 50%;
-	padding: 4px 10px;
-	border-radius: 50px;
-	background: #6dbb7a;
-	color: #fff;
+/* Other products: same width as the settings above */
+.featured-products.heatbox-container-wide {
+	max-width: 1200px;
 }
 
-.wpvp-pro-metabox .intro {
-	padding: 20px;
-	background: #f1f1f1;
-	margin-bottom: 0;
-}
-
-.wpvp-pro-metabox ul li {
-	display: flex;
-	border-bottom: 1px solid #eee;
-	margin-bottom: 20px;
-}
-
-.wpvp-pro-metabox ul li:last-child {
-	border-bottom: none;
-	margin-bottom: 0;
-}
-
-.wpvp-pro-metabox .dashicons-yes {
-	margin-right: 12px;
-	color: #6dbb7a;
-	font-size: 28px;
-	margin-top: -3px;
-}
-
-.wpvp-pro-metabox h3 {
-	font-size: 18px;
-	margin-bottom: 8px;
-}
-
-.wpvp-pro-benefits li:last-child div p {
-	margin-bottom: 0;
-}
-
-.wpvp-pro-benefits {
-	margin-bottom: 0;
-}
-
-/* Featured */
 .featured-products > h2 {
+	margin: 0 0 24px;
+	font-size: 20px;
+	font-weight: 600;
 	text-align: center;
-	margin-bottom: 50px;
-	font-size: 24px;
+	color: var(--heatbox-text);
 }
 
 .featured-products .products {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--heatbox-gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .featured-products .products li {
-	width: 32%;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+.featured-products .products .heatbox-content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.featured-products .products .heatbox-content .button {
+	align-self: flex-start;
+	margin-top: auto;
 }
 
 .featured-products .products .subheadline {
-	font-weight: 600;
-	margin-top: -6px;
+	margin: 0 0 8px;
+	font-weight: 500;
+	color: var(--heatbox-text);
 }
 
 .featured-products .products img {
@@ -179,7 +146,13 @@
 }
 
 .featured-products .credit {
-	margin-top: 20px;
+	margin: 32px 0 20px;
 	text-align: center;
-	opacity: .5;
+	color: var(--heatbox-text-muted);
+}
+
+@media screen and (max-width: 782px) {
+	.featured-products .products {
+		grid-template-columns: 1fr;
+	}
 }

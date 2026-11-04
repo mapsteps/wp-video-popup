@@ -13,7 +13,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
  * @see https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
  */
 (function () {
-	if (typeof window.CustomEvent === "function") return false;
+	if (typeof window.CustomEvent === 'function') return false;
 
 	function CustomEvent(event, params) {
 		params = params || { bubbles: false, cancelable: false, detail: null };
@@ -61,7 +61,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 	function setupCloseActions() {
 		// Close on click.
 		popup.addEventListener('click', function (e) {
-			if (e.target == this || e.target.classList.contains('wp-video-popup-close')) closePopup();
+			if (e.target === this || e.target.classList.contains('wp-video-popup-close')) closePopup();
 		});
 
 		// Close on escape.

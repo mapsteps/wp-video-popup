@@ -73,7 +73,7 @@ add_action( 'admin_init', array( 'PAnD', 'init' ) );
  */
 function wp_video_popup_activation() {
 
-	if ( ! current_user_can( 'activate_plugins' ) || 'true' == get_option( 'wp_video_popup_plugin_activated' ) ) {
+	if ( ! current_user_can( 'activate_plugins' ) || 'true' === get_option( 'wp_video_popup_plugin_activated' ) ) {
 		return;
 	}
 
@@ -147,19 +147,22 @@ add_action( 'admin_notices', 'wp_video_popup_review_notice' );
  */
 function wp_video_popup_dismiss_review_notice() {
 
-	$nonce   = isset( $_POST['nonce'] ) ? $_POST['nonce'] : 0;
+	if ( ! check_ajax_referer( 'WP_Video_Popup_Dismiss_Review_Notice', 'nonce', false ) ) {
+		wp_send_json_error( __( 'Invalid Token', 'responsive-youtube-vimeo-popup' ) );
+	}
+
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_send_json_error( __( 'Insufficient permissions', 'responsive-youtube-vimeo-popup' ) );
+	}
+
 	$dismiss = isset( $_POST['dismiss'] ) ? absint( $_POST['dismiss'] ) : 0;
 
 	if ( empty( $dismiss ) ) {
 		wp_send_json_error( __( 'Invalid Request', 'responsive-youtube-vimeo-popup' ) );
 	}
 
-	if ( ! wp_verify_nonce( $nonce, 'WP_Video_Popup_Dismiss_Review_Notice' ) ) {
-		wp_send_json_error( __( 'Invalid Token', 'responsive-youtube-vimeo-popup' ) );
-	}
-
 	update_option( 'wp_video_popup_review_notice', 1 );
-	wp_send_json_success( __( 'Discount notice has been dismissed', 'responsive-youtube-vimeo-popup' ) );
+	wp_send_json_success( __( 'Review notice has been dismissed', 'responsive-youtube-vimeo-popup' ) );
 
 }
 add_action( 'wp_ajax_wp_video_popup_review_notice_dismissal', 'wp_video_popup_dismiss_review_notice' );
@@ -179,7 +182,7 @@ function wp_video_popup_review_notice_script() {
 		return;
 	}
 
-	wp_enqueue_script( 'wp-video-popup-review', WP_VIDEO_POPUP_PLUGIN_URL . '/assets/js/review-notice.js', array( 'jquery' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
+	wp_enqueue_script( 'wp-video-popup-review', WP_VIDEO_POPUP_PLUGIN_URL . 'assets/js/review-notice.js', array( 'jquery' ), WP_VIDEO_POPUP_PLUGIN_VERSION, true );
 
 	wp_localize_script(
 		'wp-video-popup-review',
@@ -196,6 +199,8 @@ add_action( 'admin_enqueue_scripts', 'wp_video_popup_review_notice_script' );
 
 /**
  * Admin scripts & styles.
+ *
+ * @param string $hook The current admin page hook.
  */
 function wp_video_popup_admin_scripts_styles( $hook ) {
 
@@ -220,12 +225,14 @@ add_action( 'admin_enqueue_scripts', 'wp_video_popup_admin_scripts_styles' );
  * Admin body class.
  *
  * @param string $classes The class names.
+ *
+ * @return string The class names.
  */
 function wp_video_popup_admin_body_class( $classes ) {
 
 	$screen = get_current_screen();
 
-	if ( $screen->id !== 'settings_page_wp-video-popup' ) {
+	if ( ! $screen || 'settings_page_wp-video-popup' !== $screen->id ) {
 		return $classes;
 	}
 
@@ -316,20 +323,9 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	// Filter to let people add other URL parameters.
 	$video_url = apply_filters( 'wp_video_popup', $video_url );
 
-	if ( 'vimeo' === $video_type ) {
-
-		// Start Vimeo video at specific time.
-		if ( $start ) {
-			$video_url .= '#t=' . $start;
-		}
-
-	} else {
-
-		// Start YouTube video at specific time.
-		if ( $start ) {
-			$video_url .= '&start=' . $start;
-		}
-
+	// Start the video at a specific time (Vimeo uses a hash, YouTube & Rumble a parameter).
+	if ( $start ) {
+		$video_url .= 'vimeo' === $video_type ? '#t=' . $start : '&start=' . $start;
 	}
 
 	return '

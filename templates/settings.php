@@ -2,7 +2,7 @@
 /**
  * Settings page template.
  *
- * @package WP_Video_Popup_PRO
+ * @package WP_Video_Popup
  */
 
 defined( 'ABSPATH' ) || die( "Can't access directly" );
@@ -44,7 +44,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 			<!-- Faking H1 tag to place admin notices -->
 			<h1 style="display: none;"></h1>
 
-			<div class="heatbox wpvp-settings-metabox">
+			<div class="heatbox wpvp-settings-metabox is-locked">
 				<?php do_settings_sections( 'wp-video-popup-settings' ); ?>
 			</div>
 
@@ -60,12 +60,12 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 			<div class="heatbox wpvp-pro-metabox">
 
 				<h2>
-					<?php esc_html_e( 'WP Video Popup PRO', 'responsive-youtube-vimeo-popup' ); ?> <span class="badge">PRO</span>
+					<?php esc_html_e( 'WP Video Popup PRO', 'responsive-youtube-vimeo-popup' ); ?> <span class="heatbox-badge">PRO</span>
 				</h2>
 
 				<div class="heatbox-content">
 
-					<ul class="wpvp-pro-benefits">
+					<ul class="heatbox-features">
 						<li>
 							<span class="dashicons dashicons-yes"></span>
 							<div>
@@ -77,7 +77,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 							<span class="dashicons dashicons-yes"></span>
 							<div>
 								<h3><?php esc_html_e( 'Self-hosted videos', 'responsive-youtube-vimeo-popup' ); ?></h3>
-								<p class="description"><?php esc_html_e( 'Display your self-hosted videos in a responsive lightbox popup with WP Video Poup PRO.', 'responsive-youtube-vimeo-popup' ); ?></p>
+								<p class="description"><?php esc_html_e( 'Display your self-hosted videos in a responsive lightbox popup with WP Video Popup PRO.', 'responsive-youtube-vimeo-popup' ); ?></p>
 							</div>
 						</li>
 						<li>
@@ -122,11 +122,12 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 			</div>
 
 			<div class="heatbox-cta-container is-attached">
-				<?php echo wp_kses_post( __( 'Get <strong>70% off WP Video Popup PRO</strong> today, automatically applied at checkout.', 'responsive-youtube-vimeo-popup' ) ); ?>
-				<br><br>
-				<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary button-larger" target="_blank">	
-					<strong style ="font-weight: 700;"><?php esc_html_e( 'Upgrade to PRO - Save 70%', 'responsive-youtube-vimeo-popup' ); ?></strong>
-				</a>
+				<div class="heatbox-cta primary">
+					<p><?php echo wp_kses_post( __( 'Get <strong>70% off WP Video Popup PRO</strong> today, automatically applied at checkout.', 'responsive-youtube-vimeo-popup' ) ); ?></p>
+					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary" target="_blank">
+						<?php esc_html_e( 'Upgrade to PRO - Save 70%', 'responsive-youtube-vimeo-popup' ); ?>
+					</a>
+				</div>
 			</div>
 
 		</div>

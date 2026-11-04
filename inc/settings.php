@@ -2,7 +2,7 @@
 /**
  * Settings.
  *
- * @package WP_Video_Popup_PRO
+ * @package WP_Video_Popup
  */
 
 defined( 'ABSPATH' ) || die( "Can't access directly" );

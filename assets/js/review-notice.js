@@ -3,8 +3,8 @@
 
 	function init() {
 		$(document).on(
-			"click",
-			".wp-video-popup-review-notice.is-dismissible .notice-dismiss",
+			'click',
+			'.wp-video-popup-review-notice.is-dismissible .notice-dismiss',
 			ajax.saveDismissal
 		);
 	}
