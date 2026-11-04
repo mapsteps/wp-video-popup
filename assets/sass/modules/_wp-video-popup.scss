@@ -33,7 +33,24 @@
 	max-width: 90%;
 }
 
-// Close icon.
+// Close button (reset theme button styles).
+.wp-video-popup-wrapper .wp-video-popup-close,
+.wp-video-popup-wrapper .wp-video-popup-close:hover,
+.wp-video-popup-wrapper .wp-video-popup-close:focus {
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
+	padding: 0;
+	min-width: 0;
+	min-height: 0;
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+	box-shadow: none;
+	color: inherit;
+	line-height: 0;
+}
+
 .wp-video-popup-close {
 	background-image: url(../img/wp-video-popup-close.png);
 	background-size: 15px auto;
@@ -52,6 +69,11 @@
 
 .wp-video-popup-close:hover {
 	opacity: 0.7;
+}
+
+.wp-video-popup-wrapper .wp-video-popup-close:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: -8px;
 }
 
 // Click indicator.

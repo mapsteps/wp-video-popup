@@ -1,38 +1,15 @@
-/**
- * NodeList.forEach polyfill for IE
- * 
- * @see https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach
- */
-if (window.NodeList && !NodeList.prototype.forEach) {
-	NodeList.prototype.forEach = Array.prototype.forEach;
-}
-
-/**
- * Custom Event polyfill for >= IE9
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
- */
-(function () {
-	if (typeof window.CustomEvent === 'function') return false;
-
-	function CustomEvent(event, params) {
-		params = params || { bubbles: false, cancelable: false, detail: null };
-		var evt = document.createEvent('CustomEvent');
-		evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-		return evt;
-	}
-
-	window.CustomEvent = CustomEvent;
-})();
-
 (function ($) {
-	// Free version only support 1 video per page/ post.
+	// Free version only supports 1 video per page/ post.
 	var popup;
+	var closeButton;
+	var lastTrigger;
+	var opened = false;
 	var speed = 200;
 
 	function init() {
 		popup = document.querySelector('.wp-video-popup-wrapper');
 		if (!popup) return;
+		closeButton = popup.querySelector('.wp-video-popup-close');
 		setupOpenActions();
 		setupVideoHeight();
 		setupCloseActions();
@@ -48,12 +25,25 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 
 	function setupOpenTriggers(triggerSelector) {
 		var triggers = document.querySelectorAll(triggerSelector);
-		if (!triggers) return;
 
 		triggers.forEach(function (trigger) {
+			// Make non-interactive triggers (e.g. a div or image) usable with the keyboard.
+			var isNative = trigger.matches('a[href], button, input, [tabindex]');
+
+			if (!isNative) {
+				trigger.setAttribute('role', 'button');
+				trigger.setAttribute('tabindex', '0');
+
+				trigger.addEventListener('keydown', function (e) {
+					if (e.key !== 'Enter' && e.key !== ' ') return;
+					e.preventDefault();
+					openPopup(trigger);
+				});
+			}
+
 			trigger.addEventListener('click', function (e) {
 				e.preventDefault();
-				openPopup();
+				openPopup(trigger);
 			});
 		});
 	}
@@ -64,11 +54,45 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 			if (e.target === this || e.target.classList.contains('wp-video-popup-close')) closePopup();
 		});
 
-		// Close on escape.
-		document.addEventListener('keyup', function (e) {
-			if (e.key !== 'Escape' && e.key !== 'Esc' && e.keyCode !== 27) return;
-			if ($(popup).is(':visible')) closePopup();
+		document.addEventListener('keydown', function (e) {
+			if (!isOpen()) return;
+
+			// Close on escape.
+			if (e.key === 'Escape' || e.key === 'Esc') {
+				closePopup();
+				return;
+			}
+
+			// Keep focus inside the popup (close button & video).
+			if (e.key === 'Tab') trapFocus(e);
 		});
+
+		// Tabbing out of the video iframe can't be caught by keydown, so pull focus back.
+		document.addEventListener('focusin', function (e) {
+			if (isOpen() && !popup.contains(e.target)) closeButton.focus();
+		});
+	}
+
+	function trapFocus(e) {
+		var video = popup.querySelector('.wp-video-popup-video');
+		var focusable = [closeButton, video];
+		var first = focusable[0];
+		var last = focusable[focusable.length - 1];
+
+		if (e.shiftKey && document.activeElement === first) {
+			e.preventDefault();
+			last.focus();
+		} else if (!e.shiftKey && document.activeElement === last) {
+			e.preventDefault();
+			first.focus();
+		} else if (!popup.contains(document.activeElement)) {
+			e.preventDefault();
+			first.focus();
+		}
+	}
+
+	function isOpen() {
+		return opened;
 	}
 
 	function setupVideoHeight() {
@@ -78,8 +102,11 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 		});
 	}
 
-	function openPopup() {
+	function openPopup(trigger) {
 		var video = popup.querySelector('.wp-video-popup-video');
+
+		lastTrigger = trigger || document.activeElement;
+		opened = true;
 
 		document.body.insertBefore(popup, document.body.firstChild);
 
@@ -95,10 +122,14 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 		}
 
 		window.dispatchEvent(new Event('resize'));
+
+		closeButton.focus();
 	}
 
 	function closePopup() {
 		var video = popup.querySelector('.wp-video-popup-video');
+
+		opened = false;
 
 		$(popup).stop().animate({
 			opacity: 0
@@ -109,6 +140,9 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 		$(video).stop().fadeOut(speed, function () {
 			video.setAttribute('src', '');
 		});
+
+		// Return focus to the element that opened the popup.
+		if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
 	}
 
 	$(document).ready(function () {

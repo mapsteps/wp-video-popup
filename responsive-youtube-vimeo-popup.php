@@ -278,7 +278,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	// Shortcode attributes.
 	$video        = esc_url( $wp_video_popup_atts['video'] );
 	$mute         = $wp_video_popup_atts['mute'] ? 1 : 0;
-	$start        = $wp_video_popup_atts['start'];
+	$start        = absint( $wp_video_popup_atts['start'] );
 	$hide_related = $wp_video_popup_atts['hide-related'] ? 1 : 0;
 	$viewport     = $wp_video_popup_atts['portrait'] ? 'is-portrait' : 'is-landscape';
 
@@ -329,9 +329,9 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	}
 
 	return '
-	<div class="wp-video-popup-wrapper">
-		<div class="wp-video-popup-close"></div>
-		<iframe class="wp-video-popup-video is-hosted ' . $viewport . '" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" frameborder="0" allowfullscreen allow="autoplay">
+	<div class="wp-video-popup-wrapper" role="dialog" aria-modal="true" aria-label="' . esc_attr__( 'Video', 'responsive-youtube-vimeo-popup' ) . '">
+		<button type="button" class="wp-video-popup-close" aria-label="' . esc_attr__( 'Close video', 'responsive-youtube-vimeo-popup' ) . '"></button>
+		<iframe class="wp-video-popup-video is-hosted ' . $viewport . '" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" title="' . esc_attr__( 'Video', 'responsive-youtube-vimeo-popup' ) . '" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture">
 		</iframe>
 	</div>
 	';
