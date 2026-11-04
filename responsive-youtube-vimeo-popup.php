@@ -257,11 +257,17 @@ add_action( 'wp_enqueue_scripts', 'wp_video_popup_styles' );
 /**
  * Popup shortcode.
  *
- * @param array $wp_video_popup_atts The shortcode attributes.
+ * Usage:
+ * [wp-video-popup video="URL"] – popup only, opened by any element with the class wp-video-popup.
+ * [wp-video-popup video="URL" text="Watch video"] – popup plus a trigger button.
+ * [wp-video-popup video="URL"]<img …>[/wp-video-popup] – popup plus the content wrapped in a trigger.
+ *
+ * @param array  $wp_video_popup_atts The shortcode attributes.
+ * @param string $content The enclosed content (optional).
  *
  * @return string wp_video_popup_output The popup markup.
  */
-function wp_video_popup_shortcode( $wp_video_popup_atts ) {
+function wp_video_popup_shortcode( $wp_video_popup_atts, $content = null ) {
 
 	$wp_video_popup_atts = shortcode_atts(
 		array(
@@ -270,6 +276,7 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 			'start'        => 0,
 			'hide-related' => 0,
 			'portrait'     => 0,
+			'text'         => '',
 		),
 		$wp_video_popup_atts,
 		'wp-video-popup'
@@ -333,13 +340,52 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 		$video_url .= 'vimeo' === $video_type ? '#t=' . $start : '&start=' . $start;
 	}
 
-	return '
+	$popup = '
 	<div class="wp-video-popup-wrapper" role="dialog" aria-modal="true" aria-label="' . esc_attr__( 'Video', 'responsive-youtube-vimeo-popup' ) . '">
 		<button type="button" class="wp-video-popup-close" aria-label="' . esc_attr__( 'Close video', 'responsive-youtube-vimeo-popup' ) . '"></button>
 		<iframe class="wp-video-popup-video is-hosted ' . $viewport . '" src="" data-wp-video-popup-url="' . esc_url( $video_url ) . '" title="' . esc_attr__( 'Video', 'responsive-youtube-vimeo-popup' ) . '" frameborder="0" allowfullscreen allow="autoplay; fullscreen; picture-in-picture">
 		</iframe>
 	</div>
 	';
+
+	return wp_video_popup_trigger( $content, $wp_video_popup_atts['text'] ) . $popup;
+
+}
+
+/**
+ * Trigger markup for the popup shortcode.
+ *
+ * Enclosed content wins over the text attribute. Without either, no trigger is output
+ * and any element with the class wp-video-popup opens the popup (the classic way).
+ *
+ * @param string|null $content The enclosed content.
+ * @param string      $text The button text.
+ *
+ * @return string The trigger markup.
+ */
+function wp_video_popup_trigger( $content, $text ) {
+
+	// Remove the stray paragraph & line break tags wpautop leaves around enclosed content.
+	$content = preg_replace( '#^(\s*(</p>|<br\s*/?>))+|((<p>|<br\s*/?>)\s*)+$#i', '', trim( (string) $content ) );
+	$content = trim( do_shortcode( shortcode_unautop( trim( $content ) ) ) );
+
+	if ( '' !== $content ) {
+
+		// Block-level content needs a block-level wrapper to keep the markup valid.
+		$tag = preg_match( '#<(p|div|figure|h[1-6]|ul|ol|table|section|blockquote)[\s>]#i', $content ) ? 'div' : 'span';
+
+		// The front-end script makes the wrapper focusable and keyboard-operable.
+		return '<' . $tag . ' class="wp-video-popup wp-video-popup-trigger is-wrapper">' . $content . '</' . $tag . '>';
+
+	}
+
+	$text = trim( (string) $text );
+
+	if ( '' !== $text ) {
+		return '<button type="button" class="wp-video-popup wp-video-popup-trigger">' . esc_html( $text ) . '</button>';
+	}
+
+	return '';
 
 }
 add_shortcode( 'wp-video-popup', 'wp_video_popup_shortcode' );

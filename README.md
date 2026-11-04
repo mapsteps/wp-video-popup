@@ -52,6 +52,15 @@ in your post, page or template file to embed your YouTube or Vimeo lightbox popu
 
 To open the popup, add the CSS-class `wp-video-popup` to the element you wish to trigger the lightbox.
 
+Or let the shortcode create the trigger for you:
+
+- `[wp-video-popup video="…" text="Watch video"]` outputs a button that opens the lightbox.
+- `[wp-video-popup video="…"]<img src="thumbnail.jpg" alt="Watch video">[/wp-video-popup]` turns the enclosed content into the trigger.
+
+Triggers are keyboard-accessible. The free version supports one video popup per page.
+
+**Page builders:** the CSS class field is under *Advanced → Additional CSS class(es)* in the block editor, *Advanced → CSS Classes* in Elementor, *Advanced → CSS ID & Classes* in Divi and *Style → CSS → CSS classes* in Bricks.
+
 ## Examples
 
 Example Shortcode to display a **YouTube** video:
@@ -77,6 +86,7 @@ After that, CSS class needs to be added to the element you want to open the ligh
 - `mute="1"` : Mute video by default
 - `start="24"` : Start video at a specific time (value in seconds)
 - `portrait="1"` : Vimeo for instance allows you to upload videos in portrait mode
+- `text="Watch video"` : Output a button with this text that opens the lightbox
 
 Example: `[wp-video-popup mute="1" start="24" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 

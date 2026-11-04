@@ -41,6 +41,20 @@ anywhere to your post, page, custom post type or template file to embed the resp
 
 `<a href="#" class="wp-video-popup">Watch Video</a>`
 
+**Or let the shortcode create the trigger for you:**
+
+Add a `text` attribute to output a button that opens the lightbox:
+
+`[wp-video-popup video="https://www.youtube.com/watch?v=YlUKcNNmywk" text="Watch video"]`
+
+Or wrap any content, such as an image, in the shortcode to make it the trigger:
+
+`[wp-video-popup video="https://www.youtube.com/watch?v=YlUKcNNmywk"]<img src="thumbnail.jpg" alt="Watch video">[/wp-video-popup]`
+
+**Page builders:** In the block editor, select the block and open *Advanced → Additional CSS class(es)*. In Elementor it's *Advanced → CSS Classes*, in Divi *Advanced → CSS ID & Classes*, in Bricks *Style → CSS → CSS classes*.
+
+The free version supports one video popup per page.
+
 ---------
 
 === Example Shortcodes ===
@@ -79,6 +93,10 @@ Since September 2018, hiding related videos is no longer possible. Instead, vide
 **Portrait mode (Vimeo):**
 
 `portrait="1"`
+
+**Trigger button text (outputs a button that opens the lightbox):**
+
+`text="Watch video"`
 
 **Example shortcode with shortcode attributes applied:**
 

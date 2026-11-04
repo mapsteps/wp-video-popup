@@ -80,3 +80,12 @@
 .wp-video-popup {
 	cursor: pointer;
 }
+
+// Trigger created by the shortcode (text attribute or enclosed content).
+.wp-video-popup-trigger.is-wrapper {
+	display: inline-block;
+}
+
+div.wp-video-popup-trigger.is-wrapper {
+	display: block;
+}
