@@ -63,12 +63,17 @@ class WP_Video_Popup_Parser {
 	 *
 	 * @param string $url The url.
 	 *
-	 * @return string The video's embed url on success.
+	 * @return string The video's embed url on success, an empty string on failure.
 	 */
 	public static function get_embed_url( $url ) {
 
 		$service = self::identify_service( $url );
 		$id      = self::get_url_id( $url );
+
+		// Without an id there's nothing to embed.
+		if ( ! $id ) {
+			return '';
+		}
 
 		if ( 'youtube' === $service ) {
 			return self::get_youtube_embed_url( $id );
@@ -225,58 +230,65 @@ class WP_Video_Popup_Parser {
 	/**
 	 * Parses Rumble urls and returns video identifier.
 	 *
+	 * Embed urls (rumble.com/embed/ID/) contain the id directly. Regular video page urls
+	 * (rumble.com/vXXXX-title.html) use a different id, so it's looked up once via Rumble's
+	 * oEmbed endpoint and cached.
+	 *
 	 * @param string $url The url.
 	 *
-	 * @return string The url's id.
+	 * @return string The url's id, or an empty string if it couldn't be determined.
 	 */
 	public static function get_rumble_id( $url ) {
 
-		// Check if the URL contains 'embed'.
-		if ( stripos( $url, 'embed' ) !== false ) {
-			// If URL contains 'embed', use this logic.
-			if ( stripos( $url, '/?' ) !== false ) {
-				$splits = explode( '/?', $url );
-				$url    = $splits[0];
-			}
-
-			// Remove trailing slash.
+		if ( false !== stripos( $url, '/embed/' ) ) {
+			// Drop query parameters and the trailing slash, then take the last part.
+			$url = strtok( $url, '?' );
 			$url = untrailingslashit( $url );
 
-			// Extract the last part of the URL.
 			return self::parse_url_for_last_element( $url );
 		}
 
-		// If URL does not contain 'embed', use alternate logic.
-		$iframely_api_url = 'https://iframely.com/api/try?url=' . rawurlencode( $url );
+		$cache_key = 'wp_video_popup_rumble_' . md5( $url );
+		$video_id  = get_transient( $cache_key );
 
-		// Fetch the data from Iframely API using wp_remote_get().
-		$remote_response = wp_remote_get( $iframely_api_url );
-
-		// Check if the request was successful.
-		if ( is_wp_error( $remote_response ) ) {
-			return '';
+		if ( false !== $video_id ) {
+			return $video_id;
 		}
 
-		// Decode the JSON response using json_decode().
-		$data = json_decode( $remote_response['body'], true );
+		$video_id = self::fetch_rumble_id( $url );
 
-		if ( ! $data || empty( $data['code'] ) ) {
-			return '';
-		}
-
-		$markup = $data['code'];
-
-		// Regular expression to extract the ID between "embed/" and the next "/".
-		$pattern  = '/embed\/(.*?)\//';
-		$video_id = false;
-
-		// Apply the regex.
-		if ( preg_match( $pattern, $markup, $matches ) ) {
-			// Extracted ID.
-			$video_id = $matches[1];
-		}
+		// Keep found ids for a month. Retry failed lookups after an hour so a temporary outage doesn't stick.
+		set_transient( $cache_key, $video_id, $video_id ? MONTH_IN_SECONDS : HOUR_IN_SECONDS );
 
 		return $video_id;
+
+	}
+
+	/**
+	 * Looks up the embed id of a Rumble video page via Rumble's oEmbed endpoint.
+	 *
+	 * @param string $url The video page url.
+	 *
+	 * @return string The embed id, or an empty string on failure.
+	 */
+	private static function fetch_rumble_id( $url ) {
+
+		$response = wp_remote_get(
+			add_query_arg( 'url', rawurlencode( $url ), 'https://rumble.com/api/Media/oembed.json' ),
+			array( 'timeout' => 5 )
+		);
+
+		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+			return '';
+		}
+
+		$data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		if ( empty( $data['html'] ) || ! preg_match( '#/embed/([a-z0-9]+)#i', $data['html'], $matches ) ) {
+			return '';
+		}
+
+		return $matches[1];
 
 	}
 

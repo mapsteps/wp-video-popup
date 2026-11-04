@@ -286,6 +286,11 @@ function wp_video_popup_shortcode( $wp_video_popup_atts ) {
 	$video_type = WP_Video_Popup_Parser::identify_service( $video );
 	$video_url  = WP_Video_Popup_Parser::get_embed_url( $video );
 
+	// Don't output a broken popup if the video couldn't be identified.
+	if ( ! $video_url ) {
+		return '';
+	}
+
 	/* Construct Output */
 
 	// Add class to landscape YouTube & Vimeos to dynamically resize them.

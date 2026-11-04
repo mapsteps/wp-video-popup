@@ -123,6 +123,12 @@ If you like WP Video Popup make sure to check out our other products:
 * **[Ultimate Dashboard](https://ultimatedashboard.io/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=udb)** - The #1 WordPress plugin to customize your WordPress dashboard and admin area.
 * **[Better Admin Bar](https://betteradminbar.com/?utm_source=wp_video_popup&utm_medium=repository&utm_campaign=bab)** - The plugin to make your clients enjoy WordPress. It replaces the default admin bar to provide the best possible user experience when editing & navigating a website.
 
+== External services ==
+
+This plugin embeds videos from YouTube, Vimeo and Rumble. The video is only loaded from the provider once a visitor opens the popup. YouTube: [Terms](https://www.youtube.com/t/terms), [Privacy](https://policies.google.com/privacy). Vimeo: [Terms](https://vimeo.com/terms), [Privacy](https://vimeo.com/privacy). Rumble: [Terms](https://rumble.com/s/terms), [Privacy](https://rumble.com/s/privacy).
+
+For Rumble video page links (e.g. rumble.com/v…-title.html), the plugin asks Rumble's oEmbed API (https://rumble.com/api/Media/oembed.json) once for the embed ID, sending only the video URL from your site's server. The result is cached for a month. Rumble embed links (rumble.com/embed/…) need no lookup.
+
 == Installation ==
 1. Download the responsive-youtube-vimeo-popup.zip file to your computer.
 2. Unzip the file.
