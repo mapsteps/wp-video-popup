@@ -3,7 +3,7 @@ Contributors: davidvongries
 Tags: YouTube Lightbox, Vimeo Lightbox, Rumble Lightbox, Video Lightbox, Video Popup
 Requires at least: 4.7
 Tested up to: 7.1
-Stable tag: 2.11.0
+Stable tag: 2.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -169,7 +169,7 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 3. Mobile example
 
 == Changelog ==
-= 2.11.0 November 04, 2026 =
+= 2.11 November 04, 2026 =
 * New: Shortcode can output its own trigger button via the text attribute, e.g. [wp-video-popup video="…" text="Watch video"]
 * New: Wrap content (e.g. an image) in the shortcode to turn it into the trigger
 * New: Getting started box with a shortcode builder on the settings page
