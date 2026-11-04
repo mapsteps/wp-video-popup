@@ -8,6 +8,136 @@
 	display: none;
 }
 
+/* Getting started */
+.wpvp-builder {
+	display: grid;
+	gap: 16px;
+	margin-top: 12px;
+	padding: var(--heatbox-gap);
+	background: var(--heatbox-surface-hover);
+	border: 1px solid var(--heatbox-divider);
+	border-radius: var(--heatbox-radius);
+}
+
+.wpvp-builder-row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 16px;
+}
+
+.wpvp-builder-field label {
+	display: block;
+	margin-bottom: 6px;
+	font-weight: 600;
+	color: var(--heatbox-text);
+}
+
+/* Label with a tooltip next to it */
+.wpvp-builder-label {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+	margin-bottom: 6px;
+}
+
+.wpvp-builder-label label {
+	margin-bottom: 0;
+}
+
+.wpvp-builder-label .heatbox-tooltip {
+	margin: -4px 0;
+	color: var(--heatbox-text-muted);
+}
+
+.wpvp-builder-label .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.wpvp-builder-field input.regular-text,
+.wpvp-builder-field input.large-text {
+	width: 100%;
+	max-width: 100%;
+}
+
+.wpvp-builder-field input.small-text {
+	width: 110px;
+}
+
+.heatbox .wpvp-builder-field .description {
+	margin: 6px 0 0;
+}
+
+.wpvp-builder-field .description.is-invalid {
+	color: #b32d2e;
+}
+
+.wpvp-builder-checkboxes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 24px;
+}
+
+.wpvp-builder .heatbox-copy code {
+	background: var(--heatbox-surface);
+}
+
+.heatbox .wpvp-class-copy {
+	margin-bottom: 12px;
+}
+
+.wpvp-class-copy code {
+	flex-grow: 0;
+}
+
+/* Page builder tips: divider above, same heading size as the steps */
+.heatbox .heatbox-steps .wpvp-tips-title {
+	margin: var(--heatbox-gap) 0 12px;
+	padding-top: var(--heatbox-gap);
+	border-top: 1px solid var(--heatbox-divider);
+}
+
+.wpvp-tips {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.wpvp-tips li {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin: 0;
+	padding: 12px 16px;
+	color: var(--heatbox-text-muted);
+	background: var(--heatbox-surface-hover);
+	border: 1px solid var(--heatbox-divider);
+	border-radius: var(--heatbox-radius);
+}
+
+.wpvp-tips li strong {
+	color: var(--heatbox-text);
+}
+
+@media screen and (max-width: 782px) {
+	.wpvp-builder {
+		padding: 16px;
+	}
+
+	.wpvp-builder-row,
+	.wpvp-tips {
+		grid-template-columns: 1fr;
+	}
+
+	.heatbox-steps > li {
+		padding-inline-start: 36px;
+	}
+}
+
 /* Size field */
 .wpvp-size-field {
 	width: 100px;

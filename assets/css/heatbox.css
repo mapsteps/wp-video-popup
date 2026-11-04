@@ -15,9 +15,11 @@
  * 9.  Call to action
  * 10. Status indicator
  * 11. Tags
- * 12. Tooltip
- * 13. Misc
- * 14. Animations
+ * 12. Steps
+ * 13. Copy field
+ * 14. Tooltip
+ * 15. Misc
+ * 16. Animations
  */
 
 /* 1. Tokens
@@ -760,6 +762,15 @@ body {
 	background: var(--heatbox-surface-muted);
 }
 
+/* Stack & center text and button on small screens */
+@media screen and (max-width: 782px) {
+	.heatbox-cta {
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+}
+
 /* Attached to the bottom of the box above it */
 .heatbox-cta-container.is-attached {
 	padding: var(--heatbox-gap);
@@ -882,7 +893,112 @@ body {
 	visibility: visible;
 }
 
-/* 12. Tooltip
+/* 12. Steps
+   Numbered steps, e.g. a getting started guide.
+
+   <ol class="heatbox-steps">
+     <li><h3>Step title</h3><p class="description">…</p></li>
+   </ol>
+   ========================================================================== */
+
+.heatbox-steps {
+	display: grid;
+	gap: var(--heatbox-gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: heatbox-step;
+}
+
+.heatbox-steps > li {
+	position: relative;
+	min-width: 0;
+	margin: 0;
+	padding-inline-start: 40px;
+	counter-increment: heatbox-step;
+}
+
+.heatbox-steps > li::before {
+	content: counter(heatbox-step);
+	position: absolute;
+	top: -2px;
+	inset-inline-start: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--heatbox-accent);
+	background: var(--heatbox-accent-soft);
+	border: 1px solid var(--heatbox-accent-soft-border);
+	border-radius: 50%;
+}
+
+.heatbox .heatbox-steps h3 {
+	margin: 1px 0 4px;
+}
+
+.heatbox .heatbox-steps p {
+	margin: 0 0 12px;
+}
+
+.heatbox .heatbox-steps li > :last-child {
+	margin-bottom: 0;
+}
+
+/* 13. Copy field
+   A code snippet with a copy button, one line high like the button.
+   The plugin handles the copying.
+
+   <div class="heatbox-copy"><code>…</code><button type="button" class="button">Copy</button></div>
+   ========================================================================== */
+
+.heatbox-copy {
+	display: flex;
+	align-items: stretch;
+	gap: 8px;
+	max-width: 100%;
+}
+
+.heatbox-copy code {
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+	min-width: 0;
+	min-height: 30px;
+	margin: 0;
+	padding: 4px 10px;
+	font-size: 13px;
+	line-height: 20px;
+	overflow-wrap: anywhere;
+	color: var(--heatbox-text);
+	background: var(--heatbox-surface-muted);
+	border: 1px solid var(--heatbox-border);
+	border-radius: var(--heatbox-radius-small);
+}
+
+.heatbox-copy .button {
+	flex-shrink: 0;
+	align-self: flex-start;
+	margin: 0;
+}
+
+/* Match the taller WP buttons on small screens */
+@media screen and (max-width: 782px) {
+	.heatbox-copy code {
+		min-height: 40px;
+		padding: 9px 10px;
+	}
+}
+
+.heatbox-copy .button.is-copied {
+	color: var(--heatbox-accent);
+	border-color: var(--heatbox-accent);
+}
+
+/* 14. Tooltip
    <span class="heatbox-tooltip" tabindex="0">icon<span class="tooltip-content">Text</span></span>
    Add .has-image and an <img> before the text for an image card.
    ========================================================================== */
@@ -957,7 +1073,7 @@ body {
 	padding: 12px 16px;
 }
 
-/* 13. Misc
+/* 15. Misc
    ========================================================================== */
 
 .heatbox .row-disabled {
@@ -972,7 +1088,7 @@ body {
 	opacity: 0.7;
 }
 
-/* 14. Animations
+/* 16. Animations
    ========================================================================== */
 
 @keyframes heatboxLoadingSpinner {
