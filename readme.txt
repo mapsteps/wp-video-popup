@@ -2,7 +2,7 @@
 Contributors: davidvongries
 Tags: YouTube Lightbox, Vimeo Lightbox, Rumble Lightbox, Video Lightbox, Video Popup
 Requires at least: 4.7
-Tested up to: 6.9
+Tested up to: 7.1
 Stable tag: 2.11.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -170,6 +170,9 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 
 == Changelog ==
 = 2.11.0 November 04, 2026 =
+* New: Shortcode can output its own trigger button via the text attribute, e.g. [wp-video-popup video="…" text="Watch video"]
+* New: Wrap content (e.g. an image) in the shortcode to turn it into the trigger
+* New: Getting started box with a shortcode builder on the settings page
 * New: Redesigned settings page
 * New: Accessible popup (keyboard support, focus handling, screen reader labels)
 * Tweak: Rumble video URLs are now resolved via Rumble's own API and cached, instead of a third-party service
@@ -177,6 +180,7 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 * Tweak: Requires WordPress 4.7
 * Fixed: Sanitize the start attribute
 * Fixed: Don't output a broken popup if a video can't be identified
+* Tested up to WordPress 7.1
 = 2.10.4 February 19, 2026 =
 * New: Added native support for private Vimeo videos
 * Tested up to WordPress 6.9
