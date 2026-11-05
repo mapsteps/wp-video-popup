@@ -112,12 +112,10 @@
 	}
 }
 
-/* Popup size: field & device switcher in one row (switcher on the right), hint below the field */
+/* Popup size: device switcher pinned right next to the field, hint below the field.
+   Pinned (not in the flow) so the hint's width doesn't push the switcher away. */
 .wpvp-size-settings {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	gap: 8px 12px;
+	position: relative;
 }
 
 .wpvp-size-field {
@@ -131,8 +129,10 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 6px;
-	order: 2;
-	min-height: 40px; /* Same height as the field next to it */
+	position: absolute;
+	top: 0;
+	left: 132px; /* Field width (120px) + 12px gap */
+	height: 40px; /* Same height as the field next to it */
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -160,6 +160,16 @@
 .wpvp-responsive-control:hover .wpvp-device-button {
 	color: var(--heatbox-text);
 	border-color: var(--heatbox-control-border);
+}
+
+/* Focus ring for keyboard use only, not after a mouse click */
+.wpvp-responsive-control .wpvp-device-button:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.wpvp-responsive-control .wpvp-device-button:focus-visible {
+	box-shadow: 0 0 0 2px var(--heatbox-surface), 0 0 0 4px var(--heatbox-accent);
 }
 
 .wpvp-responsive-control.is-active .wpvp-device-button {
