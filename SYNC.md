@@ -36,7 +36,7 @@ Function prefixes (`wp_video_popup_` / `wp_video_popup_pro_`), constants (`WP_VI
 - **Front-end script:** `assets/js/wp-video-popup.js` (free, one popup per page) and `inc/js/wp-video-popup.js` (PRO, multiple popups & galleries) are built differently. Port fixes by hand and keep the output (markup, classes, ARIA, keyboard behaviour) the same.
 - **Front-end CSS:** PRO compiles to `inc/css/`, free to `assets/css/`. PRO-only styles live in `assets/sass/modules/_wp-video-popup-pro.scss`.
 - **Settings:** free has no active settings, its sanitize callback keeps the values unchanged (so PRO settings survive a downgrade). PRO sanitizes them.
-- **PRO only:** `assets/js/admin-page-pro.js` (alpha color picker, license tab, device switcher), license & EDD files (`assets/edd/`, `templates/license.php`), galleries, autoplay, self-hosted videos.
+- **PRO only:** `assets/js/admin-page-pro.js` (alpha color picker, device switcher), license & EDD files (`assets/edd/`, `templates/license.php`), galleries, autoplay, self-hosted videos.
 - **Free only:** PRO upsells, admin notices (`inc/persist-admin-notices-dismissal/`), review notice, featured products.
 
 ## Building the front-end CSS

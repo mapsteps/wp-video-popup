@@ -52,6 +52,7 @@ add_action( 'admin_init', 'wp_video_popup_settings' );
  */
 function wp_video_popup_background_color_callback() {
 	echo '<input type="text" name="wpvp_popup[bg_color]" value="" class="color-picker wp-video-popup-color-picker" data-alpha="true" data-default-color="rgba(0,0,0,0.88)" />';
+	echo '<p class="description">' . esc_html__( 'Default: rgba(0, 0, 0, 0.88)', 'responsive-youtube-vimeo-popup' ) . '</p>';
 }
 
 /**
@@ -82,10 +83,10 @@ function wp_video_popup_size_callback() {
 
 		<ul class="wpvp-responsive-sizes">
 			<li class="wpvp-responsive-size wpvp-responsive-size-desktop is-active" data-size-device="desktop">
-				<input type="text" name="wpvp_popup[sizes][desktop]" class="wpvp-size-field" placeholder="75%" value="" />
+				<input type="text" name="wpvp_popup[sizes][desktop]" class="wpvp-size-field" value="" />
 
 				<p class="description">
-					<?php esc_html_e( 'Default: 1200px', 'responsive-youtube-vimeo-popup' ); ?>
+					<?php esc_html_e( 'Default: 1200px. For example 75% or 900px.', 'responsive-youtube-vimeo-popup' ); ?>
 				</p>
 			</li>
 			<li class="wpvp-responsive-size wpvp-responsive-size-tablet" data-size-device="tablet">
