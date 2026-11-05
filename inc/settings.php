@@ -86,7 +86,7 @@ function wp_video_popup_size_callback() {
 				<input type="text" name="wpvp_popup[sizes][desktop]" class="wpvp-size-field" value="" />
 
 				<p class="description">
-					<?php esc_html_e( 'Default: 1200px. For example 75% or 900px.', 'responsive-youtube-vimeo-popup' ); ?>
+					<?php esc_html_e( 'Default: 1200px (e.g. 75% or 900px)', 'responsive-youtube-vimeo-popup' ); ?>
 				</p>
 			</li>
 			<li class="wpvp-responsive-size wpvp-responsive-size-tablet" data-size-device="tablet">

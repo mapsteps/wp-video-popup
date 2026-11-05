@@ -26,11 +26,12 @@
 		function addDefaultButton() {
 			var picker = document.getElementById('clr-picker');
 
-			if (!picker || picker.querySelector('.clr-default')) return;
+			if (!picker || picker.querySelector('.wpvp-color-default')) return;
 
 			var defaultButton = document.createElement('button');
 			defaultButton.type = 'button';
-			defaultButton.className = 'clr-default';
+			// Not "clr-default": Coloris uses that class for its default theme on the picker itself.
+			defaultButton.className = 'wpvp-color-default';
 			defaultButton.textContent = adminI18n.defaultColor || 'Default';
 
 			defaultButton.addEventListener('click', function () {
@@ -42,6 +43,9 @@
 				// Let Coloris handle it as if the value was typed, so the picker & field stay in sync.
 				colorValue.value = defaultColor;
 				colorValue.dispatchEvent(new Event('change', { bubbles: true }));
+
+				// Close the picker, same as the clear button does.
+				window.Coloris.close();
 			});
 
 			picker.insertBefore(defaultButton, picker.querySelector('.clr-clear'));

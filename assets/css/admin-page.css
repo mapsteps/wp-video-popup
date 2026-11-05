@@ -112,7 +112,7 @@
 	}
 }
 
-/* Popup size: device switcher & field in one row, hint below the field */
+/* Popup size: field & device switcher in one row (switcher on the right), hint below the field */
 .wpvp-size-settings {
 	display: flex;
 	flex-wrap: wrap;
@@ -122,6 +122,7 @@
 
 .wpvp-size-field {
 	width: 120px;
+	margin: 0;
 }
 
 /* Device switcher */
@@ -130,6 +131,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 6px;
+	order: 2;
 	min-height: 40px; /* Same height as the field next to it */
 	margin: 0;
 	padding: 0;
@@ -296,7 +298,7 @@
 }
 
 /* Default & Clear buttons, styled like WP secondary buttons */
-.heatbox-admin .clr-default,
+.heatbox-admin .wpvp-color-default,
 .heatbox-admin .clr-clear {
 	order: 2;
 	height: 26px;
@@ -312,11 +314,11 @@
 	cursor: pointer;
 }
 
-.heatbox-admin .clr-default {
+.heatbox-admin .wpvp-color-default {
 	margin-inline-end: auto;
 }
 
-.heatbox-admin .clr-default:hover,
+.heatbox-admin .wpvp-color-default:hover,
 .heatbox-admin .clr-clear:hover {
 	color: var(--heatbox-accent-darker);
 	border-color: var(--heatbox-accent-darker);
