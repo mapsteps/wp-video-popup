@@ -3,6 +3,7 @@
 	$('.wp-video-popup-color-picker').wpColorPicker();
 
 	// Getting started: shortcode builder.
+	// Shared by the free & PRO version. Fields that don't exist on the page are skipped.
 	var output = document.getElementById('wpvp-builder-output');
 	var copyStatus = document.getElementById('wpvp-copy-status');
 
@@ -13,31 +14,78 @@
 		text: document.getElementById('wpvp-builder-text'),
 		start: document.getElementById('wpvp-builder-start'),
 		mute: document.getElementById('wpvp-builder-mute'),
-		portrait: document.getElementById('wpvp-builder-portrait')
+		portrait: document.getElementById('wpvp-builder-portrait'),
+		id: document.getElementById('wpvp-builder-id'),
+		gallery: document.getElementById('wpvp-builder-gallery'),
+		autoplay: document.getElementById('wpvp-builder-autoplay')
 	};
 	var videoHint = document.getElementById('wpvp-builder-video-hint');
-	var supported = /(youtube\.com|youtu\.be|youtube-nocookie\.com|vimeo\.com|rumble\.com)\//i;
+	var triggerHint = document.getElementById('wpvp-trigger-hint');
+	var triggerClass = document.getElementById('wpvp-trigger-class');
+	var services = /(youtube\.com|youtu\.be|youtube-nocookie\.com|vimeo\.com|rumble\.com)\//i;
+	var videoFiles = /\.(mp4|m4v|webm|ogv|ogg|mov)(\?|#|$)/i;
+
+	// Self-hosted video files are only accepted where the video field says so.
+	var acceptsFiles = fields.video.hasAttribute('data-self-hosted');
+
+	// Drop the fields that don't exist on this page.
+	Object.keys(fields).forEach(function (key) {
+		if (!fields[key]) delete fields[key];
+	});
+
+	function isSupported(url) {
+		return services.test(url) || (acceptsFiles && videoFiles.test(url));
+	}
 
 	// Quotes & square brackets would break the shortcode.
 	function clean(value) {
 		return value.replace(/["\[\]]/g, '').trim();
 	}
 
+	// The ID is used as a CSS class, so only keep what's valid there.
+	function cleanId(value) {
+		return value.trim().replace(/\s+/g, '-').replace(/[^A-Za-z0-9_-]/g, '');
+	}
+
+	// Gallery names use underscores (same as on the front end).
+	function cleanGallery(value) {
+		return value.trim().replace(/[\s-]+/g, '_').replace(/[^A-Za-z0-9_]/g, '');
+	}
+
+	function value(key) {
+		return fields[key] ? fields[key].value : '';
+	}
+
+	function checked(key) {
+		return fields[key] ? fields[key].checked : false;
+	}
+
 	function buildShortcode() {
 		var video = clean(fields.video.value) || fields.video.placeholder;
-		var text = clean(fields.text.value);
-		var start = parseInt(fields.start.value, 10);
+		var text = clean(value('text'));
+		var start = parseInt(value('start'), 10);
+		var id = cleanId(value('id'));
+		var gallery = cleanGallery(value('gallery'));
 		var shortcode = '[wp-video-popup video="' + video + '"';
 
-		if (fields.mute.checked) shortcode += ' mute="1"';
+		if (id) shortcode += ' id="' + id + '"';
+		if (gallery) shortcode += ' gallery="' + gallery + '"';
+		if (checked('autoplay')) shortcode += ' autoplay="1"';
+		if (checked('mute')) shortcode += ' mute="1"';
 		if (start > 0) shortcode += ' start="' + start + '"';
-		if (fields.portrait.checked) shortcode += ' portrait="1"';
+		if (checked('portrait')) shortcode += ' portrait="1"';
 		if (text) shortcode += ' text="' + text + '"';
 
 		output.textContent = shortcode + ']';
 
+		// With an ID, the ID itself is the trigger class.
+		if (fields.id && triggerClass && triggerHint) {
+			triggerClass.textContent = id || 'wp-video-popup';
+			triggerHint.textContent = triggerHint.getAttribute(id ? 'data-id' : 'data-default');
+		}
+
 		// Hint when the URL isn't from a supported service.
-		var invalid = fields.video.value.trim() !== '' && !supported.test(fields.video.value);
+		var invalid = fields.video.value.trim() !== '' && !isSupported(fields.video.value);
 		fields.video.setAttribute('aria-invalid', invalid ? 'true' : 'false');
 		videoHint.classList.toggle('is-invalid', invalid);
 		videoHint.textContent = videoHint.getAttribute(invalid ? 'data-invalid' : 'data-default');

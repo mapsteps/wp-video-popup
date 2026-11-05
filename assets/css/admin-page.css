@@ -1,6 +1,7 @@
 /**
  * WP Video Popup settings page.
  * Builds on heatbox.css and uses its --heatbox-* tokens.
+ * Shared by the free & PRO version, keep both copies identical.
  */
 
 /* Hide the PRO notice on the settings page itself */
@@ -23,6 +24,11 @@
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) auto;
 	gap: 16px;
+}
+
+/* Two equal columns (PRO: ID & gallery) */
+.wpvp-builder-row.is-even {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .wpvp-builder-field label {
@@ -96,7 +102,8 @@
 		padding: 16px;
 	}
 
-	.wpvp-builder-row {
+	.wpvp-builder-row,
+	.wpvp-builder-row.is-even {
 		grid-template-columns: 1fr;
 	}
 
@@ -191,6 +198,18 @@
 
 .wpvp-responsive-size.is-active {
 	display: block;
+}
+
+/* Color picker with alpha channel (PRO) */
+.iris-picker-inner {
+	display: grid;
+	grid-template-columns: 1fr 20px 20px;
+	grid-gap: 7px;
+}
+
+.iris-picker-inner > * {
+	width: 100% !important;
+	margin-left: 0 !important;
 }
 
 /* Other products: same width as the settings above */
