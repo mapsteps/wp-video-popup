@@ -211,16 +211,17 @@
 	background: #d63638;
 }
 
-/* Color picker with alpha channel (PRO) */
-.iris-picker-inner {
-	display: grid;
-	grid-template-columns: 1fr 20px 20px;
-	grid-gap: 7px;
+/* Color picker (Coloris): color preview inside the field */
+.wpvp-admin-page .clr-field input.wp-video-popup-color-picker {
+	width: 220px;
+	padding-inline-end: 40px;
 }
 
-.iris-picker-inner > * {
-	width: 100% !important;
-	margin-left: 0 !important;
+.wpvp-admin-page .clr-field button {
+	right: 6px;
+	width: 24px;
+	height: 24px;
+	border-radius: var(--heatbox-radius-small);
 }
 
 /* Other products: same width as the settings above */

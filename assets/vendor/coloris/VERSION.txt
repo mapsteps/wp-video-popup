@@ -1,0 +1,3 @@
+Coloris v0.25.0
+https://github.com/mdbassit/Coloris/releases/tag/v0.25.0
+Files: dist/coloris.min.js, dist/coloris.min.css, LICENSE (MIT)

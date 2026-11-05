@@ -1,6 +1,20 @@
 (function ($) {
 
-	$('.wp-video-popup-color-picker').wpColorPicker();
+	// Overlay color picker (Coloris).
+	// "mixed" saves hex for solid colors and rgba() for transparent ones, same as the previous picker.
+	if (window.Coloris && document.querySelector('.wp-video-popup-color-picker')) {
+		var i18n = (window.wpVideoPopupAdmin && window.wpVideoPopupAdmin.colorPicker) || {};
+
+		window.Coloris($.extend({
+			el: '.wp-video-popup-color-picker',
+			theme: 'default',
+			themeMode: 'light',
+			format: 'mixed',
+			alpha: true,
+			clearButton: true,
+			swatches: ['rgba(0,0,0,0.88)', '#000000', '#ffffff']
+		}, i18n));
+	}
 
 	// Getting started: shortcode builder.
 	// Shared by the free & PRO version. Fields that don't exist on the page are skipped.

@@ -4,4 +4,4 @@
 # Sass Cache
 assets/.sass-cache/
 # Composer
-vendor/
+/vendor/
