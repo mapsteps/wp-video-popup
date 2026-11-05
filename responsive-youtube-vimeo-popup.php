@@ -2,8 +2,10 @@
 /**
  * Plugin Name: WP Video Popup
  * Plugin URI: https://wp-video-popup.com
- * Description: Add beautiful responsive YouTube, Rumble & Vimeo Video lightbox popups to your WordPress website.
+ * Description: Add a YouTube, Vimeo or Rumble video popup to WordPress. Lightweight, privacy-friendly lightbox that works with any page builder.
  * Version: 2.11
+ * Requires at least: 4.7
+ * Requires PHP: 5.6
  * Author: David Vongries
  * Author URI: https://mapsteps.com
  * License: GPL v2 or later

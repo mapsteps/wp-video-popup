@@ -3,11 +3,12 @@ Contributors: davidvongries
 Tags: video popup, video lightbox, youtube popup, vimeo popup, youtube lightbox
 Requires at least: 4.7
 Tested up to: 7.1
+Requires PHP: 5.6
 Stable tag: 2.11
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Open YouTube, Vimeo & Rumble videos in a responsive lightbox popup on click. Lightweight, privacy-friendly and works with any page builder.
+Add a YouTube, Vimeo or Rumble video popup to WordPress. Lightweight, privacy-friendly lightbox that works with any page builder.
 
 == Description ==
 
@@ -181,6 +182,9 @@ YouTube (including youtube-nocookie.com and youtu.be links), Vimeo (including pr
 = Can I add multiple video popups to one page? =
 The free version supports one video popup per page. [WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup) supports unlimited popups per page.
 
+= Can the video popup open automatically on page load? =
+Yes, with [WP Video Popup PRO](https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=link&utm_campaign=wp_video_popup). It can open the popup and start the video as soon as the page loads. The free version opens the popup when a visitor clicks a button, link or image.
+
 = Will it slow down my website? =
 No. The video is only loaded once a visitor opens the popup, so it doesn't affect your page load speed.
 
@@ -195,9 +199,9 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 `[wp-video-popup mute="1" video="https://www.youtube.com/watch?v=YlUKcNNmywk"]`
 
 == Screenshots ==
-1. Live example
-2. Desktop example
-3. Mobile example
+1. A YouTube video popup lightbox on desktop
+2. The responsive video popup on mobile
+3. Build your video popup shortcode under Settings → WP Video Popup
 
 == Changelog ==
 = 2.11 November 04, 2026 =
