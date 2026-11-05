@@ -112,9 +112,16 @@
 	}
 }
 
-/* Size field */
+/* Popup size: device switcher & field in one row, hint below the field */
+.wpvp-size-settings {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 8px 12px;
+}
+
 .wpvp-size-field {
-	width: 100px;
+	width: 120px;
 }
 
 /* Device switcher */
@@ -123,7 +130,8 @@
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 6px;
-	margin: 0 0 8px;
+	min-height: 40px; /* Same height as the field next to it */
+	margin: 0;
 	padding: 0;
 	list-style: none;
 }
@@ -218,10 +226,121 @@
 }
 
 .wpvp-admin-page .clr-field button {
-	right: 6px;
-	width: 24px;
-	height: 24px;
+	right: 5px;
+	width: 22px;
+	height: 22px;
 	border-radius: var(--heatbox-radius-small);
+}
+
+/* Color picker popover, styled like the WP admin & heatbox */
+.heatbox-admin .clr-picker {
+	width: 232px;
+	padding: 12px;
+	gap: 0;
+	border: 1px solid var(--heatbox-border);
+	border-radius: var(--heatbox-radius);
+	box-shadow: var(--heatbox-shadow-raised);
+	box-sizing: border-box;
+}
+
+.heatbox-admin .clr-gradient {
+	height: 120px;
+	margin-bottom: 12px;
+	border-radius: var(--heatbox-radius-small);
+}
+
+.heatbox-admin .clr-hue,
+.heatbox-admin .clr-alpha {
+	width: calc(100% - 16px);
+	margin: 6px 8px;
+}
+
+.heatbox-admin .clr-alpha div,
+.heatbox-admin .clr-hue div {
+	width: 14px;
+	height: 14px;
+	margin-left: -7px;
+	box-shadow: 0 0 0 1px var(--heatbox-control-border);
+}
+
+.heatbox-admin .clr-preview {
+	width: 30px;
+	height: 30px;
+	margin: 12px 8px 12px 0;
+	border-radius: var(--heatbox-radius-small);
+}
+
+.heatbox-admin .clr-preview:before,
+.heatbox-admin .clr-preview:after,
+.heatbox-admin .clr-preview button {
+	border-radius: var(--heatbox-radius-small);
+}
+
+.heatbox-admin input.clr-color {
+	width: calc(100% - 38px);
+	height: 30px;
+	min-height: 30px;
+	margin: 12px 0;
+	padding: 0 8px;
+	color: var(--heatbox-text);
+	border: 1px solid var(--heatbox-control-border);
+	border-radius: var(--heatbox-radius-small);
+	font-family: inherit;
+	font-size: 13px;
+	text-align: left;
+}
+
+.heatbox-admin input.clr-color:focus {
+	border-color: var(--heatbox-accent);
+	box-shadow: 0 0 0 1px var(--heatbox-accent);
+}
+
+.heatbox-admin .clr-swatches {
+	width: auto;
+	margin: 0;
+	flex-grow: 1;
+}
+
+.heatbox-admin .clr-swatches div {
+	justify-content: flex-start;
+	gap: 6px;
+	padding-bottom: 0;
+}
+
+.heatbox-admin .clr-swatches button {
+	width: 22px;
+	height: 22px;
+	margin: 0;
+	border-radius: var(--heatbox-radius-small);
+}
+
+.heatbox-admin .clr-swatches button:after {
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Clear button, styled like a WP secondary button */
+.heatbox-admin .clr-clear {
+	height: 26px;
+	margin: 0;
+	padding: 0 10px;
+	color: var(--heatbox-accent);
+	background: var(--heatbox-surface);
+	border: 1px solid var(--heatbox-accent);
+	border-radius: 3px;
+	font-size: 13px;
+	line-height: 24px;
+}
+
+.heatbox-admin .clr-clear:hover {
+	color: var(--heatbox-accent-darker);
+	border-color: var(--heatbox-accent-darker);
+	background: var(--heatbox-surface-muted);
+}
+
+.heatbox-admin .clr-keyboard-nav .clr-alpha input:focus + div,
+.heatbox-admin .clr-keyboard-nav .clr-hue input:focus + div,
+.heatbox-admin .clr-keyboard-nav .clr-marker:focus {
+	box-shadow: 0 0 0 2px var(--heatbox-accent), 0 0 2px 2px #fff;
 }
 
 /* Other products: same width as the settings above */
