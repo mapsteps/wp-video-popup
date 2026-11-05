@@ -84,10 +84,6 @@ function wp_video_popup_size_callback() {
 		<ul class="wpvp-responsive-sizes">
 			<li class="wpvp-responsive-size wpvp-responsive-size-desktop is-active" data-size-device="desktop">
 				<input type="text" name="wpvp_popup[sizes][desktop]" class="wpvp-size-field" value="" />
-
-				<p class="description">
-					<?php esc_html_e( 'Default: 1200px (e.g. 75% or 900px)', 'responsive-youtube-vimeo-popup' ); ?>
-				</p>
 			</li>
 			<li class="wpvp-responsive-size wpvp-responsive-size-tablet" data-size-device="tablet">
 				<input type="text" name="wpvp_popup[sizes][tablet]" class="wpvp-size-field" value="" />
@@ -96,6 +92,10 @@ function wp_video_popup_size_callback() {
 				<input type="text" name="wpvp_popup[sizes][mobile]" class="wpvp-size-field" value="" />
 			</li>
 		</ul>
+
+		<p class="description">
+			<?php esc_html_e( 'Default: 1200px (e.g. 75% or 900px)', 'responsive-youtube-vimeo-popup' ); ?>
+		</p>
 	</div>
 
 	<?php
