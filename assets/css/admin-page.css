@@ -200,6 +200,17 @@
 	display: block;
 }
 
+/* License status (PRO) */
+.heatbox .wpvp-license-badge.is-active {
+	color: #fff;
+	background: #008a20;
+}
+
+.heatbox .wpvp-license-badge.is-inactive {
+	color: #fff;
+	background: #d63638;
+}
+
 /* Color picker with alpha channel (PRO) */
 .iris-picker-inner {
 	display: grid;
