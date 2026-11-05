@@ -207,7 +207,8 @@ add_action( 'admin_enqueue_scripts', 'wp_video_popup_review_notice_script' );
 function wp_video_popup_admin_i18n() {
 
 	return array(
-		'colorPicker' => array(
+		'defaultColor' => __( 'Default', 'responsive-youtube-vimeo-popup' ),
+		'colorPicker'  => array(
 			'clearLabel' => __( 'Clear', 'responsive-youtube-vimeo-popup' ),
 			'a11y'       => array(
 				'open'        => __( 'Open color picker', 'responsive-youtube-vimeo-popup' ),

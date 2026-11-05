@@ -51,7 +51,7 @@ add_action( 'admin_init', 'wp_video_popup_settings' );
  * Background color callback.
  */
 function wp_video_popup_background_color_callback() {
-	echo '<input type="text" name="wpvp_popup[bg_color]" value="" class="color-picker wp-video-popup-color-picker" autocomplete="off" />';
+	echo '<input type="text" name="wpvp_popup[bg_color]" value="" class="color-picker wp-video-popup-color-picker" data-default-color="rgba(0,0,0,0.88)" autocomplete="off" />';
 	echo '<p class="description">' . esc_html__( 'Default: rgba(0, 0, 0, 0.88)', 'responsive-youtube-vimeo-popup' ) . '</p>';
 }
 

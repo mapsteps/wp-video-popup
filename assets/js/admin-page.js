@@ -3,7 +3,8 @@
 	// Overlay color picker (Coloris).
 	// "mixed" saves hex for solid colors and rgba() for transparent ones, same as the previous picker.
 	if (window.Coloris && document.querySelector('.wp-video-popup-color-picker')) {
-		var i18n = (window.wpVideoPopupAdmin && window.wpVideoPopupAdmin.colorPicker) || {};
+		var adminI18n = window.wpVideoPopupAdmin || {};
+		var activeColorField = null;
 
 		window.Coloris($.extend({
 			el: '.wp-video-popup-color-picker',
@@ -11,9 +12,40 @@
 			themeMode: 'light',
 			format: 'mixed',
 			alpha: true,
-			clearButton: true,
-			swatches: ['rgba(0,0,0,0.88)', '#000000', '#ffffff']
-		}, i18n));
+			clearButton: true
+		}, adminI18n.colorPicker || {}));
+
+		// Remember which field the picker belongs to.
+		$(document).on('focus click', '.wp-video-popup-color-picker', function () {
+			activeColorField = this;
+			addDefaultButton();
+		});
+
+		// "Default" button: fills in the field's default color (data-default-color).
+		// Added on first use, Coloris only builds its picker once the page has loaded.
+		function addDefaultButton() {
+			var picker = document.getElementById('clr-picker');
+
+			if (!picker || picker.querySelector('.clr-default')) return;
+
+			var defaultButton = document.createElement('button');
+			defaultButton.type = 'button';
+			defaultButton.className = 'clr-default';
+			defaultButton.textContent = adminI18n.defaultColor || 'Default';
+
+			defaultButton.addEventListener('click', function () {
+				var defaultColor = activeColorField && activeColorField.getAttribute('data-default-color');
+				var colorValue = document.getElementById('clr-color-value');
+
+				if (!defaultColor || !colorValue) return;
+
+				// Let Coloris handle it as if the value was typed, so the picker & field stay in sync.
+				colorValue.value = defaultColor;
+				colorValue.dispatchEvent(new Event('change', { bubbles: true }));
+			});
+
+			picker.insertBefore(defaultButton, picker.querySelector('.clr-clear'));
+		}
 	}
 
 	// Getting started: shortcode builder.
