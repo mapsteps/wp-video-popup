@@ -27,7 +27,7 @@ Embedding YouTube or Vimeo videos can slow down your site. WP Video Popup only l
 = 📱 Fully responsive =
 The video lightbox adapts to every screen size and supports both landscape and portrait (vertical) videos.
 
-= ✅ Privacy-friendly & GDPR compliant =
+= ✅ Privacy-friendly =
 No connection to YouTube, Vimeo or Rumble is made until the lightbox is opened. Use a youtube-nocookie.com link for YouTube's privacy-enhanced mode.
 
 = ♿ Accessible =
@@ -35,8 +35,6 @@ The popup can be opened and closed with the keyboard, handles focus properly and
 
 = 🧱 Works with your page builder =
 Use it with the block editor (Gutenberg), Elementor, Divi, Bricks, Beaver Builder or any other page builder and theme.
-
-[youtube https://www.youtube.com/watch?v=QBEppQ7mslo]
 
 == How to add a video popup ==
 
@@ -119,10 +117,10 @@ Since September 2018, YouTube no longer allows hiding related videos completely.
 
 === Advanced ===
 
-To add additional parameters to the embed URL, use the filter below. For example, to remove the YouTube branding:
+To add additional parameters to the embed URL, use the filter below. For example, to show YouTube captions by default:
 
 `function prefix_your_custom_embed_url_attributes( $video_url ) {
-	$video_url .= '&amp;modestbranding=1';
+	$video_url .= '&cc_load_policy=1';
 	return $video_url;
 }
 add_filter( 'wp_video_popup', 'prefix_your_custom_embed_url_attributes' );`
