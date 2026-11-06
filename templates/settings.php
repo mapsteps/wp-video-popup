@@ -54,7 +54,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				<div class="heatbox-cta primary">
 					<p><?php esc_html_e( 'This feature is available in WP Video Popup PRO!', 'responsive-youtube-vimeo-popup' ); ?></p>
 					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-large button-primary" target="_blank">
-						<?php esc_html_e( 'Get WP Video Popup PRO - 70% off!', 'responsive-youtube-vimeo-popup' ); ?>
+						<?php esc_html_e( 'Get WP Video Popup PRO - 60% off!', 'responsive-youtube-vimeo-popup' ); ?>
 					</a>
 				</div>
 			</div>
@@ -125,9 +125,9 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 			<div class="heatbox-cta-container is-attached">
 				<div class="heatbox-cta primary">
-					<p><?php echo wp_kses_post( __( 'Get <strong>70% off WP Video Popup PRO</strong> today, automatically applied at checkout.', 'responsive-youtube-vimeo-popup' ) ); ?></p>
+					<p><?php echo wp_kses_post( __( 'Get <strong>60% off WP Video Popup PRO</strong> today, automatically applied at checkout.', 'responsive-youtube-vimeo-popup' ) ); ?></p>
 					<a href="https://wp-video-popup.com/pricing/?utm_source=repository&utm_medium=settings_page&utm_campaign=wp_video_popup" class="button button-primary" target="_blank">
-						<?php esc_html_e( 'Upgrade to PRO - Save 70%', 'responsive-youtube-vimeo-popup' ); ?>
+						<?php esc_html_e( 'Upgrade to PRO - Save 60%', 'responsive-youtube-vimeo-popup' ); ?>
 					</a>
 				</div>
 			</div>
