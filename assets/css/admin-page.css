@@ -47,6 +47,28 @@
 	overflow: hidden;
 }
 
+/* Steps (1. Add the shortcode, 2. Add the trigger): full width, numbers in the headings */
+.wpvp-steps {
+	display: grid;
+	gap: var(--heatbox-gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.wpvp-steps > li {
+	min-width: 0;
+	margin: 0;
+}
+
+.heatbox .wpvp-steps h3 {
+	margin: 0 0 4px;
+}
+
+.heatbox .wpvp-steps p {
+	margin: 0 0 12px;
+}
+
 /* Builder headline: a header strip along the top edge (the code bar runs along the bottom) */
 .heatbox .wpvp-builder-title {
 	display: flex;
@@ -383,9 +405,6 @@
 		grid-template-columns: 1fr;
 	}
 
-	.heatbox-steps > li {
-		padding-inline-start: 36px;
-	}
 }
 
 /* Popup size: device switcher pinned right next to the field, hint below the field.

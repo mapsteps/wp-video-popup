@@ -14,9 +14,9 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 	</h2>
 	<div class="heatbox-content">
 
-		<ol class="heatbox-steps">
+		<ol class="wpvp-steps">
 			<li>
-				<h3><?php esc_html_e( 'Add the shortcode', 'responsive-youtube-vimeo-popup' ); ?></h3>
+				<h3>1. <?php esc_html_e( 'Add the shortcode', 'responsive-youtube-vimeo-popup' ); ?></h3>
 				<p class="description"><?php esc_html_e( 'Build your shortcode below, then paste it into any page, post or template.', 'responsive-youtube-vimeo-popup' ); ?></p>
 
 				<div class="wpvp-builder">
@@ -81,7 +81,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				</div>
 			</li>
 			<li>
-				<h3><?php esc_html_e( 'Add the trigger', 'responsive-youtube-vimeo-popup' ); ?></h3>
+				<h3>2. <?php esc_html_e( 'Add the trigger', 'responsive-youtube-vimeo-popup' ); ?></h3>
 				<p class="description"><?php esc_html_e( 'Add this CSS class to any button, link or image that should open the popup:', 'responsive-youtube-vimeo-popup' ); ?></p>
 
 				<div class="wpvp-code is-inline">
