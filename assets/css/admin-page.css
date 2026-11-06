@@ -25,13 +25,6 @@
 	border-radius: var(--heatbox-radius-small);
 }
 
-/* Step numbers in the brand color */
-.wpvp-getting-started .heatbox-steps > li::before {
-	color: #fff;
-	background: var(--wpvp-brand);
-	border-color: var(--wpvp-brand);
-}
-
 /* Getting started: builder */
 .wpvp-builder {
 	display: grid;
