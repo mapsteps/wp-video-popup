@@ -44,7 +44,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 			<!-- Faking H1 tag to place admin notices -->
 			<h1 style="display: none;"></h1>
 
-			<?php require __DIR__ . '/metaboxes/getting-started.php'; ?>
+			<?php require __DIR__ . '/builder.php'; ?>
 
 			<div class="heatbox wpvp-settings-metabox is-locked">
 				<?php do_settings_sections( 'wp-video-popup-settings' ); ?>

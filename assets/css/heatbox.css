@@ -40,19 +40,23 @@ body {
 	--heatbox-surface-hover: #f6f7f7;
 	--heatbox-surface-disabled: #f5f5f5;
 	--heatbox-border: #c3c4c7;
+	--heatbox-box-border: #e2e4e7;
 	--heatbox-control: #f0f0f1;
 	--heatbox-control-border: #8c8f94;
 	--heatbox-control-off: #c3c4c7;
 	--heatbox-control-disabled: #a7aaad;
 
 	--heatbox-gap: 20px;
+	--heatbox-box-padding: 28px;
 	--heatbox-section-gap: 40px;
-	--heatbox-header-padding: 32px;
+	--heatbox-header-padding: 36px;
 	--heatbox-divider: #dcdcde;
-	--heatbox-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+	--heatbox-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.14);
 	--heatbox-shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.12);
-	--heatbox-radius: 8px;
+	--heatbox-radius: 12px;
+	--heatbox-radius-control: 8px;
 	--heatbox-radius-small: 4px;
+	--heatbox-control-height: 40px;
 	--heatbox-transition: 0.2s ease-in-out;
 }
 
@@ -175,12 +179,12 @@ body {
 	flex-direction: row-reverse;
 	justify-content: flex-end;
 	align-items: center;
-	gap: 18px;
+	gap: 20px;
 	margin-bottom: var(--heatbox-header-padding);
 }
 
 .heatbox-header.heatbox-has-tab-nav .logo-container {
-	margin-bottom: 16px;
+	margin-bottom: 20px;
 }
 
 .heatbox-header .logo-container > div {
@@ -190,12 +194,12 @@ body {
 
 .heatbox-header .logo-container img {
 	display: block;
-	width: 56px;
+	width: 68px;
 	height: auto;
 }
 
 .heatbox-header .logo-container .heatbox-logo-wide img {
-	width: 120px;
+	width: 140px;
 }
 
 /* Tabs: .heatbox-tab-nav (preferred) and legacy .tab-navigation */
@@ -204,7 +208,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: 0 32px;
+	gap: 0 36px;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -214,14 +218,14 @@ body {
 .heatbox-header .tab-navigation li {
 	margin: 0;
 	padding: 0;
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 500;
 }
 
 .heatbox-tab-nav li a,
 .heatbox-header .tab-navigation li a {
 	display: block;
-	padding: 14px 2px 12px;
+	padding: 16px 2px 14px;
 	color: var(--heatbox-text-muted);
 	text-decoration: none;
 	border-bottom: 3px solid transparent;
@@ -266,27 +270,27 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: 10px;
+	gap: 12px;
 	margin: 0;
 	padding: 0;
-	font-size: 26px;
+	font-size: 30px;
 	font-weight: 600;
-	line-height: 1.25;
+	line-height: 1.2;
 	color: var(--heatbox-text);
 }
 
 .heatbox-wrap .subtitle {
-	margin: 4px 0 0 0;
+	margin: 6px 0 0 0;
 	padding: 0;
-	font-size: 14px;
+	font-size: 15px;
 	line-height: 1.5;
 	color: var(--heatbox-text-muted);
 }
 
 .heatbox-wrap .version {
 	margin: 0;
-	padding: 3px 9px;
-	font-size: 12px;
+	padding: 4px 10px;
+	font-size: 13px;
 	font-weight: 500;
 	line-height: 1.2;
 	color: var(--heatbox-text-muted);
@@ -320,7 +324,7 @@ body {
 .heatbox {
 	background: var(--heatbox-surface);
 	margin-bottom: var(--heatbox-gap);
-	border: 1px solid var(--heatbox-border);
+	border: 1px solid var(--heatbox-box-border);
 	border-radius: var(--heatbox-radius);
 	box-shadow: var(--heatbox-shadow);
 }
@@ -328,16 +332,16 @@ body {
 .heatbox h2 {
 	position: relative;
 	margin: 0;
-	padding: 16px var(--heatbox-gap);
-	font-size: 15px;
+	padding: 20px var(--heatbox-box-padding);
+	font-size: 17px;
 	font-weight: 600;
 	line-height: 1.4;
 	color: var(--heatbox-text);
-	border-bottom: 1px solid var(--heatbox-divider);
+	border-bottom: 1px solid var(--heatbox-box-border);
 }
 
 .heatbox.is-grouped h2 {
-	border-top: 1px solid var(--heatbox-divider);
+	border-top: 1px solid var(--heatbox-box-border);
 }
 
 .heatbox.is-grouped h2:first-child {
@@ -358,7 +362,7 @@ body {
 
 .heatbox-content {
 	margin: 0;
-	padding: var(--heatbox-gap);
+	padding: var(--heatbox-box-padding);
 }
 
 .heatbox-content p:first-child {
@@ -453,8 +457,28 @@ body {
 
 .heatbox .form-table th,
 .heatbox .form-table td {
-	padding: var(--heatbox-gap);
+	padding: 24px var(--heatbox-box-padding);
 	vertical-align: top;
+}
+
+.heatbox .form-table td {
+	padding-inline-start: 0;
+}
+
+/* Labels line up with the middle of a field */
+.heatbox .form-table th {
+	padding-top: 33px;
+}
+
+@media screen and (max-width: 782px) {
+	.heatbox .form-table th {
+		padding-top: 24px;
+		padding-bottom: 0;
+	}
+
+	.heatbox .form-table td {
+		padding: 10px var(--heatbox-box-padding) 24px;
+	}
 }
 
 .heatbox .form-table th .description {
@@ -472,6 +496,69 @@ body {
 .heatbox-wrap p.submit {
 	margin: var(--heatbox-gap) 0;
 	padding: 0;
+}
+
+/**
+ * Text fields & selects inside a box: taller, rounded, with a clear border
+ * and a focus ring in the accent color.
+ */
+.heatbox input[type="text"],
+.heatbox input[type="url"],
+.heatbox input[type="email"],
+.heatbox input[type="number"],
+.heatbox input[type="password"],
+.heatbox input[type="search"],
+.heatbox input[type="tel"],
+.heatbox select,
+.heatbox textarea {
+	min-height: var(--heatbox-control-height);
+	padding: 0 12px;
+	font-size: 14px;
+	color: var(--heatbox-text);
+	background-color: var(--heatbox-surface);
+	border: 1px solid var(--heatbox-border);
+	border-radius: var(--heatbox-radius-control);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+	transition: border-color var(--heatbox-transition), box-shadow var(--heatbox-transition);
+}
+
+.heatbox textarea {
+	padding: 10px 12px;
+}
+
+.heatbox select {
+	padding-inline-end: 32px;
+}
+
+.heatbox input[type="text"]:hover,
+.heatbox input[type="url"]:hover,
+.heatbox input[type="email"]:hover,
+.heatbox input[type="number"]:hover,
+.heatbox input[type="password"]:hover,
+.heatbox input[type="search"]:hover,
+.heatbox input[type="tel"]:hover,
+.heatbox select:hover,
+.heatbox textarea:hover {
+	border-color: var(--heatbox-control-border);
+}
+
+.heatbox input[type="text"]:focus,
+.heatbox input[type="url"]:focus,
+.heatbox input[type="email"]:focus,
+.heatbox input[type="number"]:focus,
+.heatbox input[type="password"]:focus,
+.heatbox input[type="search"]:focus,
+.heatbox input[type="tel"]:focus,
+.heatbox select:focus,
+.heatbox textarea:focus {
+	border-color: var(--heatbox-accent);
+	outline: none;
+	box-shadow: 0 0 0 3px var(--heatbox-accent-soft-border);
+}
+
+.heatbox input::placeholder,
+.heatbox textarea::placeholder {
+	color: var(--heatbox-control-disabled);
 }
 
 /**
@@ -773,11 +860,11 @@ body {
 
 /* Attached to the bottom of the box above it */
 .heatbox-cta-container.is-attached {
-	padding: var(--heatbox-gap);
+	padding: var(--heatbox-gap) var(--heatbox-box-padding);
 	margin-top: calc(var(--heatbox-gap) * -1);
 	margin-bottom: var(--heatbox-gap);
 	background: var(--heatbox-surface);
-	border: 1px solid var(--heatbox-border);
+	border: 1px solid var(--heatbox-box-border);
 	border-radius: 0 0 var(--heatbox-radius) var(--heatbox-radius);
 	box-shadow: var(--heatbox-shadow);
 }
