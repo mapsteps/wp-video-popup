@@ -47,13 +47,13 @@ body {
 	--heatbox-control-disabled: #a7aaad;
 
 	--heatbox-gap: 20px;
-	--heatbox-box-padding: 28px;
+	--heatbox-box-padding: 24px;
 	--heatbox-section-gap: 40px;
 	--heatbox-header-padding: 36px;
 	--heatbox-divider: #dcdcde;
 	--heatbox-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(0, 0, 0, 0.14);
 	--heatbox-shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.12);
-	--heatbox-radius: 12px;
+	--heatbox-radius: 8px;
 	--heatbox-radius-control: 8px;
 	--heatbox-radius-small: 4px;
 	--heatbox-control-height: 40px;
@@ -331,7 +331,7 @@ body {
 .heatbox h2 {
 	position: relative;
 	margin: 0;
-	padding: 20px var(--heatbox-box-padding);
+	padding: 16px var(--heatbox-box-padding);
 	font-size: 17px;
 	font-weight: 600;
 	line-height: 1.4;
@@ -753,15 +753,36 @@ body {
 /* 8. Buttons
    ========================================================================== */
 
+/**
+ * WP buttons, modernized: rounded like the fields, a little roomier, medium weight.
+ * Colors, hover & focus stay WordPress' own (primary follows the admin color scheme).
+ */
+.heatbox-wrap .button {
+	border-radius: var(--heatbox-radius-control);
+	font-weight: 500;
+	transition: background-color var(--heatbox-transition), border-color var(--heatbox-transition), color var(--heatbox-transition);
+}
+
 /* WP already enlarges buttons below 783px */
 @media screen and (min-width: 783px) {
+	.heatbox-wrap .button:not(.button-small) {
+		min-height: 34px;
+		padding: 0 14px;
+		line-height: 32px;
+	}
+
+	.heatbox-wrap .button-large,
 	.heatbox-wrap .button-larger {
-		min-height: 36px;
-		padding: 0 16px;
+		min-height: var(--heatbox-control-height);
+		padding: 0 18px;
 		font-size: 14px;
-		line-height: 34px;
+		line-height: calc(var(--heatbox-control-height) - 2px);
 		vertical-align: middle;
 	}
+}
+
+.heatbox-wrap .button-small {
+	border-radius: var(--heatbox-radius-small);
 }
 
 .heatbox-wrap .button-full {

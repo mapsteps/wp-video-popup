@@ -41,8 +41,8 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 		<div class="heatbox-main">
 
-			<!-- Faking H1 tag to place admin notices -->
-			<h1 style="display: none;"></h1>
+			<!-- WordPress places admin notices after this marker -->
+			<hr class="wp-header-end">
 
 			<?php require __DIR__ . '/builder.php'; ?>
 
