@@ -4,7 +4,7 @@ Tags: video popup, video lightbox, youtube popup, vimeo popup, youtube lightbox
 Requires at least: 4.7
 Tested up to: 7.1
 Requires PHP: 5.6
-Stable tag: 2.11.1
+Stable tag: 2.11.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -202,6 +202,9 @@ To mute the video, add the `mute="1"` attribute to the shortcode like this:
 3. Build your video popup shortcode under Settings → WP Video Popup
 
 == Changelog ==
+= 2.11.2 November 06, 2026 =
+* Tweak: Shortcode builder remembers your last settings, with a Reset button
+* Tweak: Updated PRO upgrade notices
 = 2.11.1 November 06, 2026 =
 * New: Shortcode builder card with video link detection, options, live preview of the shortcode and one-click copy
 * Tweak: Refreshed settings page design (header, boxes, fields & buttons)
