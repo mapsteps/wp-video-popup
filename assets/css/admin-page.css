@@ -605,6 +605,24 @@
 	background: #d63638;
 }
 
+/* License key field with its buttons in one row (PRO) */
+.wpvp-license-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.wpvp-license-row .regular-text {
+	flex: 1 1 260px;
+	max-width: 25em;
+	margin: 0;
+}
+
+.wpvp-license-row .button {
+	margin: 0;
+}
+
 /* Color picker (Coloris): color preview inside the field */
 .wpvp-admin-page .clr-field input.wp-video-popup-color-picker {
 	width: 220px;
