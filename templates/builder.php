@@ -13,6 +13,10 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 	<header class="wpvp-studio-header">
 		<h2 id="wpvp-studio-title"><?php esc_html_e( 'Create a video popup', 'responsive-youtube-vimeo-popup' ); ?></h2>
 		<p><?php esc_html_e( 'Paste a link, pick your options and copy the shortcode into any page, post or template.', 'responsive-youtube-vimeo-popup' ); ?></p>
+		<button type="button" class="wpvp-studio-reset" id="wpvp-builder-reset" hidden>
+			<span class="dashicons dashicons-image-rotate" aria-hidden="true"></span>
+			<?php esc_html_e( 'Reset', 'responsive-youtube-vimeo-popup' ); ?>
+		</button>
 	</header>
 
 	<div class="wpvp-studio-body">

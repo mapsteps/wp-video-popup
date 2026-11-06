@@ -238,10 +238,113 @@
 		videoHint.textContent = videoHint.getAttribute(invalid ? 'data-invalid' : 'data-default');
 	}
 
+	// Remember the last settings (in this browser), so the builder doesn't start from scratch.
+	var storageKey = 'wpvp-builder';
+	var sections = document.querySelectorAll('.wpvp-studio-advanced');
+	var resetButton = document.getElementById('wpvp-builder-reset');
+
+	function readState() {
+		var state = { fields: {}, open: [] };
+
+		Object.keys(fields).forEach(function (key) {
+			state.fields[key] = fields[key].type === 'checkbox' ? fields[key].checked : fields[key].value;
+		});
+
+		sections.forEach(function (section, i) {
+			state.open[i] = section.open;
+		});
+
+		return state;
+	}
+
+	function hasValues(state) {
+		return Object.keys(state.fields).some(function (key) {
+			return state.fields[key] !== '' && state.fields[key] !== false;
+		});
+	}
+
+	function isEmpty(state) {
+		return !hasValues(state) && state.open.indexOf(true) === -1;
+	}
+
+	// Only worth offering a reset when something was entered.
+	function updateResetButton(state) {
+		if (resetButton) resetButton.hidden = !hasValues(state || readState());
+	}
+
+	// Storage can be unavailable (e.g. blocked in private windows). The builder works without it.
+	function saveState() {
+		var state = readState();
+		updateResetButton(state);
+
+		try {
+			if (isEmpty(state)) {
+				window.localStorage.removeItem(storageKey);
+			} else {
+				window.localStorage.setItem(storageKey, JSON.stringify(state));
+			}
+		} catch (e) {}
+	}
+
+	function restoreState() {
+		var state;
+
+		try {
+			state = JSON.parse(window.localStorage.getItem(storageKey));
+		} catch (e) {}
+
+		if (!state || typeof state !== 'object') return;
+
+		// Only fields that exist on this page (the free & PRO version share the storage).
+		Object.keys(state.fields || {}).forEach(function (key) {
+			if (!fields[key]) return;
+
+			if (fields[key].type === 'checkbox') {
+				fields[key].checked = state.fields[key] === true;
+			} else if (typeof state.fields[key] === 'string') {
+				fields[key].value = state.fields[key];
+			}
+		});
+
+		sections.forEach(function (section, i) {
+			if (state.open && state.open[i] === true) section.open = true;
+		});
+	}
+
+	function resetState() {
+		Object.keys(fields).forEach(function (key) {
+			if (fields[key].type === 'checkbox') {
+				fields[key].checked = false;
+			} else {
+				fields[key].value = '';
+			}
+		});
+
+		sections.forEach(function (section) {
+			section.open = false;
+		});
+
+		buildShortcode();
+		saveState();
+		fields.video.focus();
+	}
+
+	restoreState();
+
 	Object.keys(fields).forEach(function (key) {
 		fields[key].addEventListener('input', buildShortcode);
 		fields[key].addEventListener('change', buildShortcode);
+		fields[key].addEventListener('input', saveState);
+		fields[key].addEventListener('change', saveState);
 	});
+
+	sections.forEach(function (section) {
+		section.addEventListener('toggle', saveState);
+	});
+
+	if (resetButton) resetButton.addEventListener('click', resetState);
+
+	updateResetButton();
 
 	buildShortcode();
 

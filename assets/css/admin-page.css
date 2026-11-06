@@ -36,7 +36,54 @@
 }
 
 .wpvp-studio-header {
+	position: relative;
 	padding: var(--heatbox-box-padding) var(--heatbox-box-padding) 0;
+}
+
+/* Reset the builder (shown once something was entered) */
+.heatbox .wpvp-studio-reset {
+	position: absolute;
+	top: var(--heatbox-box-padding);
+	right: var(--heatbox-box-padding);
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin: 0;
+	padding: 5px 12px 5px 9px;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.5;
+	color: var(--heatbox-text-muted);
+	background: var(--heatbox-surface);
+	border: 1px solid var(--heatbox-border);
+	border-radius: 999px;
+	cursor: pointer;
+	transition: color var(--heatbox-transition), border-color var(--heatbox-transition);
+}
+
+.heatbox .wpvp-studio-reset[hidden] {
+	display: none;
+}
+
+.heatbox .wpvp-studio-reset:hover {
+	color: var(--heatbox-text);
+	border-color: var(--heatbox-control-border);
+}
+
+.heatbox .wpvp-studio-reset:focus-visible {
+	outline: 2px solid var(--heatbox-accent);
+	outline-offset: 2px;
+}
+
+.wpvp-studio-reset .dashicons {
+	width: 14px;
+	height: 14px;
+	font-size: 14px;
+}
+
+/* Keep the title clear of the reset button */
+.wpvp-studio-header:has(.wpvp-studio-reset:not([hidden])) h2 {
+	padding-inline-end: 90px;
 }
 
 .heatbox .wpvp-studio-header h2 {
@@ -502,6 +549,11 @@
 @media screen and (max-width: 782px) {
 	.wpvp-studio-header {
 		padding: 22px 20px 0;
+	}
+
+	.heatbox .wpvp-studio-reset {
+		top: 20px;
+		right: 20px;
 	}
 
 	.wpvp-studio-body {
