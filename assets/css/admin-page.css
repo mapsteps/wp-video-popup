@@ -68,6 +68,24 @@
 	color: var(--heatbox-text);
 }
 
+/* Label with a hint on the right (e.g. a missing link) */
+.wpvp-studio-label {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 8px;
+}
+
+.wpvp-studio-field .wpvp-studio-label label {
+	margin-bottom: 0;
+}
+
+.heatbox .wpvp-studio-label .wpvp-studio-hint {
+	margin: 0;
+	white-space: nowrap;
+}
+
 .wpvp-studio-optional {
 	margin-inline-start: 4px;
 	font-weight: 400;
