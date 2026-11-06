@@ -23,7 +23,10 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 					<div class="wpvp-builder-field">
 						<label for="wpvp-builder-video"><?php esc_html_e( 'Video URL', 'responsive-youtube-vimeo-popup' ); ?></label>
-						<input type="url" id="wpvp-builder-video" class="large-text" placeholder="https://www.youtube.com/watch?v=YlUKcNNmywk" aria-describedby="wpvp-builder-video-hint" autocomplete="off">
+						<div class="wpvp-builder-video">
+							<input type="url" id="wpvp-builder-video" class="large-text" placeholder="https://www.youtube.com/watch?v=YlUKcNNmywk" aria-describedby="wpvp-builder-video-hint" autocomplete="off">
+							<span class="wpvp-service" id="wpvp-builder-service" hidden></span>
+						</div>
 						<p class="description" id="wpvp-builder-video-hint" data-default="<?php esc_attr_e( 'A YouTube, Vimeo or Rumble link.', 'responsive-youtube-vimeo-popup' ); ?>" data-invalid="<?php esc_attr_e( 'This doesn\'t look like a YouTube, Vimeo or Rumble link.', 'responsive-youtube-vimeo-popup' ); ?>">
 							<?php esc_html_e( 'A YouTube, Vimeo or Rumble link.', 'responsive-youtube-vimeo-popup' ); ?>
 						</p>
@@ -49,22 +52,25 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 						</div>
 					</div>
 
-					<div class="wpvp-builder-checkboxes">
-						<label class="label checkbox-label">
-							<?php esc_html_e( 'Mute video', 'responsive-youtube-vimeo-popup' ); ?>
+					<div class="wpvp-chips">
+						<label class="wpvp-chip">
 							<input type="checkbox" id="wpvp-builder-mute">
-							<div class="indicator"></div>
+							<span class="dashicons dashicons-controls-volumeoff" aria-hidden="true"></span>
+							<?php esc_html_e( 'Mute video', 'responsive-youtube-vimeo-popup' ); ?>
 						</label>
-						<label class="label checkbox-label">
-							<?php esc_html_e( 'Portrait video', 'responsive-youtube-vimeo-popup' ); ?>
+						<label class="wpvp-chip">
 							<input type="checkbox" id="wpvp-builder-portrait">
-							<div class="indicator"></div>
+							<span class="dashicons dashicons-smartphone" aria-hidden="true"></span>
+							<?php esc_html_e( 'Portrait video', 'responsive-youtube-vimeo-popup' ); ?>
 						</label>
 					</div>
 
-					<div class="heatbox-copy">
+					<div class="wpvp-code">
 						<code id="wpvp-builder-output">[wp-video-popup video="https://www.youtube.com/watch?v=YlUKcNNmywk"]</code>
-						<button type="button" class="button wpvp-copy" data-copied="<?php esc_attr_e( 'Copied!', 'responsive-youtube-vimeo-popup' ); ?>" data-copy-target="wpvp-builder-output" aria-label="<?php esc_attr_e( 'Copy shortcode', 'responsive-youtube-vimeo-popup' ); ?>"><?php esc_html_e( 'Copy', 'responsive-youtube-vimeo-popup' ); ?></button>
+						<button type="button" class="wpvp-code-copy wpvp-copy" data-copied="<?php esc_attr_e( 'Copied!', 'responsive-youtube-vimeo-popup' ); ?>" data-copy-target="wpvp-builder-output" aria-label="<?php esc_attr_e( 'Copy shortcode', 'responsive-youtube-vimeo-popup' ); ?>">
+							<span class="dashicons dashicons-admin-page" aria-hidden="true"></span>
+							<span class="wpvp-copy-label"><?php esc_html_e( 'Copy', 'responsive-youtube-vimeo-popup' ); ?></span>
+						</button>
 					</div>
 
 				</div>
@@ -73,9 +79,12 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				<h3><?php esc_html_e( 'Add the trigger', 'responsive-youtube-vimeo-popup' ); ?></h3>
 				<p class="description"><?php esc_html_e( 'Add this CSS class to any button, link or image that should open the popup:', 'responsive-youtube-vimeo-popup' ); ?></p>
 
-				<div class="heatbox-copy wpvp-class-copy">
+				<div class="wpvp-code is-inline">
 					<code id="wpvp-trigger-class">wp-video-popup</code>
-					<button type="button" class="button wpvp-copy" data-copied="<?php esc_attr_e( 'Copied!', 'responsive-youtube-vimeo-popup' ); ?>" data-copy-target="wpvp-trigger-class" aria-label="<?php esc_attr_e( 'Copy CSS class', 'responsive-youtube-vimeo-popup' ); ?>"><?php esc_html_e( 'Copy', 'responsive-youtube-vimeo-popup' ); ?></button>
+					<button type="button" class="wpvp-code-copy wpvp-copy" data-copied="<?php esc_attr_e( 'Copied!', 'responsive-youtube-vimeo-popup' ); ?>" data-copy-target="wpvp-trigger-class" aria-label="<?php esc_attr_e( 'Copy CSS class', 'responsive-youtube-vimeo-popup' ); ?>">
+						<span class="dashicons dashicons-admin-page" aria-hidden="true"></span>
+						<span class="wpvp-copy-label"><?php esc_html_e( 'Copy', 'responsive-youtube-vimeo-popup' ); ?></span>
+					</button>
 				</div>
 
 				<p class="description">

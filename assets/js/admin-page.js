@@ -110,23 +110,68 @@
 		return fields[key] ? fields[key].checked : false;
 	}
 
+	// The video service, shown as a badge in the video field (if the page has one).
+	var serviceBadge = document.getElementById('wpvp-builder-service');
+
+	function detectService(url) {
+		if (/(youtube\.com|youtu\.be|youtube-nocookie\.com)\//i.test(url)) return { key: 'youtube', label: 'YouTube' };
+		if (/vimeo\.com\//i.test(url)) return { key: 'vimeo', label: 'Vimeo' };
+		if (/rumble\.com\//i.test(url)) return { key: 'rumble', label: 'Rumble' };
+		if (acceptsFiles && videoFiles.test(url)) return { key: 'file', label: serviceBadge ? serviceBadge.getAttribute('data-file-label') : 'Video file' };
+		return null;
+	}
+
+	function updateServiceBadge() {
+		if (!serviceBadge) return;
+
+		var service = detectService(fields.video.value.trim());
+
+		serviceBadge.hidden = !service;
+		serviceBadge.textContent = service ? service.label : '';
+		serviceBadge.setAttribute('data-service', service ? service.key : '');
+	}
+
+	function span(className, text) {
+		var el = document.createElement('span');
+		el.className = className;
+		el.textContent = text;
+		return el;
+	}
+
+	// Writes the shortcode with syntax highlighting. Its text stays the plain shortcode (that's what gets copied).
+	function renderShortcode(attributes) {
+		output.textContent = '';
+		output.appendChild(span('wpvp-token-tag', '[wp-video-popup'));
+
+		attributes.forEach(function (attribute) {
+			output.appendChild(document.createTextNode(' '));
+			output.appendChild(span('wpvp-token-attr', attribute[0]));
+			output.appendChild(span('wpvp-token-punct', '="'));
+			output.appendChild(span('wpvp-token-value', attribute[1]));
+			output.appendChild(span('wpvp-token-punct', '"'));
+		});
+
+		output.appendChild(span('wpvp-token-tag', ']'));
+	}
+
 	function buildShortcode() {
 		var video = clean(fields.video.value) || fields.video.placeholder;
 		var text = clean(value('text'));
 		var start = parseInt(value('start'), 10);
 		var id = cleanId(value('id'));
 		var gallery = cleanGallery(value('gallery'));
-		var shortcode = '[wp-video-popup video="' + video + '"';
+		var attributes = [['video', video]];
 
-		if (id) shortcode += ' id="' + id + '"';
-		if (gallery) shortcode += ' gallery="' + gallery + '"';
-		if (checked('autoplay')) shortcode += ' autoplay="1"';
-		if (checked('mute')) shortcode += ' mute="1"';
-		if (start > 0) shortcode += ' start="' + start + '"';
-		if (checked('portrait')) shortcode += ' portrait="1"';
-		if (text) shortcode += ' text="' + text + '"';
+		if (id) attributes.push(['id', id]);
+		if (gallery) attributes.push(['gallery', gallery]);
+		if (checked('autoplay')) attributes.push(['autoplay', '1']);
+		if (checked('mute')) attributes.push(['mute', '1']);
+		if (start > 0) attributes.push(['start', String(start)]);
+		if (checked('portrait')) attributes.push(['portrait', '1']);
+		if (text) attributes.push(['text', text]);
 
-		output.textContent = shortcode + ']';
+		renderShortcode(attributes);
+		updateServiceBadge();
 
 		// With an ID, the ID itself is the trigger class.
 		if (fields.id && triggerClass && triggerHint) {
@@ -174,7 +219,9 @@
 	}
 
 	document.querySelectorAll('.wpvp-copy').forEach(function (button) {
-		var label = button.textContent;
+		// Only swap the label, so an icon in the button stays.
+		var labelEl = button.querySelector('.wpvp-copy-label') || button;
+		var label = labelEl.textContent;
 		var timer;
 
 		button.addEventListener('click', function () {
@@ -183,12 +230,12 @@
 			copy(target.textContent).then(function () {
 				clearTimeout(timer);
 				button.classList.add('is-copied');
-				button.textContent = button.getAttribute('data-copied') || 'Copied!';
+				labelEl.textContent = button.getAttribute('data-copied') || 'Copied!';
 				copyStatus.textContent = button.getAttribute('data-copied') || 'Copied!';
 
 				timer = setTimeout(function () {
 					button.classList.remove('is-copied');
-					button.textContent = label;
+					labelEl.textContent = label;
 					copyStatus.textContent = '';
 				}, 1500);
 			});

@@ -9,15 +9,111 @@
 	display: none;
 }
 
-/* Getting started */
+/* Brand layer: WP Video Popup's own colors on top of heatbox */
+.wpvp-admin-page {
+	--wpvp-brand: #c44341;
+	--wpvp-brand-dark: #a3302e;
+	--wpvp-ink: #1d2327;
+}
+
+/* Inline code in the steps (e.g. the enclosing shortcode example) */
+.wpvp-getting-started .description code {
+	padding: 2px 6px;
+	font-size: 12px;
+	color: var(--wpvp-ink);
+	background: var(--heatbox-surface-muted);
+	border-radius: var(--heatbox-radius-small);
+}
+
+/* Step numbers in the brand color */
+.wpvp-getting-started .heatbox-steps > li::before {
+	color: #fff;
+	background: var(--wpvp-brand);
+	border-color: var(--wpvp-brand);
+}
+
+/* Getting started: builder */
 .wpvp-builder {
 	display: grid;
-	gap: 16px;
+	gap: 18px;
 	margin-top: 12px;
 	padding: var(--heatbox-gap);
 	background: var(--heatbox-surface-hover);
 	border: 1px solid var(--heatbox-divider);
 	border-radius: var(--heatbox-radius);
+	overflow: hidden;
+}
+
+/* The shortcode output runs along the bottom edge of the builder */
+.wpvp-builder > .wpvp-code {
+	margin: 2px calc(var(--heatbox-gap) * -1) calc(var(--heatbox-gap) * -1);
+	padding-inline-start: var(--heatbox-gap);
+	border-radius: 0;
+}
+
+/* Video URL with the detected service inside the field */
+.wpvp-builder-video {
+	position: relative;
+}
+
+.wpvp-builder-field .wpvp-builder-video input.large-text {
+	padding-inline-end: 120px;
+}
+
+.wpvp-service {
+	position: absolute;
+	top: 50%;
+	right: 8px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 3px 10px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--heatbox-text);
+	background: var(--heatbox-surface-muted);
+	border-radius: 999px;
+	transform: translateY(-50%);
+	pointer-events: none;
+	animation: wpvp-pop 0.2s ease-out;
+}
+
+.wpvp-service[hidden] {
+	display: none;
+}
+
+.wpvp-service::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	background: var(--heatbox-text-muted);
+	border-radius: 50%;
+}
+
+.wpvp-service[data-service="youtube"]::before {
+	background: #ff0033;
+}
+
+.wpvp-service[data-service="vimeo"]::before {
+	background: #17d5ff;
+}
+
+.wpvp-service[data-service="rumble"]::before {
+	background: #85c742;
+}
+
+@keyframes wpvp-pop {
+	from {
+		opacity: 0;
+		transform: translateY(-50%) scale(0.9);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wpvp-service {
+		animation: none;
+	}
 }
 
 .wpvp-builder-row {
@@ -79,27 +175,175 @@
 	color: #b32d2e;
 }
 
-.wpvp-builder-checkboxes {
+/* Options as toggle chips */
+.wpvp-chips {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px 24px;
+	gap: 8px;
 }
 
-.wpvp-builder .heatbox-copy code {
+.heatbox .wpvp-chip {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	padding: 6px 14px 6px 10px;
+	font-weight: 500;
+	color: var(--heatbox-text);
 	background: var(--heatbox-surface);
+	border: 1px solid var(--heatbox-border);
+	border-radius: 999px;
+	cursor: pointer;
+	user-select: none;
+	transition: color var(--heatbox-transition), background-color var(--heatbox-transition), border-color var(--heatbox-transition);
 }
 
-.heatbox .wpvp-class-copy {
-	margin-bottom: 12px;
+.wpvp-chip input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+	opacity: 0;
+	pointer-events: none;
 }
 
-.wpvp-class-copy code {
-	flex-grow: 0;
+.wpvp-chip .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+	color: var(--heatbox-text-muted);
+	transition: color var(--heatbox-transition);
+}
+
+.heatbox .wpvp-chip:hover {
+	border-color: var(--heatbox-control-border);
+}
+
+.heatbox .wpvp-chip:has(input:checked) {
+	color: #fff;
+	background: var(--wpvp-ink);
+	border-color: var(--wpvp-ink);
+}
+
+.wpvp-chip:has(input:checked) .dashicons {
+	color: #fff;
+}
+
+.wpvp-chip:has(input:focus-visible) {
+	box-shadow: 0 0 0 2px var(--heatbox-surface), 0 0 0 4px var(--heatbox-accent);
+}
+
+/* Dark code bar with syntax highlighting & a copy button */
+.wpvp-code {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 12px 12px 12px 16px;
+	background: var(--wpvp-ink);
+	border-radius: var(--heatbox-radius);
+}
+
+.wpvp-code code {
+	flex-grow: 1;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 13px;
+	line-height: 1.6;
+	color: #f0f0f1;
+	background: none;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere; /* Break between attributes, long URLs anywhere */
+}
+
+/* Keep an attribute (name="value") together where possible */
+.wpvp-token-attr,
+.wpvp-token-punct {
+	white-space: nowrap;
+}
+
+.wpvp-token-tag {
+	font-weight: 600;
+	color: #f0f0f1;
+}
+
+.wpvp-token-attr {
+	color: #9ec2ff;
+}
+
+.wpvp-token-punct {
+	color: #8c8f94;
+}
+
+.wpvp-token-value {
+	color: #ffb59e;
+}
+
+.wpvp-code-copy {
+	display: inline-flex;
+	flex-shrink: 0;
+	align-items: center;
+	gap: 6px;
+	height: 32px;
+	padding: 0 12px;
+	font-size: 13px;
+	font-weight: 500;
+	color: #fff;
+	background: var(--wpvp-brand);
+	border: 0;
+	border-radius: var(--heatbox-radius-small);
+	cursor: pointer;
+	transition: background-color var(--heatbox-transition);
+}
+
+.wpvp-code-copy:hover {
+	background: var(--wpvp-brand-dark);
+}
+
+.wpvp-code-copy:focus {
+	outline: none;
+}
+
+.wpvp-code-copy:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+.wpvp-code-copy .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
+
+.wpvp-code-copy.is-copied {
+	background: #00a32a;
+}
+
+.wpvp-code-copy.is-copied .dashicons::before {
+	content: "\f147"; /* dashicons-yes */
+}
+
+/* Trigger class: a compact code bar (block-level, so it doesn't sit on the text baseline) */
+.heatbox .wpvp-code.is-inline {
+	width: fit-content;
+	max-width: 100%;
+	margin: 0 0 12px;
+	padding: 6px 6px 6px 14px;
+}
+
+.wpvp-code.is-inline code {
+	color: #ffb59e;
 }
 
 @media screen and (max-width: 782px) {
 	.wpvp-builder {
 		padding: 16px;
+	}
+
+	.wpvp-builder > .wpvp-code {
+		margin: 2px -16px -16px;
+		padding-inline-start: 16px;
 	}
 
 	.wpvp-builder-row,
