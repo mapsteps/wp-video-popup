@@ -19,8 +19,8 @@
 /* PRO badge next to the page title (PRO) */
 .heatbox-wrap .title .wpvp-pro-badge {
 	margin: 0;
-	padding: 4px 10px;
-	font-size: 13px;
+	padding: 5px 12px;
+	font-size: 14px;
 	line-height: 1.2;
 	color: #fff;
 	background: var(--wpvp-brand);
