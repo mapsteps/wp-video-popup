@@ -46,7 +46,7 @@ function wp_video_popup_pro_ad() {
 
 		<div class="notice-body">
 			<div class="notice-icon">
-				<img src="<?php echo esc_url( WP_VIDEO_POPUP_PLUGIN_URL ); ?>assets/img/wp-video-popup-logo-1.png">
+				<img src="<?php echo esc_url( WP_VIDEO_POPUP_PLUGIN_URL ); ?>assets/img/wp-video-popup-logo-1.png" alt="">
 			</div>
 			<div class="notice-content">
 				<h2>

@@ -21,6 +21,11 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 				<div class="wpvp-builder">
 
+					<h4 class="wpvp-builder-title">
+						<span class="dashicons dashicons-shortcode" aria-hidden="true"></span>
+						<?php esc_html_e( 'Shortcode builder', 'responsive-youtube-vimeo-popup' ); ?>
+					</h4>
+
 					<div class="wpvp-builder-field">
 						<label for="wpvp-builder-video"><?php esc_html_e( 'Video URL', 'responsive-youtube-vimeo-popup' ); ?></label>
 						<div class="wpvp-builder-video">

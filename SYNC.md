@@ -19,6 +19,7 @@ WP Video Popup (free, `responsive-youtube-vimeo-popup`) is the base. WP Video Po
 | `assets/sass/modules/_wp-video-popup.scss` | `assets/sass/modules/_wp-video-popup.scss` |
 | `assets/sass/config/_mixins.scss` | `assets/sass/config/_mixins.scss` |
 | `assets/vendor/coloris/` | `assets/vendor/coloris/` (color picker, see `VERSION.txt`) |
+| `assets/img/wp-video-popup-logo-1.png` | `assets/img/wp-video-popup-logo-1.png` (plugin logo) |
 | `phpcs.xml` | `phpcs.xml` (excludes differ: free `persist-admin-notices-dismissal`, PRO the EDD updater) |
 | `composer.json` | `composer.json` (only name & description differ) |
 

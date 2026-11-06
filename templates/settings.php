@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				</div>
 
 				<div>
-					<img src="<?php echo esc_url( WP_VIDEO_POPUP_PLUGIN_URL ); ?>assets/img/wp-video-popup-logo-1.png">
+					<img src="<?php echo esc_url( WP_VIDEO_POPUP_PLUGIN_URL ); ?>assets/img/wp-video-popup-logo-1.png" alt="">
 				</div>
 
 			</div>

@@ -25,6 +25,16 @@
 	border-radius: var(--heatbox-radius-small);
 }
 
+/* PRO badge next to the page title (PRO) */
+.heatbox-wrap .title .wpvp-pro-badge {
+	margin: 0;
+	padding: 3px 9px;
+	font-size: 12px;
+	line-height: 1.2;
+	color: #fff;
+	background: var(--wpvp-brand);
+}
+
 /* Getting started: builder */
 .wpvp-builder {
 	display: grid;
@@ -35,6 +45,30 @@
 	border: 1px solid var(--heatbox-divider);
 	border-radius: var(--heatbox-radius);
 	overflow: hidden;
+}
+
+/* Builder headline: a header strip along the top edge (the code bar runs along the bottom) */
+.heatbox .wpvp-builder-title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: calc(var(--heatbox-gap) * -1) calc(var(--heatbox-gap) * -1) 2px;
+	padding: 12px var(--heatbox-gap);
+	background: var(--heatbox-surface);
+	border-bottom: 1px solid var(--heatbox-divider);
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--heatbox-text-muted);
+}
+
+.wpvp-builder-title .dashicons {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+	color: var(--wpvp-brand);
 }
 
 /* The shortcode output runs along the bottom edge of the builder */
@@ -337,6 +371,11 @@
 	.wpvp-builder > .wpvp-code {
 		margin: 2px -16px -16px;
 		padding-inline-start: 16px;
+	}
+
+	.heatbox .wpvp-builder-title {
+		margin: -16px -16px 2px;
+		padding: 12px 16px;
 	}
 
 	.wpvp-builder-row,
