@@ -286,6 +286,23 @@
 	margin-top: 18px;
 }
 
+/* End screen (PRO): two columns, headline, text & options across */
+.wpvp-studio-grid.is-endscreen {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wpvp-studio-grid .is-wide {
+	grid-column: 1 / -1;
+}
+
+.wpvp-studio-advanced > .wpvp-studio-hint {
+	margin-top: 14px;
+}
+
+.heatbox .wpvp-studio-hint[hidden] {
+	display: none;
+}
+
 .wpvp-studio-unit {
 	position: relative;
 }
@@ -477,7 +494,8 @@
 		padding: 18px 20px 20px;
 	}
 
-	.wpvp-studio-grid {
+	.wpvp-studio-grid,
+	.wpvp-studio-grid.is-endscreen {
 		grid-template-columns: 1fr;
 	}
 }

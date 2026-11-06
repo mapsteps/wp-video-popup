@@ -67,7 +67,14 @@
 		portrait: document.getElementById('wpvp-builder-portrait'),
 		id: document.getElementById('wpvp-builder-id'),
 		gallery: document.getElementById('wpvp-builder-gallery'),
-		autoplay: document.getElementById('wpvp-builder-autoplay')
+		autoplay: document.getElementById('wpvp-builder-autoplay'),
+		ctaTitle: document.getElementById('wpvp-builder-cta-title'),
+		ctaText: document.getElementById('wpvp-builder-cta-text'),
+		ctaButton: document.getElementById('wpvp-builder-cta-button'),
+		ctaUrl: document.getElementById('wpvp-builder-cta-url'),
+		ctaButton2: document.getElementById('wpvp-builder-cta-button-2'),
+		ctaUrl2: document.getElementById('wpvp-builder-cta-url-2'),
+		ctaNewTab: document.getElementById('wpvp-builder-cta-new-tab')
 	};
 	var videoHint = document.getElementById('wpvp-builder-video-hint');
 	var triggerHint = document.getElementById('wpvp-trigger-hint');
@@ -154,6 +161,49 @@
 		output.appendChild(span('wpvp-token-tag', ']'));
 	}
 
+	// Shows or hides a hint (if the page has it).
+	function toggleHint(id, show) {
+		var hint = document.getElementById(id);
+		if (hint) hint.hidden = !show;
+	}
+
+	// End screen attributes (PRO). A button needs both a label & a link.
+	function endScreenAttributes(attributes) {
+		var title = clean(value('ctaTitle'));
+		var text = clean(value('ctaText'));
+		var buttons = [
+			{ label: clean(value('ctaButton')), url: clean(value('ctaUrl')), suffix: '', hint: 'wpvp-builder-cta-url-hint' },
+			{ label: clean(value('ctaButton2')), url: clean(value('ctaUrl2')), suffix: '-2', hint: 'wpvp-builder-cta-url-2-hint' }
+		];
+		var hasButton = false;
+
+		// End screens can't be detected for Rumble.
+		var service = detectService(fields.video.value.trim());
+		var isRumble = !!service && service.key === 'rumble';
+		var hasContent = title || text || buttons.some(function (button) { return button.label || button.url; });
+
+		toggleHint('wpvp-builder-cta-rumble', isRumble && hasContent);
+
+		buttons.forEach(function (button) {
+			toggleHint(button.hint, !isRumble && button.label && !button.url);
+		});
+
+		if (isRumble) return;
+
+		if (title) attributes.push(['cta-title', title]);
+		if (text) attributes.push(['cta-text', text]);
+
+		buttons.forEach(function (button) {
+			if (!button.label || !button.url) return;
+
+			attributes.push(['cta-button' + button.suffix, button.label]);
+			attributes.push(['cta-url' + button.suffix, button.url]);
+			hasButton = true;
+		});
+
+		if (hasButton && checked('ctaNewTab')) attributes.push(['cta-new-tab', '1']);
+	}
+
 	function buildShortcode() {
 		var video = clean(fields.video.value) || fields.video.placeholder;
 		var text = clean(value('text'));
@@ -169,6 +219,8 @@
 		if (start > 0) attributes.push(['start', String(start)]);
 		if (checked('portrait')) attributes.push(['portrait', '1']);
 		if (text) attributes.push(['text', text]);
+
+		endScreenAttributes(attributes);
 
 		renderShortcode(attributes);
 		updateServiceBadge();

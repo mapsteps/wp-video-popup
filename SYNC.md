@@ -31,7 +31,7 @@ Function prefixes (`wp_video_popup_` / `wp_video_popup_pro_`), constants (`WP_VI
 - The admin enqueue & `wp_video_popup_admin_i18n()` / `wp_video_popup_pro_admin_i18n()` (labels for the shared admin script)
 - `inc/class-wp-video-popup-parser.php` / `inc/class-wp-video-popup-pro-parser.php` (PRO also detects self-hosted videos)
 - `templates/metaboxes/documentation.php`, `templates/metaboxes/review.php` (PRO wording mentions PRO)
-- `templates/builder.php`, the shortcode builder card (PRO adds the autoplay chip, ID & gallery under Advanced, `data-self-hosted` & the video file label; free has the upsell bar below the card)
+- `templates/builder.php`, the shortcode builder card (PRO adds the autoplay chip, ID & gallery under Advanced, the End screen section, `data-self-hosted` & the video file label; free has the upsell bar below the card)
 - The trigger markup of the shortcode (`wp_video_popup_trigger()` / `wp_video_popup_pro_trigger()`); PRO adds `data-wp-video-popup-target` to tie the trigger to its popup.
 
 ## Different on purpose
