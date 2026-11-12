@@ -11,7 +11,7 @@
  * 5.  Typography
  * 6.  Box
  * 7.  Settings & form controls
- * 8.  Buttons
+ * 8.  Buttons & color picker
  * 9.  Call to action
  * 10. Status indicator
  * 11. Tags
@@ -20,6 +20,8 @@
  * 14. Tooltip
  * 15. Misc
  * 16. Animations
+ * 17. Form footer & save notice
+ * 18. Products
  */
 
 /* 1. Tokens
@@ -46,6 +48,13 @@ body {
 	--heatbox-control-off: #c3c4c7;
 	--heatbox-control-disabled: #a7aaad;
 
+	--heatbox-success: #00a32a;
+	--heatbox-success-soft: #edfaef;
+	--heatbox-error: #d63638;
+	--heatbox-error-soft: #fcf0f1;
+	--heatbox-warning: #dba617;
+	--heatbox-warning-soft: #fcf9e8;
+
 	--heatbox-gap: 20px;
 	--heatbox-box-padding: 24px;
 	--heatbox-section-gap: 40px;
@@ -57,6 +66,7 @@ body {
 	--heatbox-radius-control: 8px;
 	--heatbox-radius-small: 4px;
 	--heatbox-control-height: 40px;
+	--heatbox-label-offset: 9px; /* Pushes a row label down to the middle of its field */
 	--heatbox-transition: 0.2s ease-in-out;
 }
 
@@ -66,6 +76,11 @@ body {
 .heatbox-wrap,
 .heatbox-wrap * {
 	box-sizing: border-box;
+}
+
+/* The hidden attribute wins over display rules (e.g. on .button) */
+.heatbox-wrap [hidden] {
+	display: none !important;
 }
 
 .heatbox-admin.has-header .update-nag {
@@ -121,6 +136,24 @@ body {
 
 	.heatbox-main {
 		margin-inline-end: 0;
+	}
+}
+
+/* Boxes side by side: <div class="heatbox-columns"><div class="heatbox">…</div><div class="heatbox">…</div></div> */
+.heatbox-columns {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--heatbox-gap);
+	margin-bottom: var(--heatbox-gap);
+}
+
+.heatbox-columns > .heatbox {
+	margin-bottom: 0;
+}
+
+@media screen and (max-width: 782px) {
+	.heatbox-columns {
+		grid-template-columns: 1fr;
 	}
 }
 
@@ -311,6 +344,27 @@ body {
 	border-radius: 999px;
 }
 
+/* Status badges: <span class="heatbox-badge is-success">Active</span> (also is-error, is-warning, is-neutral) */
+.heatbox-badge.is-success {
+	color: var(--heatbox-success);
+	background: var(--heatbox-success-soft);
+}
+
+.heatbox-badge.is-error {
+	color: var(--heatbox-error);
+	background: var(--heatbox-error-soft);
+}
+
+.heatbox-badge.is-warning {
+	color: #8a6d0b;
+	background: var(--heatbox-warning-soft);
+}
+
+.heatbox-badge.is-neutral {
+	color: var(--heatbox-text-muted);
+	background: var(--heatbox-surface-muted);
+}
+
 /* 6. Box
    ========================================================================== */
 
@@ -450,13 +504,15 @@ body {
 /* 7. Settings & form controls
    ========================================================================== */
 
+/* The bottom margin matches the label offset, so the space below the last row
+   equals the space above the first label (works with hidden rows too). */
 .heatbox .form-table {
-	margin: 0;
+	margin: 0 0 var(--heatbox-label-offset);
 }
 
 .heatbox .form-table th,
 .heatbox .form-table td {
-	padding: 24px var(--heatbox-box-padding);
+	padding: 16px var(--heatbox-box-padding);
 	vertical-align: top;
 }
 
@@ -464,24 +520,47 @@ body {
 	padding-inline-start: 0;
 }
 
-/* Labels line up with the middle of a field */
+/* Labels line up with the middle of a field.
+   A wider label column keeps descriptions from wrapping into tall rows. */
 .heatbox .form-table th {
-	padding-top: 33px;
+	width: 240px;
+	padding-top: calc(16px + var(--heatbox-label-offset));
+}
+
+/* Toggles line up with the row label */
+.heatbox .form-table td > .toggle-switch {
+	margin-top: 10px;
+}
+
+/* Small number field with a unit: <input type="number" class="small-text"> <span class="heatbox-unit">px</span> */
+.heatbox input.small-text {
+	width: 100px;
+}
+
+.heatbox-unit {
+	margin-inline-start: 6px;
+	color: var(--heatbox-text-muted);
 }
 
 @media screen and (max-width: 782px) {
+	/* Labels sit above their field here, so no offset is needed */
+	.heatbox .form-table {
+		margin-bottom: 0;
+	}
+
 	.heatbox .form-table th {
-		padding-top: 24px;
+		width: auto;
+		padding-top: 16px;
 		padding-bottom: 0;
 	}
 
 	.heatbox .form-table td {
-		padding: 10px var(--heatbox-box-padding) 24px;
+		padding: 8px var(--heatbox-box-padding) 16px;
 	}
 }
 
 .heatbox .form-table th .description {
-	margin-top: 10px;
+	margin: 6px 0 0;
 }
 
 .heatbox .setting-fields .setting-field {
@@ -750,7 +829,7 @@ body {
 	cursor: default;
 }
 
-/* 8. Buttons
+/* 8. Buttons & color picker
    ========================================================================== */
 
 /**
@@ -783,6 +862,48 @@ body {
 
 .heatbox-wrap .button-small {
 	border-radius: var(--heatbox-radius-small);
+}
+
+/* File picker: a field with a button like the others (the browser's "No file chosen" text stays) */
+.heatbox-wrap input[type="file"] {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: var(--heatbox-control-height);
+	padding: 3px;
+	font-size: 13px;
+	color: var(--heatbox-text-muted);
+	background: var(--heatbox-surface);
+	border: 1px solid var(--heatbox-border);
+	border-radius: var(--heatbox-radius-control);
+	cursor: pointer;
+	transition: border-color var(--heatbox-transition);
+}
+
+.heatbox-wrap input[type="file"]:hover {
+	border-color: var(--heatbox-accent);
+}
+
+.heatbox-wrap input[type="file"]:focus-visible {
+	border-color: var(--heatbox-accent);
+	outline: 1px solid var(--heatbox-accent);
+}
+
+.heatbox-wrap input[type="file"]::file-selector-button {
+	min-height: 32px;
+	margin-inline-end: 12px;
+	padding: 0 14px;
+	font: inherit;
+	font-weight: 500;
+	color: var(--heatbox-accent);
+	background: var(--heatbox-accent-soft);
+	border: 1px solid var(--heatbox-accent-soft-border);
+	border-radius: var(--heatbox-radius-small);
+	cursor: pointer;
+	transition: background-color var(--heatbox-transition), border-color var(--heatbox-transition);
+}
+
+.heatbox-wrap input[type="file"]:hover::file-selector-button {
+	border-color: var(--heatbox-accent);
 }
 
 .heatbox-wrap .button-full {
@@ -829,6 +950,101 @@ body {
 	font-size: 16px;
 	line-height: 1;
 	vertical-align: middle;
+}
+
+/* Destructive action, e.g. Reset: <button class="button is-destructive"> */
+.heatbox-wrap .button.is-destructive {
+	color: var(--heatbox-error);
+	border-color: var(--heatbox-error);
+}
+
+.heatbox-wrap .button.is-destructive:hover,
+.heatbox-wrap .button.is-destructive:focus {
+	color: #fff;
+	background-color: var(--heatbox-error);
+	border-color: var(--heatbox-error);
+}
+
+/**
+ * Color picker: WP's wp-color-picker (incl. the wp-color-picker-alpha add-on),
+ * styled like the fields: input border & focus, 40px high, evenly spaced.
+ */
+.heatbox-wrap .wp-picker-container .button.wp-color-result {
+	height: var(--heatbox-control-height);
+	min-height: var(--heatbox-control-height);
+	margin: 0;
+	padding: 0 0 0 40px;
+	overflow: hidden; /* The rounded corners clip the swatch */
+	color: var(--heatbox-text);
+	border-color: var(--heatbox-border);
+	border-radius: var(--heatbox-radius-control);
+	box-shadow: none;
+}
+
+.heatbox-wrap .wp-picker-container .button.wp-color-result:hover,
+.heatbox-wrap .wp-picker-container.wp-picker-active .button.wp-color-result {
+	color: var(--heatbox-text);
+	border-color: var(--heatbox-control-border);
+	box-shadow: none;
+}
+
+.heatbox-wrap .wp-picker-container .button.wp-color-result:focus {
+	color: var(--heatbox-text);
+	border-color: var(--heatbox-accent);
+	outline: none;
+	box-shadow: 0 0 0 3px var(--heatbox-accent-soft-border);
+}
+
+.heatbox-wrap .wp-color-result .wp-color-result-text {
+	height: 100%;
+	padding: 0 12px;
+	line-height: calc(var(--heatbox-control-height) - 2px);
+	background: var(--heatbox-surface);
+	border-left-color: var(--heatbox-border);
+	border-radius: 0;
+}
+
+/* The alpha add-on's swatch is 30px wide by default */
+.heatbox-wrap .wp-color-result .color-alpha {
+	width: 40px !important;
+	height: 100% !important;
+	border-radius: 0 !important;
+}
+
+.heatbox-wrap .wp-picker-input-wrap:not(.hidden) {
+	display: inline-flex;
+	gap: 6px;
+	margin-inline-start: 6px;
+	vertical-align: top;
+}
+
+.heatbox-wrap .wp-picker-container .wp-picker-input-wrap > label,
+.heatbox-wrap .wp-picker-container .wp-picker-input-wrap .button.wp-picker-default {
+	margin: 0;
+}
+
+.heatbox-wrap .wp-picker-container input[type="text"].wp-color-picker {
+	width: 90px;
+	height: var(--heatbox-control-height);
+	min-height: var(--heatbox-control-height);
+	margin: 0;
+	vertical-align: top;
+}
+
+.heatbox-wrap .wp-picker-input-wrap .button {
+	min-height: var(--heatbox-control-height);
+}
+
+/* Square, hue & alpha side by side (the alpha add-on otherwise pushes the sliders below the panel) */
+.heatbox-wrap .iris-picker-inner {
+	display: grid;
+	grid-template-columns: 1fr 20px 20px;
+	gap: 7px;
+}
+
+.heatbox-wrap .iris-picker-inner > * {
+	width: 100% !important;
+	margin-left: 0 !important;
 }
 
 /* 9. Call to action
@@ -1236,5 +1452,129 @@ body {
 	.heatbox-status-indicator.is-loading::after,
 	.heatbox-status-indicator.is-done {
 		animation-duration: 1.5s !important;
+	}
+}
+
+/* 17. Form footer & save notice
+   <div class="heatbox-form-footer">
+     <div><button class="button button-primary button-larger">Save</button> <span class="heatbox-notice" role="status"></span></div>
+     <div><button class="button button-larger is-destructive">Reset</button></div>
+   </div>
+   Show a message: add .is-shown and .is-success or .is-error to .heatbox-notice.
+   (.heatbox-status-indicator is the spinner/check inside a box title instead.)
+   ========================================================================== */
+
+.heatbox-form-footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.heatbox-form-footer > div {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+}
+
+.heatbox-notice {
+	font-weight: 500;
+	opacity: 0;
+	transition: opacity var(--heatbox-transition);
+}
+
+.heatbox-notice.is-shown {
+	opacity: 1;
+}
+
+.heatbox-notice.is-success {
+	color: var(--heatbox-success);
+}
+
+.heatbox-notice.is-error {
+	color: var(--heatbox-error);
+}
+
+@media screen and (max-width: 782px) {
+	.heatbox-form-footer {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}
+
+/* 18. Products
+   "Our other products" below the settings:
+   <div class="heatbox-container heatbox-container-wide heatbox-container-center heatbox-products">
+     <h2>Title</h2>
+     <ul class="products">
+       <li class="heatbox">
+         <a href="…" aria-hidden="true" tabindex="-1"><img src="…" alt=""></a>
+         <div class="heatbox-content"><h3>Name</h3><p class="subheadline">Tagline</p><p>Text</p><a class="button" href="…">Learn more</a></div>
+       </li>
+     </ul>
+     <p class="credit">Made with ❤ in …</p>
+   </div>
+   .featured-products is the old class name & still works.
+   ========================================================================== */
+
+:is(.heatbox-products, .featured-products).heatbox-container-wide {
+	max-width: 1200px;
+}
+
+:is(.heatbox-products, .featured-products) > h2 {
+	margin: 0 0 24px;
+	font-size: 20px;
+	font-weight: 600;
+	text-align: center;
+	color: var(--heatbox-text);
+}
+
+:is(.heatbox-products, .featured-products) .products {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--heatbox-gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+:is(.heatbox-products, .featured-products) .products li {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+:is(.heatbox-products, .featured-products) .products .heatbox-content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+:is(.heatbox-products, .featured-products) .products .heatbox-content .button {
+	align-self: flex-start;
+	margin-top: auto;
+}
+
+:is(.heatbox-products, .featured-products) .products .subheadline {
+	margin: 0 0 8px;
+	font-weight: 500;
+	color: var(--heatbox-text);
+}
+
+:is(.heatbox-products, .featured-products) .products img {
+	max-width: 100%;
+}
+
+:is(.heatbox-products, .featured-products) .credit {
+	margin: 32px 0 20px;
+	text-align: center;
+	color: var(--heatbox-text-muted);
+}
+
+@media screen and (max-width: 782px) {
+	:is(.heatbox-products, .featured-products) .products {
+		grid-template-columns: 1fr;
 	}
 }
