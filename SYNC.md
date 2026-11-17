@@ -36,7 +36,7 @@ Function prefixes (`wp_video_popup_` / `wp_video_popup_pro_`), constants (`WP_VI
 
 ## Different on purpose
 
-- **Front-end script:** `assets/js/wp-video-popup.js` (free, one popup per page) and `inc/js/wp-video-popup.js` (PRO, multiple popups & galleries) are built differently. Port fixes by hand and keep the output (markup, classes, ARIA, keyboard behaviour) the same. PRO's main script fires `wpvp:play` & `wpvp:stop` on the video element for add-ons like the end screen; free doesn't need them.
+- **Front-end script:** `assets/js/wp-video-popup.js` (free, one popup per page) and `inc/js/wp-video-popup.js` (PRO, multiple popups & galleries) are built differently. Port fixes by hand and keep the output (markup, classes, ARIA, keyboard behaviour) the same. PRO's main script fires `wpvp:play` & `wpvp:stop` on the video element for add-ons like the end screen; free doesn't need them. PRO also picks up popups added after page load (e.g. "load more"): it fires `wpvp:refresh` on the document when it finds new ones and offers `wpVideoPopup.refresh()` for themes that need to tell it; free's single popup doesn't need this.
 - **Front-end CSS:** PRO compiles to `inc/css/`, free to `assets/css/`. PRO-only styles live in `assets/sass/modules/_wp-video-popup-pro.scss`.
 - **Settings:** free has no active settings, its sanitize callback keeps the values unchanged (so PRO settings survive a downgrade). PRO sanitizes them.
 - **PRO only:** `assets/js/admin-page-pro.js` (popup size device switcher), license & EDD files (`assets/edd/`, `templates/license.php`), galleries, autoplay, self-hosted videos, the end screen (`inc/js/wp-video-popup-endscreen.js`, `cta-*` shortcode attributes, CTA styles in `_wp-video-popup-pro.scss`).
